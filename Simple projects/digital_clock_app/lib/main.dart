@@ -28,6 +28,7 @@ class ClockScreen extends StatefulWidget {
 
 class _ClockScreenState extends State<ClockScreen> {
   String _currentTime = ' ';
+  String _currentDate = ' ';
 
   @override
   void initState() {
@@ -38,6 +39,7 @@ class _ClockScreenState extends State<ClockScreen> {
   void _updateTime() {
     setState(() {
       _currentTime = DateFormat('HH:mm:ss').format(DateTime.now());
+      _currentDate = DateFormat('EEE, MMM d').format(DateTime.now());
     });
     Future.delayed(const Duration(seconds: 1), _updateTime);
   }
@@ -58,16 +60,23 @@ class _ClockScreenState extends State<ClockScreen> {
       ),
       body: Column(
         children: [
-          Center(
-            child: Text(
-              _currentTime,
-              style: const TextStyle(fontSize: 95.0, color: Colors.white,), 
+          Text(
+            _currentTime,
+            style: const TextStyle(
+              fontSize: 95.0,
+              color: Colors.white,
+            ),
+          ),
+          Text(
+            _currentDate,
+            style: const TextStyle(
+              fontSize: 25.0,
+              color: Colors.white,
             ),
           ),
         ],
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 56, 53, 53),
     );
   }
 }
-
