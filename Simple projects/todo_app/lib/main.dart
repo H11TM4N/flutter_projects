@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
 void main() {
   runApp(const HomePage());
 }
@@ -26,35 +24,14 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  String _currentTime = ' ';
-  @override
-  void initState() {
-    _updateTime();
-    super.initState();
-  }
-  void _updateTime() {
-    setState(() {
-      _currentTime = DateFormat('HH:mm:ss').format(DateTime.now());
-    });
-    Future.delayed(const Duration(seconds: 1), _updateTime);
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(''),
+        title: const Text('Todo app'),
       ),
-      backgroundColor: Colors.black,
-      body: Center(
-        child: Text(
-          _currentTime,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 87,
-          ),
-        ),
-      ),
+      
     );
   }
 }
