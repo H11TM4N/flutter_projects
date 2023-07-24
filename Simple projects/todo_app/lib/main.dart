@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 void main() {
   runApp(const HomePage());
 }
@@ -16,6 +17,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
+enum MenuAction { add }
+
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
@@ -24,14 +27,37 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  var todo = const TextField();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Todo app'),
+        actions: [
+          PopupMenuButton<MenuAction>(
+            itemBuilder: (BuildContext context) => [
+              const PopupMenuItem(
+                value: MenuAction.add,
+                child: Text('add task')
+              ),
+            ],
+            onSelected: (value) {
+              switch (value) {
+                case MenuAction.add:
+                  todo;
+                  
+                  break;
+              }
+            },
+          ),
+        ],
       ),
-      
+      body: const Column(
+        children: [
+          
+        ],
+      ),
     );
   }
 }
