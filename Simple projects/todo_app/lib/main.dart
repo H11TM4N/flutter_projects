@@ -1,34 +1,69 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const HomePage());
+  runApp(const TodoApp());
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class TodoApp extends StatelessWidget {
+  const TodoApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'A todo app',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MainPage(),
+    return const MaterialApp(
+      home: TodoScreen(),
     );
   }
 }
 
-enum MenuAction { add }
-
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class TodoScreen extends StatefulWidget {
+  const TodoScreen({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  // ignore: library_private_types_in_public_api
+  _TodoScreenState createState() => _TodoScreenState();
 }
 
-class _MainPageState extends State<MainPage> {
-  List todo = [];
+class _TodoScreenState extends State<TodoScreen> {
+  List<String> tasks = [];
+
+  void _addTask() async {
+    // Show a dialog to prompt the user to enter a task
+    String newTask = await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        String taskText = '';
+
+        return AlertDialog(
+          title: const Text('Add a Task'),
+          content: TextField(
+            onChanged: (value) {
+              taskText = value;
+            },
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // Close the dialog
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context, taskText); // Pass the entered task back
+              },
+              child: const Text('Add'),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (newTask.isNotEmpty) {
+      setState(() {
+        tasks.add(newTask); // Add the entered task to the list
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,31 +72,26 @@ class _MainPageState extends State<MainPage> {
         title: const Text('Todo app'),
         actions: [
           IconButton(
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return const AlertDialog(
-                    actions: [
-                      TextField()
-                    ],
-                  );
-                },
-              );
-            },
+            onPressed: _addTask,
             icon: const Icon(Icons.add),
-          ),
-          PopupMenuButton<MenuAction>(
-            itemBuilder: (BuildContext context) => [
-              const PopupMenuItem(
-                  value: MenuAction.add, child: Text('add task')),
-            ],
-            onSelected: (value) {},
           ),
         ],
       ),
-      body: const Column(
-        children: [],
+      body: ListView.builder(
+        itemCount: tasks.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(tasks[index]),
+            trailing: IconButton(
+              icon: const Icon(Icons.delete),
+              onPressed: () {
+                setState(() {
+                  tasks.removeAt(index); // Remove the task from the list
+                });
+              },
+            ),
+          );
+        },
       ),
     );
   }
