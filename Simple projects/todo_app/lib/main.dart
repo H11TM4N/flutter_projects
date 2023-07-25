@@ -10,6 +10,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'A todo app',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const MainPage(),
@@ -27,7 +28,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  var todo = const TextField();
+  List todo = [];
 
   @override
   Widget build(BuildContext context) {
@@ -35,28 +36,32 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         title: const Text('Todo app'),
         actions: [
+          IconButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return const AlertDialog(
+                    actions: [
+                      TextField()
+                    ],
+                  );
+                },
+              );
+            },
+            icon: const Icon(Icons.add),
+          ),
           PopupMenuButton<MenuAction>(
             itemBuilder: (BuildContext context) => [
               const PopupMenuItem(
-                value: MenuAction.add,
-                child: Text('add task')
-              ),
+                  value: MenuAction.add, child: Text('add task')),
             ],
-            onSelected: (value) {
-              switch (value) {
-                case MenuAction.add:
-                  todo;
-                  
-                  break;
-              }
-            },
+            onSelected: (value) {},
           ),
         ],
       ),
       body: const Column(
-        children: [
-          
-        ],
+        children: [],
       ),
     );
   }
