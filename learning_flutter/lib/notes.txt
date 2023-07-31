@@ -1,7 +1,10 @@
 ##Textfield widget:
   It is a widget that allows users to input text in a user-friendly manner.
 {
+    decoration: The decoration property allows you to customize the visual appearance of the TextField. It is of type InputDecoration
+    
     maxLength: Limits the maximum number of characters allowed in the TextField.
+
     keyboardType: Specifies the type of keyboard that will be shown when the user interacts with the TextField.
 
     obscureText: Hides the text being entered, commonly used for password inputs.
