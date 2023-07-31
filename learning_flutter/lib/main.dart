@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:learning_flutter/home_page.dart';
-import 'package:learning_flutter/profile_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,51 +10,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.brown),
-      home: const RootPage(),
+      title: 'Learning flutter',
+      theme: ThemeData(primarySwatch: Colors.amber),
+      home: const HomePage(),
     );
   }
 }
 
-class RootPage extends StatefulWidget {
-  const RootPage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<RootPage> createState() => _RootPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _RootPageState extends State<RootPage> {
-  int currentPage = 0;
-  List<Widget> pages = const [
-    HomePage(),
-    ProfilePage()
-  ];
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter'),
-      ),
-      body: pages[currentPage],
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          debugPrint('Floating Action Button');
-        },
-        child: const Icon(Icons.add),
-      ),
-      bottomNavigationBar: NavigationBar(
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-          NavigationDestination(icon: Icon(Icons.person), label: 'profile'),
-        ],
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPage = index;
-          });
-        },
-        selectedIndex: currentPage,
-      ),
-    );
+    return const Scaffold();
   }
 }
