@@ -30,7 +30,9 @@ class _HomePageState extends State<HomePage> {
               ),
               decoration: InputDecoration(
                 hintText: 'Please enter the amount in USD',
-                hintStyle: TextStyle(color: Colors.white)
+                hintStyle: TextStyle(color: Colors.white60),
+                suffixIcon: Icon(Icons.monetization_on),
+                suffixIconColor: Colors.white60,
               ),
             ),
           ],

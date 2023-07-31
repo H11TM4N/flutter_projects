@@ -1,0 +1,22 @@
+##Textfield widget:
+  It is a widget that allows users to input text in a user-friendly manner.
+{
+    maxLength: Limits the maximum number of characters allowed in the TextField.
+    keyboardType: Specifies the type of keyboard that will be shown when the user interacts with the TextField.
+
+    obscureText: Hides the text being entered, commonly used for password inputs.
+
+    onChanged: Callback function triggered whenever the text inside the TextField changes.
+
+    onSubmitted: Callback function triggered when the user submits the input.
+
+    enabled: If set to false, disables user interaction with the TextField.
+
+    controller: Allows you to control the content of the TextField programmatically.
+
+    textInputAction: Specifies the action button to display on the keyboard (e.g., "done", "send", "search") to provide context-specific actions.
+
+    textAlign: Sets the alignment of the text within the TextField.
+
+    readOnly: If set to true, prevents the user from editing the text.
+}
