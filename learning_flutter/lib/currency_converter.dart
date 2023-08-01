@@ -6,6 +6,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int result = 0;
     final border = OutlineInputBorder(
       borderSide: const BorderSide(
         color: Colors.black,
@@ -19,7 +20,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
         elevation: 0,
-        title: const Text('Currency Converter'),
+        title: const Center(child: Text('Currency Converter')),
       ),
       body: Center(
         child: Column(
@@ -57,7 +58,7 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: TextButton(
                 onPressed: () {
-                  if (kDebugMode){
+                  if (kDebugMode) {
                     print('Button clicked');
                   }
                 },
@@ -65,7 +66,8 @@ class HomePage extends StatelessWidget {
                   backgroundColor: (Colors.black),
                   foregroundColor: (Colors.white),
                   minimumSize: (const Size(double.infinity, 50)),
-                  shape: (RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+                  shape: (RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5))),
                 ),
                 child: const Text('Convert'),
               ),
