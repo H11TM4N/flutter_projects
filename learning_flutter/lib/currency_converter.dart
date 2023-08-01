@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
             ),
             TextField(
               style: TextStyle(
-                color: Colors.blue,
+                color: Colors.black,
               ),
               decoration: InputDecoration(
                 hintText: 'Please enter the amount in USD',
@@ -36,7 +36,12 @@ class _HomePageState extends State<HomePage> {
                 filled: true,
                 fillColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide()
+                  borderSide: BorderSide(
+                    color: Colors.red,
+                    width: 2.0,
+                    style: BorderStyle.solid,
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(60.0)),
                 ),
               ),
             ),
