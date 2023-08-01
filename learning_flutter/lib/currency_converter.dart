@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -27,22 +28,41 @@ class HomePage extends StatelessWidget {
                 color: Color.fromARGB(255, 255, 255, 255),
               ),
             ),
-            TextField(
-              style: const TextStyle(
-                color: Colors.black,
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                style: const TextStyle(
+                  color: Colors.black,
+                ),
+                decoration: InputDecoration(
+                  hintText: 'Please enter the amount in USD',
+                  hintStyle: const TextStyle(color: Colors.black),
+                  prefixIcon: const Icon(Icons.monetization_on),
+                  prefixIconColor: Colors.black,
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: border,
+                  enabledBorder: border,
+                ),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
               ),
-              decoration: InputDecoration(
-                hintText: 'Please enter the amount in USD',
-                hintStyle: const TextStyle(color: Colors.black),
-                prefixIcon: const Icon(Icons.monetization_on),
-                prefixIconColor: Colors.black,
-                filled: true,
-                fillColor: Colors.white,
-                focusedBorder: border,
-                enabledBorder: border,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextButton(
+                onPressed: () {
+                  if (kDebugMode){
+                    print('Button clicked');
+                  }
+                },
+                style: const ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(Colors.black),
+                  foregroundColor: MaterialStatePropertyAll(Colors.white),
+                  minimumSize: MaterialStatePropertyAll(Size(double.infinity, 50))
+                ),
+                child: const Text('Convert'),
               ),
-              keyboardType:
-                  const TextInputType.numberWithOptions(decimal: true),
             ),
           ],
         ),
