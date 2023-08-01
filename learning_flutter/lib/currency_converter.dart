@@ -16,6 +16,11 @@ class HomePage extends StatelessWidget {
     );
     return Scaffold(
       backgroundColor: Colors.blueGrey,
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
+        elevation: 0,
+        title: const Text('Currency Converter'),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -56,10 +61,11 @@ class HomePage extends StatelessWidget {
                     print('Button clicked');
                   }
                 },
-                style: const ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(Colors.black),
-                  foregroundColor: MaterialStatePropertyAll(Colors.white),
-                  minimumSize: MaterialStatePropertyAll(Size(double.infinity, 50))
+                style: TextButton.styleFrom(
+                  backgroundColor: (Colors.black),
+                  foregroundColor: (Colors.white),
+                  minimumSize: (const Size(double.infinity, 50)),
+                  shape: (RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
                 ),
                 child: const Text('Convert'),
               ),
