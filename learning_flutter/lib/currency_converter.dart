@@ -7,6 +7,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int result = 0;
+    final TextEditingController textEditingController = TextEditingController();
     final border = OutlineInputBorder(
       borderSide: const BorderSide(
         color: Colors.black,
@@ -37,6 +38,7 @@ class HomePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10),
               child: TextField(
+                controller: textEditingController,
                 style: const TextStyle(
                   color: Colors.black,
                 ),
@@ -59,7 +61,7 @@ class HomePage extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   if (kDebugMode) {
-                    print('Button clicked');
+                    print(textEditingController.text);
                   }
                 },
                 style: TextButton.styleFrom(
