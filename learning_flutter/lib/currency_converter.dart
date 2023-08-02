@@ -1,13 +1,17 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    int result = 0;
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  double result = 0;
     final TextEditingController textEditingController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
     final border = OutlineInputBorder(
       borderSide: const BorderSide(
         color: Colors.black,
@@ -27,9 +31,9 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              '0',
-              style: TextStyle(
+            Text(
+              result.toString(),
+              style: const TextStyle(
                 fontSize: 35,
                 fontWeight: FontWeight.bold,
                 color: Color.fromARGB(255, 255, 255, 255),
@@ -60,10 +64,10 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: TextButton(
                 onPressed: () {
-                  if (kDebugMode) {
-                    print(textEditingController.text);
-                  }
-                },
+                    setState(() {
+                      result = double.parse(textEditingController.text) * 81;
+                    });
+                  },
                 style: TextButton.styleFrom(
                   backgroundColor: (Colors.black),
                   foregroundColor: (Colors.white),
