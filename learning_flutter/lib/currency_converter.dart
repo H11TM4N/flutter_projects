@@ -9,7 +9,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   double result = 0;
-    final TextEditingController textEditingController = TextEditingController();
+  final TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final border = OutlineInputBorder(
@@ -28,20 +28,20 @@ class _HomePageState extends State<HomePage> {
         title: const Center(child: Text('Currency Converter')),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              result.toString(),
-              style: const TextStyle(
-                fontSize: 35,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 255, 255, 255),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '# ${result.toStringAsFixed(2)}',
+                style: const TextStyle(
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 255, 255, 255),
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: TextField(
+              TextField(
                 controller: textEditingController,
                 style: const TextStyle(
                   color: Colors.black,
@@ -59,15 +59,13 @@ class _HomePageState extends State<HomePage> {
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextButton(
+              const SizedBox(height: 10),
+              TextButton(
                 onPressed: () {
-                    setState(() {
-                      result = double.parse(textEditingController.text) * 81;
-                    });
-                  },
+                  setState(() {
+                    result = double.parse(textEditingController.text) * 785.52;
+                  });
+                },
                 style: TextButton.styleFrom(
                   backgroundColor: (Colors.black),
                   foregroundColor: (Colors.white),
@@ -77,8 +75,8 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: const Text('Convert'),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
