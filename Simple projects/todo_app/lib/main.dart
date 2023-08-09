@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/scaffold.dart';
 
 void main() {
   runApp(const TodoApp());
@@ -12,29 +13,9 @@ class TodoApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'A simple todo app',
-      theme: ThemeData(primarySwatch: Colors.amber),
+      theme: ThemeData(primarySwatch: Colors.grey),
       home: const HomePage(),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('nothing'),
-      ),
-      body: const Column(
-
-      ),
-    );
-  }
-}
