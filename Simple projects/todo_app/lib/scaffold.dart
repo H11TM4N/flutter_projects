@@ -39,10 +39,15 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       backgroundColor: Colors.blueGrey,
-      body: const Column(
+      body: Column(
         children: [
-          TextField(
-            
+          Container(
+            padding: const EdgeInsets.symmetric(),
+            decoration: const BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.vertical(),
+            ),
+            child: const Text('Text', style: TextStyle(fontSize: 20),),
           ),
         ],
       ),
