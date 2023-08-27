@@ -1,6 +1,8 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:weather_app/additional_info.dart';
+
+import 'hourly_forecast.dart';
 
 class WeatherScreen extends StatelessWidget {
   const WeatherScreen({super.key});
@@ -69,142 +71,71 @@ class WeatherScreen extends StatelessWidget {
               style: TextStyle(fontSize: 24),
             ),
             const SizedBox(height: 12),
-            SingleChildScrollView(
+            const SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  SizedBox(
-                    width: 100,
-                    child: Card(
-                      child: Container(
-                        width: 100,
-                        padding: const EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),),
-                        child: const Column(
-                          children: [
-                            Text(
-                              '03:00',
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(height: 8),
-                            Icon(Icons.cloud, size: 32),
-                            SizedBox(height: 8),
-                            Text('301.12'),
-                      
-                          ],
-                        ),
-                      ),
-                    ),
+                  HourlyForecastItem(
+                    icon: Icons.cloud,
+                    text: '03:00',
+                    value: '301:12',
                   ),
-                  SizedBox(
-                    width: 100,
-                    child: Card(
-                      child: Container(
-                        width: 100,
-                        padding: const EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),),
-                        child: const Column(
-                          children: [
-                            Text(
-                              '03:00',
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(height: 8),
-                            Icon(Icons.cloud, size: 32),
-                            SizedBox(height: 8),
-                            Text('301.12'),
-                      
-                          ],
-                        ),
-                      ),
-                    ),
+                  HourlyForecastItem(
+                    icon: Icons.cloud,
+                    text: '03:00',
+                    value: '356:09',
                   ),
-                  SizedBox(
-                    width: 100,
-                    child: Card(
-                      child: Container(
-                        width: 100,
-                        padding: const EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),),
-                        child: const Column(
-                          children: [
-                            Text(
-                              '03:00',
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(height: 8),
-                            Icon(Icons.cloud, size: 32),
-                            SizedBox(height: 8),
-                            Text('301.12'),
-                      
-                          ],
-                        ),
-                      ),
-                    ),
+                  HourlyForecastItem(
+                    icon: Icons.cloud,
+                    text: '06:00',
+                    value: '287:76',
                   ),
-                  SizedBox(
-                    width: 100,
-                    child: Card(
-                      child: Container(
-                        width: 100,
-                        padding: const EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),),
-                        child: const Column(
-                          children: [
-                            Text(
-                              '03:00',
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(height: 8),
-                            Icon(Icons.cloud, size: 32),
-                            SizedBox(height: 8),
-                            Text('301.12'),
-                      
-                          ],
-                        ),
-                      ),
-                    ),
+                  HourlyForecastItem(
+                    icon: Icons.cloud,
+                    text: '09:00',
+                    value: '306:56',
                   ),
-                  SizedBox(
-                    width: 100,
-                    child: Card(
-                      child: Container(
-                        width: 100,
-                        padding: const EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),),
-                        child: const Column(
-                          children: [
-                            Text(
-                              '03:00',
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(height: 8),
-                            Icon(Icons.cloud, size: 32),
-                            SizedBox(height: 8),
-                            Text('301.12'),
-                      
-                          ],
-                        ),
-                      ),
-                    ),
+                  HourlyForecastItem(
+                    icon: Icons.cloud,
+                    text: '12:00',
+                    value: '544:32',
                   ),
                 ],
               ),
             ),
-            const Placeholder(
-              fallbackHeight: 150,
-            ),
             const SizedBox(height: 20),
             // additional info
-            const Placeholder(fallbackHeight: 150)
+            const Text(
+              'Additional Information',
+              style: TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 10),
+            const SizedBox(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  AddInfo(
+                    icon: Icons.water_drop,
+                    text: "Humidity",
+                    value: "94",
+                  ),
+                  AddInfo(
+                    icon: Icons.air_outlined,
+                    text: "Wind Speed",
+                    value: "7.68",
+                  ),
+                  AddInfo(
+                    icon: Icons.beach_access,
+                    text: "Pressure",
+                    value: "1000",
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
+
