@@ -13,7 +13,7 @@ class TodoApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'A simple todo app',
-      theme: ThemeData(primarySwatch: Colors.grey),
+      theme: ThemeData.dark(useMaterial3: true),
       home: const HomePage(),
     );
   }

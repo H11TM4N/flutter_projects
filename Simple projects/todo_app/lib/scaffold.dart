@@ -27,7 +27,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Todo App'),
+        bottomOpacity: 67.8,
+        title: const Text("TODO APP"),
         actions: [
           IconButton(
             onPressed: () {
@@ -63,7 +64,10 @@ class _HomePageState extends State<HomePage> {
         itemCount: listOfTasks.length,
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
-            title: Text(listOfTasks[index]),
+            title: Text(
+              listOfTasks[index],
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
             trailing: GestureDetector(
               onTap: () {
                 removeTask(index);
