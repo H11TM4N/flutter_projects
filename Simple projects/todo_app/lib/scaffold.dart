@@ -8,14 +8,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> listView = [];
-  final TextEditingController _inputController = TextEditingController();
+  List listOfTasks = [];
+  TextEditingController textInput = TextEditingController();
 
-  ListTile listTile() {
-    return ListTile(
-      title: Text(_inputController.text),
-      trailing: const Icon(Icons.delete),
-    );
+  void addTask(String value) {
+    setState(() {
+      listOfTasks.add(value);
+    });
+  }
+
+  void removeTask(int index) {
+    setState(() {
+      listOfTasks.removeAt(index);
+    });
   }
 
   @override
@@ -29,19 +34,23 @@ class _HomePageState extends State<HomePage> {
               showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
-                  title: const Text('Enter a task'),
+                  title: const Text('Add task'),
                   content: TextField(
-                    controller: _inputController,
+                    controller: textInput,
                   ),
                   actions: [
                     TextButton(
-                      onPressed: () {},
-                      child: const Text('add'),
-                    ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          addTask(textInput.text);
+                          textInput.clear();
+                        },
+                        child: const Text('add')),
                     TextButton(
-                      onPressed: () => Navigator.pop(context, 'cancel'),
-                      child: const Text('cancel'),
-                    ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('cancel')),
                   ],
                 ),
               );
@@ -50,8 +59,19 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Column(
-        children: [listTile()],
+      body: ListView.builder(
+        itemCount: listOfTasks.length,
+        itemBuilder: (BuildContext context, int index) {
+          return ListTile(
+            title: Text(listOfTasks[index]),
+            trailing: GestureDetector(
+              onTap: () {
+                removeTask(index);
+              },
+              child: const Icon(Icons.delete),
+            ),
+          );
+        },
       ),
     );
   }
