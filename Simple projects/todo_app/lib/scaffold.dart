@@ -20,6 +20,16 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+      body: const Column(
+        children: [
+          ListTile(
+            title: Text('Brooooo'),
+            trailing: Icon(Icons.delete),
+
+          ),
+          Divider(color: Colors.black,),
+        ],
+      ),
     );
   }
 }
