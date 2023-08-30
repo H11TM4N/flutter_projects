@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-enum _Popupmenu{
-  addTask,
-}
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -12,42 +8,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('nothing'),
+        title: const Text('Todo App'),
         actions: [
-          PopupMenuButton<_Popupmenu>(
-            onSelected: (value) {
-              switch (value) {
-                case _Popupmenu.addTask:
-                  debugPrint("trial");  //dont forget this
-                  break;
-              }
-            },
-            itemBuilder: (BuildContext context) {
-              return <PopupMenuEntry<_Popupmenu>>[
-                const PopupMenuItem<_Popupmenu>(
-                  value: _Popupmenu.addTask,
-                  child: Text('Add'),
-                ),
-              ];
-            },
-          ),
-        ],
-      ),
-      backgroundColor: Colors.blueGrey,
-      body: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(),
-            decoration: const BoxDecoration(
-              color: Colors.grey,
-              borderRadius: BorderRadius.vertical(),
-            ),
-            child: const Text('Text', style: TextStyle(fontSize: 20),),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.add),
           ),
         ],
       ),
