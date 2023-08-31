@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:practice/counter_page.dart';
+import 'package:practice/time_page.dart';
 
 void main() {
   runApp(const MainPage());
@@ -24,7 +26,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 2,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Practice'),
@@ -32,15 +34,12 @@ class HomePage extends StatelessWidget {
           bottom: const TabBar(tabs: [
             Tab(text: 'Time'),
             Tab(text: 'Counter'),
-            Tab(text: 'Jerry'),
-            Tab(text: 'Lolly'),
           ]),
         ),
         body: const TabBarView(
           children: [
             TimePage(),
-            CounterPage()
-            
+            CounterPage(),
           ],
         ),
       ),
@@ -48,20 +47,3 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class TimePage extends StatelessWidget {
-  const TimePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
-
-class CounterPage extends StatelessWidget {
-  const CounterPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
