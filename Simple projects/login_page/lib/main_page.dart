@@ -8,7 +8,7 @@ class MainPage extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Main Page'),
+          title: const Text('JER3MIAH'),
           centerTitle: true,
           bottom: const TabBar(
             tabs: [
