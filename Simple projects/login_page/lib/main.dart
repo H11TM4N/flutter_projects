@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Login Page',
       theme: ThemeData.dark(useMaterial3: true),
-      home: const LoginPage(),
+      home: const MainPage(),
     );
   }
 }
