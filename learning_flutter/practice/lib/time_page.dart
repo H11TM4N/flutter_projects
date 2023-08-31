@@ -28,9 +28,10 @@ class _TimePageState extends State<TimePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Digital Clock')),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SizedBox(height: 200),
           Center(
             child: Text(
               currentTime,
