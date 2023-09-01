@@ -10,9 +10,15 @@ class CounterPage extends StatefulWidget {
 class _CounterPageState extends State<CounterPage> {
   int counter = 0;
 
-  void count() {
+  void addition() {
     setState(() {
       counter++;
+    });
+  }
+  
+  void subtraction() {
+    setState(() {
+      counter--;
     });
   }
 
@@ -33,10 +39,22 @@ class _CounterPageState extends State<CounterPage> {
           Center(
             child: FloatingActionButton(
               onPressed: () {
-                return count();
+                return addition();
               },
               elevation: 4,
               child: const Icon(Icons.add),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Center(
+            child: FloatingActionButton(
+              onPressed: () {
+                return subtraction();
+              },
+              elevation: 4,
+              child: const Icon(Icons.remove),
             ),
           ),
         ],
