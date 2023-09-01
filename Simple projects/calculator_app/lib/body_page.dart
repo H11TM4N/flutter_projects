@@ -1,3 +1,4 @@
+import 'package:calculator_app/bottom_theme.dart';
 import 'package:flutter/material.dart';
 
 class BodyPage extends StatefulWidget {
@@ -8,18 +9,6 @@ class BodyPage extends StatefulWidget {
 }
 
 class _BodyPageState extends State<BodyPage> {
-  ElevatedButton elevatedButton = ElevatedButton(
-    style: ElevatedButton.styleFrom(
-      shape: const ContinuousRectangleBorder(),
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 28),
-    ),
-    onPressed: () {},
-    child: const Text(
-      '7',
-      style: TextStyle(fontSize: 30),
-    ),
-  );
-
   @override
   Widget build(BuildContext context) {
     return const Padding(
@@ -41,9 +30,52 @@ class _BodyPageState extends State<BodyPage> {
             ],
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              
+              ButtonAdd(text: 'AC', color1: Colors.white, color2: Colors.green),
+              ButtonAdd(text: '%', color1: Colors.white, color2: Colors.blue),
+              ButtonAdd(text: 'DEL', color1: Colors.white, color2: Colors.blue),
+              ButtonAdd(text: '/', color1: Colors.white, color2: Colors.blue),
+            ],
+          ),
+          SizedBox(height: 10,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ButtonAdd(text: '7', color1: Colors.white, color2: Colors.blueGrey),
+              ButtonAdd(text: '8', color1: Colors.white, color2: Colors.blueGrey),
+              ButtonAdd(text: '9', color1: Colors.white, color2: Colors.blueGrey),
+              ButtonAdd(text: 'x', color1: Colors.white, color2: Colors.blue),
+            ],
+          ),
+          SizedBox(height: 10,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ButtonAdd(text: '4', color1: Colors.white, color2: Colors.blueGrey),
+              ButtonAdd(text: '5', color1: Colors.white, color2: Colors.blueGrey),
+              ButtonAdd(text: '6', color1: Colors.white, color2: Colors.blueGrey),
+              ButtonAdd(text: '--', color1: Colors.white, color2: Colors.blue),
+            ],
+          ),
+          SizedBox(height: 10,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ButtonAdd(text: '5', color1: Colors.white, color2: Colors.blueGrey),
+              ButtonAdd(text: '4', color1: Colors.white, color2: Colors.blueGrey),
+              ButtonAdd(text: '3', color1: Colors.white, color2: Colors.blueGrey),
+              ButtonAdd(text: '+', color1: Colors.white, color2: Colors.blue),
+            ],
+          ),
+          SizedBox(height: 10,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ButtonAdd(text: '00', color1: Colors.white, color2: Colors.blueGrey),
+              ButtonAdd(text: '0', color1: Colors.white, color2: Colors.blueGrey),
+              ButtonAdd(text: '.', color1: Colors.white, color2: Colors.blueGrey),
+              ButtonAdd(text: '=', color1: Colors.white, color2: Colors.blue),
             ],
           ),
         ],
