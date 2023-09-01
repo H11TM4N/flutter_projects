@@ -1,3 +1,4 @@
+import 'package:calculator_app/body_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,23 +34,22 @@ class _MainPageState extends State<MainPage> {
         title: const Text('Calculator App'),
         actions: [
           PopupMenuButton(
-            onSelected: (value) {
-              
-            },
-            itemBuilder: (context) {
-            return <PopupMenuEntry<String>>[
-              const PopupMenuItem(
-                value: 'Item 1',
-                child: Text('Chose theme'),
-              ),
-              const PopupMenuItem(
-                value: 'Item2',
-                child: Text('dummy item'),
-              ),
-            ];
-          })
+              onSelected: (value) {},
+              itemBuilder: (context) {
+                return <PopupMenuEntry<String>>[
+                  const PopupMenuItem(
+                    value: 'Item 1',
+                    child: Text('Chose theme'),
+                  ),
+                  const PopupMenuItem(
+                    value: 'Item2',
+                    child: Text('dummy item'),
+                  ),
+                ];
+              })
         ],
       ),
+      body: const BodyPage(),
     );
   }
 }
