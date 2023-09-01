@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class TodoPage extends StatefulWidget {
   const TodoPage({super.key});
@@ -20,7 +19,7 @@ class _TodoPageState extends State<TodoPage> {
 
   void removeList(int index) {
     setState(() {
-      lists.remove(index);
+      lists.removeAt(index);
     });
   }
 
@@ -44,6 +43,8 @@ class _TodoPageState extends State<TodoPage> {
                         TextButton(
                           onPressed: () {
                             Navigator.of(context).pop();
+                            addList(textEditingController.text);
+                            textEditingController.clear();
                           },
                           child: const Text('add'),
                         ),
@@ -61,21 +62,19 @@ class _TodoPageState extends State<TodoPage> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          ListView.builder(
-            itemCount: lists.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: const Text('Jones'),
-                trailing: GestureDetector(
-                  onTap: () {},
-                  child: const Icon(Icons.delete),
-                ),
-              );
-            },
-          ),
-        ],
+      body: ListView.builder(
+        itemCount: lists.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(lists[index]),
+            trailing: GestureDetector(
+              onTap: () {
+                removeList(index);
+              },
+              child: const Icon(Icons.delete),
+            ),
+          );
+        },
       ),
     );
   }
