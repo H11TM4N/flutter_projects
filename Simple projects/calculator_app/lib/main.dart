@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,6 +28,28 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Calculator App'),
+        actions: [
+          PopupMenuButton(
+            onSelected: (value) {
+              
+            },
+            itemBuilder: (context) {
+            return <PopupMenuEntry<String>>[
+              const PopupMenuItem(
+                value: 'Item 1',
+                child: Text('Chose theme'),
+              ),
+              const PopupMenuItem(
+                value: 'Item2',
+                child: Text('dummy item'),
+              ),
+            ];
+          })
+        ],
+      ),
+    );
   }
 }
