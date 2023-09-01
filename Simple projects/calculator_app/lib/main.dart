@@ -34,7 +34,7 @@ class MainPage extends StatelessWidget {
           )
         ],
       ),
-      body: const SingleChildScrollView(child: BodyPage()),
+      body: const BodyPage(),
     );
   }
 }
