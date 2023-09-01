@@ -35,13 +35,14 @@ class HomePage extends StatelessWidget {
           bottom: const TabBar(tabs: [
             Tab(text: 'Time'),
             Tab(text: 'Counter'),
+            Tab(text: 'Todo'),
           ]),
         ),
         body: const TabBarView(
           children: [
             TimePage(),
             CounterPage(),
-            TodoPage()
+            TodoPage(),
           ],
         ),
       ),
