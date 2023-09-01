@@ -10,6 +10,7 @@ class TodoPage extends StatefulWidget {
 class _TodoPageState extends State<TodoPage> {
   TextEditingController textEditingController = TextEditingController();
   List lists = [];
+  bool? isTaskDone = false;
 
   void addList(String value) {
     setState(() {
@@ -66,7 +67,17 @@ class _TodoPageState extends State<TodoPage> {
         itemCount: lists.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(lists[index]),
+            title: Text(
+              lists[index]
+            ),
+            leading: Checkbox(
+              value: isTaskDone,
+              onChanged: (newValue) {
+                setState(() {
+                  isTaskDone = newValue;
+                });
+              },
+            ),
             trailing: GestureDetector(
               onTap: () {
                 removeList(index);
