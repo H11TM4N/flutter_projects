@@ -19,14 +19,9 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class MainPage extends StatefulWidget {
+class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
-  @override
-  State<MainPage> createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +44,9 @@ class _MainPageState extends State<MainPage> {
               })
         ],
       ),
-      body: const BodyPage(),
+      body: const SingleChildScrollView(
+        child: BodyPage()
+      ),
     );
   }
 }

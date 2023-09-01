@@ -33,16 +33,61 @@ class _BodyPageState extends State<BodyPage> {
           ),
         ),
         const SizedBox(height: 150),
-        GridView.count(
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-          crossAxisCount: 4,
-          children: [
-            elevatedButton,
-            elevatedButton,
-            elevatedButton,
-            elevatedButton,
-          ],
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    elevatedButton,
+                    elevatedButton,
+                    elevatedButton,
+                    elevatedButton
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    elevatedButton,
+                    elevatedButton,
+                    elevatedButton,
+                    elevatedButton
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    elevatedButton,
+                    elevatedButton,
+                    elevatedButton,
+                    elevatedButton
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    elevatedButton,
+                    elevatedButton,
+                    elevatedButton,
+                    elevatedButton
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    elevatedButton,
+                    elevatedButton,
+                    elevatedButton,
+                    elevatedButton
+                  ],
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     );
