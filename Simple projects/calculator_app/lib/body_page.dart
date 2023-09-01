@@ -1,3 +1,4 @@
+import 'package:calculator_app/elevated_button.dart';
 import 'package:flutter/material.dart';
 
 class BodyPage extends StatefulWidget {
@@ -22,9 +23,9 @@ class _BodyPageState extends State<BodyPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        const TextField(
+        TextField(
           textAlign: TextAlign.right,
           cursorHeight: 100,
           style: TextStyle(fontSize: 60),
@@ -32,9 +33,9 @@ class _BodyPageState extends State<BodyPage> {
             border: InputBorder.none,
           ),
         ),
-        const SizedBox(height: 150),
+        SizedBox(height: 150),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0),
           child: Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,46 +44,46 @@ class _BodyPageState extends State<BodyPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    elevatedButton,
-                    elevatedButton,
-                    elevatedButton,
-                    elevatedButton
+                    MyElevatedButton(text: '3'),
+                    MyElevatedButton(text: '3'),
+                    MyElevatedButton(text: '3'),
+                    MyElevatedButton(text: '3')
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    elevatedButton,
-                    elevatedButton,
-                    elevatedButton,
-                    elevatedButton
+                    MyElevatedButton(text: '3'),
+                    MyElevatedButton(text: '3'),
+                    MyElevatedButton(text: '3'),
+                    MyElevatedButton(text: '3')
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    elevatedButton,
-                    elevatedButton,
-                    elevatedButton,
-                    elevatedButton
+                    MyElevatedButton(text: '3'),
+                    MyElevatedButton(text: '3'),
+                    MyElevatedButton(text: '3'),
+                    MyElevatedButton(text: '3')
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    elevatedButton,
-                    elevatedButton,
-                    elevatedButton,
-                    elevatedButton
+                    MyElevatedButton(text: '3'),
+                    MyElevatedButton(text: '3'),
+                    MyElevatedButton(text: '3'),
+                    MyElevatedButton(text: '3')
                   ],
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  
                   children: [
-                    elevatedButton,
-                    elevatedButton,
-                    elevatedButton,
-                    elevatedButton
+                    MyElevatedButton(text: '3'),
+                    MyElevatedButton(text: '3'),
+                    MyElevatedButton(text: '3'),
+                    MyElevatedButton(text: '3')
                   ],
                 ),
               ],

@@ -28,25 +28,13 @@ class MainPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Calculator App'),
         actions: [
-          PopupMenuButton(
-              onSelected: (value) {},
-              itemBuilder: (context) {
-                return <PopupMenuEntry<String>>[
-                  const PopupMenuItem(
-                    value: 'Item 1',
-                    child: Text('Chose theme'),
-                  ),
-                  const PopupMenuItem(
-                    value: 'Item2',
-                    child: Text('dummy item'),
-                  ),
-                ];
-              })
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.refresh),
+          )
         ],
       ),
-      body: const SingleChildScrollView(
-        child: BodyPage()
-      ),
+      body: const SingleChildScrollView(child: BodyPage()),
     );
   }
 }
