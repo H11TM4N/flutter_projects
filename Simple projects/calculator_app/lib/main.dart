@@ -38,6 +38,7 @@ class CalculatorScreen extends StatelessWidget {
             ),
             // Create rows of calculator buttons using widgets
             // Each button should be a separate widget
+            CalculatorButtonRow(['AC', '(', ')', '%']),
             CalculatorButtonRow(['7', '8', '9', '/']),
             CalculatorButtonRow(['4', '5', '6', 'x']),
             CalculatorButtonRow(['1', '2', '3', '-']),
