@@ -7,8 +7,9 @@ class CalculatorApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: CalculatorScreen(),
+    return MaterialApp(
+      home: const CalculatorScreen(),
+      theme: ThemeData.dark(useMaterial3: true),
     );
   }
 }
@@ -22,14 +23,18 @@ class CalculatorScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Calculator'),
       ),
-      body: const Center(
+      body: const Padding(
+        padding: EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end, // Pushes buttons to the bottom
           children: <Widget>[
             // Display the calculator input and output here
-            Text(
-              '0',
-              style: TextStyle(fontSize: 36),
+            Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                '0',
+                style: TextStyle(fontSize: 36),
+              ),
             ),
             // Create rows of calculator buttons using widgets
             // Each button should be a separate widget
@@ -40,6 +45,7 @@ class CalculatorScreen extends StatelessWidget {
           ],
         ),
       ),
+      // Buttons at the bottom
     );
   }
 }
@@ -51,11 +57,19 @@ class CalculatorButtonRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: buttons.map((buttonText) {
-        return CalculatorButton(buttonText);
-      }).toList(),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: buttons.map((buttonText) {
+          return Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: CalculatorButton(buttonText),
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 }
@@ -67,11 +81,14 @@ class CalculatorButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        // Handle button click here
-      },
-      child: Text(text),
+    return Expanded(
+      child: ElevatedButton(
+        onPressed: () {
+          // Handle button click here
+        },
+        style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(23), textStyle: const TextStyle(fontSize: 23)),
+        child: Text(text),
+      ),
     );
   }
 }
