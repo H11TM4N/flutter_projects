@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice/calculator_page.dart';
 import 'package:practice/counter_page.dart';
 import 'package:practice/time_page.dart';
 import 'package:practice/to_do.dart';
@@ -27,7 +28,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Practice'),
@@ -36,6 +37,7 @@ class HomePage extends StatelessWidget {
             Tab(text: 'Time'),
             Tab(text: 'Counter'),
             Tab(text: 'Todo'),
+            Tab(text: 'Calculator'),
           ]),
         ),
         body: const TabBarView(
@@ -43,6 +45,7 @@ class HomePage extends StatelessWidget {
             TimePage(),
             CounterPage(),
             TodoPage(),
+            CalculatorScreen(),
           ],
         ),
       ),
