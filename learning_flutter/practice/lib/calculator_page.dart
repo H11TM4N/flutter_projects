@@ -9,21 +9,29 @@ class CalculatorScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Calculator'),
       ),
-      body: const Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text('0', style: TextStyle(fontSize: 40)),
-            ],
-          ),
-          CalculatorButtonRow(buttons: ['AC', '(', ')', '%']),
-          CalculatorButtonRow(buttons: ['7', '8', '9', '/']),
-          CalculatorButtonRow(buttons: ['4', '5', '6', 'x']),
-          CalculatorButtonRow(buttons: ['1', '2', '3', '-']),
-          CalculatorButtonRow(buttons: ['0', '.', '=', '+']),
-        ],
+      body: const Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment:
+              MainAxisAlignment.end, // Pushes buttons to the bottom
+          children: <Widget>[
+            // Display the calculator input and output here
+            Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                '0',
+                style: TextStyle(fontSize: 36),
+              ),
+            ),
+            // Create rows of calculator buttons using widgets
+            // Each button should be a separate widget
+            CalculatorButtonRow(['AC', '(', ')', '%']),
+            CalculatorButtonRow(['7', '8', '9', '/']),
+            CalculatorButtonRow(['4', '5', '6', 'x']),
+            CalculatorButtonRow(['1', '2', '3', '-']),
+            CalculatorButtonRow(['0', '.', '=', '+']),
+          ],
+        ),
       ),
     );
   }
@@ -31,29 +39,45 @@ class CalculatorScreen extends StatelessWidget {
 
 class CalculatorButtonRow extends StatelessWidget {
   final List<String> buttons;
-  const CalculatorButtonRow({super.key, required this.buttons});
 
+  const CalculatorButtonRow(this.buttons, {super.key});
 
   @override
   Widget build(BuildContext context) {
-     List<String> buttons = [];
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: buttons.map((buttonText) => CalculatorButton(buttonText: buttonText)).toList(),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: buttons.map((buttonText) {
+          return Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: CalculatorButton(buttonText),
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 }
 
 class CalculatorButton extends StatelessWidget {
-  final String buttonText;
-  const CalculatorButton({super.key, required this.buttonText});
+  final String text;
+
+  const CalculatorButton(this.text, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {},
-      style: ElevatedButton.styleFrom(),
-      child: Text(buttonText),
+    return Expanded(
+      child: ElevatedButton(
+        onPressed: () {
+
+        },
+        style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.all(23),
+            textStyle: const TextStyle(fontSize: 23)),
+        child: Text(text),
+      ),
     );
   }
 }
