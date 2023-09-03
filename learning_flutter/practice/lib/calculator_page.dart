@@ -24,33 +24,34 @@ class CalculatorScreen extends StatelessWidget {
   }
 }
 
-class CalculatorButtonRow extends StatelessWidget {
+class CalculatorButtonRow extends StatefulWidget {
   const CalculatorButtonRow({super.key});
 
   @override
+  State<CalculatorButtonRow> createState() => _CalculatorButtonRowState();
+}
+
+class _CalculatorButtonRowState extends State<CalculatorButtonRow> {
+  List<String> buttons = [];
+  @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.end,
-      children: [],
+      children: buttons.map((buttonText) => CalculatorButton(buttonText: buttonText)).toList(),
     );
   }
 }
 
-class CalculatorButton extends StatefulWidget {
+class CalculatorButton extends StatelessWidget {
   final String buttonText;
   const CalculatorButton({super.key, required this.buttonText});
 
-  @override
-  State<CalculatorButton> createState() => _CalculatorButtonState();
-}
-
-class _CalculatorButtonState extends State<CalculatorButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(),
-      child: Text(widget.buttonText),
+      child: Text(buttonText),
     );
   }
 }
