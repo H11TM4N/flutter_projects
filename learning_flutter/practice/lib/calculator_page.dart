@@ -18,23 +18,25 @@ class CalculatorScreen extends StatelessWidget {
               Text('0', style: TextStyle(fontSize: 40)),
             ],
           ),
+          CalculatorButtonRow(buttons: ['AC', '(', ')', '%']),
+          CalculatorButtonRow(buttons: ['7', '8', '9', '/']),
+          CalculatorButtonRow(buttons: ['4', '5', '6', 'x']),
+          CalculatorButtonRow(buttons: ['1', '2', '3', '-']),
+          CalculatorButtonRow(buttons: ['0', '.', '=', '+']),
         ],
       ),
     );
   }
 }
 
-class CalculatorButtonRow extends StatefulWidget {
-  const CalculatorButtonRow({super.key});
+class CalculatorButtonRow extends StatelessWidget {
+  final List<String> buttons;
+  const CalculatorButtonRow({super.key, required this.buttons});
 
-  @override
-  State<CalculatorButtonRow> createState() => _CalculatorButtonRowState();
-}
 
-class _CalculatorButtonRowState extends State<CalculatorButtonRow> {
-  List<String> buttons = [];
   @override
   Widget build(BuildContext context) {
+     List<String> buttons = [];
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: buttons.map((buttonText) => CalculatorButton(buttonText: buttonText)).toList(),
