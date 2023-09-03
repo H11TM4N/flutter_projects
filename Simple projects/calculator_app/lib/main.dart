@@ -26,25 +26,27 @@ class CalculatorScreen extends StatelessWidget {
       ),
       body: const Padding(
         padding: EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text('0', style: TextStyle(fontSize: 40),),
-                ),
-              ],
-            ),
-            // add button rows here
-            CalculatorButtonRow(buttonList: ['AC', '(', ')', '%']),
-            CalculatorButtonRow(buttonList: ['7', '8', '9', '/']),
-            CalculatorButtonRow(buttonList: ['4', '5', '6', 'x']),
-            CalculatorButtonRow(buttonList: ['1', '2', '3', '-']),
-            CalculatorButtonRow(buttonList: ['0', '.', '=', '+']),
-          ],
+        child: Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text('0', style: TextStyle(fontSize: 40),),
+                  ),
+                ],
+              ),
+              // add button rows here
+              CalculatorButtonRow(buttonList: ['AC', '(', ')', '%']),
+              CalculatorButtonRow(buttonList: ['7', '8', '9', '/']),
+              CalculatorButtonRow(buttonList: ['4', '5', '6', 'x']),
+              CalculatorButtonRow(buttonList: ['1', '2', '3', '-']),
+              CalculatorButtonRow(buttonList: ['0', '.', '=', '+']),
+            ],
+          ),
         ),
       ),
     );
@@ -58,7 +60,7 @@ class CalculatorButtonRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(3.0),
+      padding: const EdgeInsets.all(8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: buttonList.map((buttonText) {
@@ -77,14 +79,19 @@ class CalculatorButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(4.0),
-      child: ElevatedButton(
-        onPressed: () {
-          // onpressed action
-        },
-        style: ElevatedButton.styleFrom(
-          shape: const CircleBorder(side: BorderSide(width: BorderSide.strokeAlignOutside))
+      child: Expanded(
+        child: ElevatedButton(
+          onPressed: () {
+            // onpressed action
+          },
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.all(30),
+            shape: const CircleBorder(eccentricity: BorderSide.strokeAlignOutside)
+          ),
+          child: FittedBox(
+            fit: BoxFit.fitWidth,
+            child: Text(text)),
         ),
-        child: FittedBox(child: Text(text)),
       ),
     );
   }
