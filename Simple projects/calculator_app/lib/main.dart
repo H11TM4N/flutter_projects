@@ -57,10 +57,14 @@ class CalculatorButtonRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: buttonList.map((buttonText) {
-        return CalculatorButton(text: buttonText);
-      }).toList()
+    return Padding(
+      padding: const EdgeInsets.all(3.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: buttonList.map((buttonText) {
+          return Expanded(child: CalculatorButton(text: buttonText));
+        }).toList()
+      ),
     );
   }
 }
@@ -71,11 +75,17 @@ class CalculatorButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        // onpressed action
-      },
-      child: Text(text),
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: ElevatedButton(
+        onPressed: () {
+          // onpressed action
+        },
+        style: ElevatedButton.styleFrom(
+          shape: const CircleBorder(side: BorderSide(width: BorderSide.strokeAlignOutside))
+        ),
+        child: FittedBox(child: Text(text)),
+      ),
     );
   }
 }
