@@ -5,7 +5,21 @@ class CalculatorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(title: const Text('Calculator'),),
+      body: const Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text('0'),
+            ],
+          ),
+          
+        ],
+      ),
+    );
   }
 }
 
