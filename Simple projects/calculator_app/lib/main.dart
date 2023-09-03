@@ -34,14 +34,33 @@ class CalculatorScreen extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: Text('0'),
+                  child: Text('0', style: TextStyle(fontSize: 40),),
                 ),
               ],
             ),
             // add button rows here
+            CalculatorButtonRow(buttonList: ['AC', '(', ')', '%']),
+            CalculatorButtonRow(buttonList: ['7', '8', '9', '/']),
+            CalculatorButtonRow(buttonList: ['4', '5', '6', 'x']),
+            CalculatorButtonRow(buttonList: ['1', '2', '3', '-']),
+            CalculatorButtonRow(buttonList: ['0', '.', '=', '+']),
           ],
         ),
       ),
+    );
+  }
+}
+
+class CalculatorButtonRow extends StatelessWidget {
+  final List<String> buttonList;
+  const CalculatorButtonRow({super.key, required this.buttonList});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: buttonList.map((buttonText) {
+        return CalculatorButton(text: buttonText);
+      }).toList()
     );
   }
 }
