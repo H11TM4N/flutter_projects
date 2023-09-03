@@ -23,6 +23,12 @@ class CalculatorScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Calculator App'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.refresh),
+          ),
+        ],
       ),
       body: const Padding(
         padding: EdgeInsets.all(8.0),
@@ -35,7 +41,10 @@ class CalculatorScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text('0', style: TextStyle(fontSize: 40),),
+                    child: Text(
+                      '0',
+                      style: TextStyle(fontSize: 40),
+                    ),
                   ),
                 ],
               ),
@@ -62,11 +71,10 @@ class CalculatorButtonRow extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: buttonList.map((buttonText) {
-          return Expanded(child: CalculatorButton(text: buttonText));
-        }).toList()
-      ),
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: buttonList.map((buttonText) {
+            return Expanded(child: CalculatorButton(text: buttonText));
+          }).toList()),
     );
   }
 }
@@ -85,11 +93,11 @@ class CalculatorButton extends StatelessWidget {
             // onpressed action
           },
           style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.all(20),
-            shape: const CircleBorder(eccentricity: BorderSide.strokeAlignOutside),
-            elevation: 9,
-            textStyle: const TextStyle(fontSize: 23)
-          ),
+              padding: const EdgeInsets.all(20),
+              shape: const CircleBorder(
+                  eccentricity: BorderSide.strokeAlignOutside),
+              elevation: 9,
+              textStyle: const TextStyle(fontSize: 23)),
           child: Text(text),
         ),
       ),
