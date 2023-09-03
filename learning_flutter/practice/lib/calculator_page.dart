@@ -6,17 +6,18 @@ class CalculatorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Calculator'),),
+      appBar: AppBar(
+        title: const Text('Calculator'),
+      ),
       body: const Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Text('0'),
+              Text('0', style: TextStyle(fontSize: 40)),
             ],
           ),
-          
         ],
       ),
     );
@@ -28,15 +29,28 @@ class CalculatorButtonRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [],
+    );
   }
 }
 
-class CalculatorButton extends StatelessWidget {
-  const CalculatorButton({super.key});
+class CalculatorButton extends StatefulWidget {
+  final String buttonText;
+  const CalculatorButton({super.key, required this.buttonText});
 
   @override
+  State<CalculatorButton> createState() => _CalculatorButtonState();
+}
+
+class _CalculatorButtonState extends State<CalculatorButton> {
+  @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(),
+      child: Text(widget.buttonText),
+    );
   }
 }
