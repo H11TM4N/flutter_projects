@@ -24,15 +24,30 @@ class CalculatorScreen extends StatefulWidget {
 }
 
 class _CalculatorScreenState extends State<CalculatorScreen> {
+  String equation = '0';
+  String result = '0';
+  String expression = "";
+  double ssize = 38;
+  double resultSize = 48;
+
+  
+  void onPressedFunc(String buttonText) {
+    setState(() {
+      
+    });
+  }
+
   //************************************
   Widget buildButton(String buttonText, double buttonheight) {
     return SizedBox(
       height: MediaQuery.of(context).size.width * 0.1091 * buttonheight,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          return onPressedFunc(buttonText);
+        },
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
-          elevation: 19,
+          elevation: 9,
           padding: const EdgeInsets.all(16.0)
         ),
         child: Text(
@@ -56,12 +71,12 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           Container(
             alignment: Alignment.centerRight,
             padding: const EdgeInsets.fromLTRB(10, 30, 10, 0),
-            child: const Text('0', style: TextStyle(fontSize: 38)),
+            child: Text(equation, style: TextStyle(fontSize: ssize)),
           ),
           Container(
             alignment: Alignment.centerRight,
             padding: const EdgeInsets.fromLTRB(8, 30, 10, 0),
-            child: const Text('0', style: TextStyle(fontSize: 48)),
+            child: Text(result, style: TextStyle(fontSize: resultSize)),
           ),
           const Divider(thickness: 0, ),
           SizedBox(
