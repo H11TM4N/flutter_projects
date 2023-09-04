@@ -15,91 +15,35 @@ class CalculatorApp extends StatelessWidget {
   }
 }
 
-class CalculatorScreen extends StatelessWidget {
+class CalculatorScreen extends StatefulWidget {
+  //Calculator screen
   const CalculatorScreen({super.key});
 
+  @override
+  State<CalculatorScreen> createState() => _CalculatorScreenState();
+}
+
+class _CalculatorScreenState extends State<CalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Calculator App'),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.refresh),
+      ),
+      body: Column(
+        children: [
+          Container(
+            alignment: Alignment.centerRight,
+            padding: const EdgeInsets.fromLTRB(10, 30, 10, 0),
+            child: const Text('0', style: TextStyle(fontSize: 38)),
           ),
+          Container(
+            alignment: Alignment.centerRight,
+            padding: const EdgeInsets.fromLTRB(8, 30, 10, 0),
+            child: const Text('0', style: TextStyle(fontSize: 48)),
+          ),
+          
         ],
-      ),
-      body: const Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      '0',
-                      style: TextStyle(fontSize: 40),
-                    ),
-                  ),
-                ],
-              ),
-              // add button rows here
-              CalculatorButtonRow(buttonList: ['AC', '(', ')', '%']),
-              CalculatorButtonRow(buttonList: ['7', '8', '9', '/']),
-              CalculatorButtonRow(buttonList: ['4', '5', '6', 'x']),
-              CalculatorButtonRow(buttonList: ['1', '2', '3', '-']),
-              CalculatorButtonRow(buttonList: ['0', '.', '=', '+']),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CalculatorButtonRow extends StatelessWidget {
-  final List<String> buttonList;
-  const CalculatorButtonRow({super.key, required this.buttonList});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: buttonList.map((buttonText) {
-            return Expanded(child: CalculatorButton(text: buttonText));
-          }).toList()),
-    );
-  }
-}
-
-class CalculatorButton extends StatelessWidget {
-  final String text;
-  const CalculatorButton({super.key, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(4.0),
-      child: Expanded(
-        child: ElevatedButton(
-          onPressed: () {
-            // onpressed action
-          },
-          style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.all(20),
-              shape: const CircleBorder(
-                  eccentricity: BorderSide.strokeAlignOutside),
-              elevation: 9,
-              textStyle: const TextStyle(fontSize: 23)),
-          child: Text(text),
-        ),
       ),
     );
   }
