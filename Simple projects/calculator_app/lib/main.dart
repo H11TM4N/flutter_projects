@@ -25,19 +25,19 @@ class CalculatorScreen extends StatefulWidget {
 
 class _CalculatorScreenState extends State<CalculatorScreen> {
   //************************************
-  Widget buildButton(String buttonText, Color buttonColor, double fonttSize) {
+  Widget buildButton(String buttonText, double buttonheight) {
     return SizedBox(
-      height: MediaQuery.of(context).size.width * 0.1,
+      height: MediaQuery.of(context).size.width * 0.1091 * buttonheight,
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
-          backgroundColor: buttonColor,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
-          elevation: 3,
+          elevation: 19,
+          padding: const EdgeInsets.all(16.0)
         ),
         child: Text(
           buttonText,
-          style: TextStyle(fontSize: fonttSize),
+          style: const TextStyle(fontSize: 25),
         ),
       ),
     );
@@ -51,6 +51,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         title: const Text('Calculator App'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Container(
             alignment: Alignment.centerRight,
@@ -62,17 +63,61 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             padding: const EdgeInsets.fromLTRB(8, 30, 10, 0),
             child: const Text('0', style: TextStyle(fontSize: 48)),
           ),
-          const Divider(),
+          const Divider(thickness: 0, ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.1,
+          ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.1,
-                child: Table(
-                  children: const [
-                    TableRow(
-                      
-                    )
-                  ],
+                width: MediaQuery.of(context).size.width * 1,
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Table(
+                    children: [
+                      TableRow(
+                        children: [
+                          buildButton('AC', 2),
+                          buildButton('(', 2),
+                          buildButton(')', 2),
+                          buildButton('%', 2),
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          buildButton('7', 2),
+                          buildButton('8', 2),
+                          buildButton('9', 2),
+                          buildButton('/', 2),
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          buildButton('4', 2),
+                          buildButton('5', 2),
+                          buildButton('6', 2),
+                          buildButton('x', 2),
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          buildButton('1', 2),
+                          buildButton('2', 2),
+                          buildButton('3', 2),
+                          buildButton('-', 2),
+                        ],
+                      ),
+                      TableRow(
+                        children: [
+                          buildButton('0', 2),
+                          buildButton('.', 2),
+                          buildButton('=', 2),
+                          buildButton('+', 2),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],
