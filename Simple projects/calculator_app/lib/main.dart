@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() => runApp(const CalculatorApp());
 
@@ -39,6 +39,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       } else if (buttonText == "C") {
         equation = equation.substring(0, equation.length - 1);
       } else if (buttonText == "=") {
+        result = equation;
       } else {
         if (equation == "0") {
           equation = buttonText;
