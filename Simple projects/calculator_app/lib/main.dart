@@ -36,25 +36,22 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       if (buttonText == "AC") {
         equation = "0";
         result = "0";
-      }
-      else if (buttonText == "C") {
+      } else if (buttonText == "C") {
         equation = equation.substring(0, equation.length - 1);
-      }
-      else if (buttonText == "=") {
+      } else if (buttonText == "=") {
         result = equation;
 
         expression = equation;
         expression = expression.replaceAll("x", "*");
         expression = expression.replaceAll("÷", "/");
-          try {
-            Expression exp = Parser().parse(expression);
-            ContextModel contextModel = ContextModel();
-            result = "${exp.evaluate(EvaluationType.REAL, contextModel)}";
-          } catch (e) {
-            result = "Error";
-          }
-      }
-      else {
+        try {
+          Expression exp = Parser().parse(expression);
+          ContextModel contextModel = ContextModel();
+          result = "${exp.evaluate(EvaluationType.REAL, contextModel)}";
+        } catch (e) {
+          result = "Error";
+        }
+      } else {
         if (equation == "0") {
           equation = buttonText;
         } else {
@@ -98,12 +95,24 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           Container(
             alignment: Alignment.centerRight,
             padding: const EdgeInsets.fromLTRB(10, 30, 10, 0),
-            child: Text(equation, style: TextStyle(fontSize: ssize)),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Text(
+                equation,
+                style: TextStyle(fontSize: ssize),
+              ),
+            ),
           ),
           Container(
             alignment: Alignment.centerRight,
             padding: const EdgeInsets.fromLTRB(8, 30, 10, 0),
-            child: Text(result, style: TextStyle(fontSize: resultSize)),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Text(
+                result,
+                style: TextStyle(fontSize: resultSize),
+              ),
+            ),
           ),
           const Divider(
             thickness: 0,
