@@ -36,11 +36,25 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       if (buttonText == "AC") {
         equation = "0";
         result = "0";
-      } else if (buttonText == "C") {
+      }
+      else if (buttonText == "C") {
         equation = equation.substring(0, equation.length - 1);
-      } else if (buttonText == "=") {
+      }
+      else if (buttonText == "=") {
         result = equation;
-      } else {
+
+        expression = equation;
+        expression = expression.replaceAll("x", "*");
+        expression = expression.replaceAll("÷", "/");
+          try {
+            Expression exp = Parser().parse(expression);
+            ContextModel contextModel = ContextModel();
+            result = "${exp.evaluate(EvaluationType.REAL, contextModel)}";
+          } catch (e) {
+            result = "Error";
+          }
+      }
+      else {
         if (equation == "0") {
           equation = buttonText;
         } else {
@@ -119,7 +133,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                           buildButton('7', 2),
                           buildButton('8', 2),
                           buildButton('9', 2),
-                          buildButton('/', 2),
+                          buildButton('÷', 2),
                         ],
                       ),
                       TableRow(
