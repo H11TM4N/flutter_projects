@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() => runApp(const CalculatorApp());
 
@@ -30,10 +31,21 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   double ssize = 38;
   double resultSize = 48;
 
-  
   void onPressedFunc(String buttonText) {
     setState(() {
-      
+      if (buttonText == "AC") {
+        equation = "0";
+        result = "0";
+      } else if (buttonText == "C") {
+        equation = equation.substring(0, equation.length - 1);
+      } else if (buttonText == "=") {
+      } else {
+        if (equation == "0") {
+          equation = buttonText;
+        } else {
+          equation = equation + buttonText;
+        }
+      }
     });
   }
 
@@ -46,10 +58,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           return onPressedFunc(buttonText);
         },
         style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
-          elevation: 9,
-          padding: const EdgeInsets.all(16.0)
-        ),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
+            elevation: 9,
+            padding: const EdgeInsets.all(16.0)),
         child: Text(
           buttonText,
           style: const TextStyle(fontSize: 25),
@@ -78,7 +90,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             padding: const EdgeInsets.fromLTRB(8, 30, 10, 0),
             child: Text(result, style: TextStyle(fontSize: resultSize)),
           ),
-          const Divider(thickness: 0, ),
+          const Divider(
+            thickness: 0,
+          ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.1,
           ),
@@ -96,7 +110,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                           buildButton('AC', 2),
                           buildButton('(', 2),
                           buildButton(')', 2),
-                          buildButton('%', 2),
+                          buildButton('C', 2),
                         ],
                       ),
                       TableRow(
