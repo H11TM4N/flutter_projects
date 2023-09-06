@@ -23,6 +23,7 @@ class HomePage extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: 'Search',
                       prefixIcon: Icon(Icons.search),
+                      border: OutlineInputBorder()
                     ),
                   ),
                 ),
