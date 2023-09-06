@@ -1,36 +1,19 @@
 import 'package:flutter/material.dart';
 
 class ProductDetailsPage extends StatelessWidget {
-  const ProductDetailsPage({super.key});
+  final Map<String, Object> product;
+  const ProductDetailsPage({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Details',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
+        title: const Text('Details'),
         centerTitle: true,
-        forceMaterialTransparency: true,
       ),
-      body: const Column(
+      body: Column(
         children: [
-          Center(
-            child: Text(
-              'Men\'s Nike Shoes',
-              style: TextStyle(
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Expanded(
-            child: Image(
-              image: AssetImage('assets/images/shoes_1.png'),
-            ),
-          ),
-          
+          Text(product['title'] as String),
         ],
       ),
     );
