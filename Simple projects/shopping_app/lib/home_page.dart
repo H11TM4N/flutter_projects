@@ -3,22 +3,23 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  final List<String> filters = const ['All', 'Addidas', 'Nike', 'Bata'];
+
   @override
   Widget build(BuildContext context) {
-    final border =  OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color.fromRGBO(225, 225, 225, 1),
-                        ),
-                        borderRadius: BorderRadius.horizontal(left: Radius.circular(50))
-                      );
+    const border = OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Color.fromRGBO(225, 225, 225, 1),
+        ),
+        borderRadius: BorderRadius.horizontal(left: Radius.circular(50)));
 
-    return  Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            Row(
+            const Row(
               children: [
-                const Padding(
+                Padding(
                   padding: EdgeInsets.all(20.0),
                   child: Text(
                     'Shoes\nCollection',
@@ -28,15 +29,28 @@ class HomePage extends StatelessWidget {
                 Expanded(
                   child: TextField(
                     decoration: InputDecoration(
-                      hintText: 'Search',
-                      prefixIcon: const Icon(Icons.search),
-                      border: border,
-                      enabledBorder: border,
-                      focusedBorder: border
-                    ),
+                        hintText: 'Search',
+                        prefixIcon: Icon(Icons.search),
+                        border: border,
+                        enabledBorder: border,
+                        focusedBorder: border),
                   ),
                 ),
               ],
+            ),
+            SizedBox(
+              height: 150,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: filters.length,
+                itemBuilder: (context, index) {
+                  final filter = filters[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Chip(label: Text(filter)),
+                  );
+                },
+              ),
             ),
           ],
         ),
