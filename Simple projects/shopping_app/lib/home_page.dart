@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final List<String> filters = const ['All', 'Addidas', 'Nike', 'Bata'];
+  late String selectedFilter;
+
+  @override
+  void initState() {
+    selectedFilter = filters[0];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,20 +59,26 @@ class HomePage extends StatelessWidget {
                   final filter = filters[index];
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: Chip(
-                      label: Text(
-                        filter,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                    child: GestureDetector(
+                      onTap: () {
+                        selectedFilter = filter;
+                      },
+                      child: Chip(
+                        backgroundColor: selectedFilter == filter
+                            ? Theme.of(context).colorScheme.primary
+                            : const Color.fromRGBO(245, 247, 249, 1),
+                        label: Text(filter),
+                        labelStyle: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 15,
                         ),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 15,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                       ),
                     ),
                   );
