@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/card_page.dart';
 import 'package:shopping_app/product_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,14 +12,17 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int currentPage = 0;
 
-  List<Widget> pages = [
-    const ProductList(),
+  List<Widget> pages = const [
+    ProductList(),
+    CardPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const ProductList(),
+      body: IndexedStack(
+        children: pages
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentPage,
         onTap: (value) {
