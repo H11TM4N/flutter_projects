@@ -22,7 +22,13 @@ class CardPage extends StatelessWidget {
                 backgroundImage: AssetImage(cartItem['imageUrl'] as String),
                 radius: 30,
               ),
-              trailing: const Icon(Icons.delete),
+              trailing: IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.delete,
+                  color: Colors.red,
+                ),
+              ),
               title: Text(
                 cartItem['title'].toString(),
                 style: Theme.of(context).textTheme.bodySmall,
