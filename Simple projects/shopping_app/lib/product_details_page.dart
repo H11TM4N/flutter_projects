@@ -33,11 +33,30 @@ class ProductDetailsPage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Text('\$${product['price']}'),
-                ListView.builder(
-                  itemBuilder: (context, index) {
-                    
-                  },
+                Text(
+                  '\$${product['price']}',
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                const SizedBox(height: 10),
+                SizedBox(
+                  height: 50,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: (product['sizes'] as List<int>).length,
+                    itemBuilder: (context, index) {
+                      final size = (product['sizes'] as List<int>)[index];
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Chip(label: Text(size.toString())),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text('Add to cart'),
+                  
                 ),
               ],
             ),
