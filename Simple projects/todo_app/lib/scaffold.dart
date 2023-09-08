@@ -10,22 +10,35 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List listOfTasks = [];
   TextEditingController textInput = TextEditingController();
-  bool isBoxChecked = false;
+  List<bool> checkBoxes = [];
+  List<bool> strikeThroughList = [];
 
   void addTask(String value) {
     setState(() {
       listOfTasks.add(value);
+      checkBoxes.add(false);
+      strikeThroughList.add(false);
     });
   }
 
   void removeTask(int index) {
     setState(() {
       listOfTasks.removeAt(index);
+      checkBoxes.removeAt(index);
+      strikeThroughList.removeAt(index);
     });
   }
 
-  void checkBox(int index) {
-    isBoxChecked = !isBoxChecked;
+  void checkBoxToggle(int index) {
+    setState(() {
+      checkBoxes[index] = !checkBoxes[index];
+    });
+  }
+
+  void strikeThrough(int index) {
+    setState(() {
+      strikeThroughList[index] = !strikeThroughList[index];
+    });
   }
 
   @override
@@ -71,17 +84,18 @@ class _HomePageState extends State<HomePage> {
           return ListTile(
             title: Text(
               listOfTasks[index],
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
-                decoration: TextDecoration.none,
+                decoration: strikeThroughList[index] ? TextDecoration.lineThrough : TextDecoration.none,
               ),
             ),
             leading: GestureDetector(
               onTap: () {
-                checkBox(index);
+                checkBoxToggle(index);
+                strikeThrough(index);
               },
-              child: isBoxChecked ? const Icon(Icons.check_box_outline_blank) : const Icon(Icons.check_box),
+              child: checkBoxes[index] ? const Icon(Icons.check_box) : const Icon(Icons.check_box_outline_blank),
             ),
             trailing: GestureDetector(
               onTap: () {
