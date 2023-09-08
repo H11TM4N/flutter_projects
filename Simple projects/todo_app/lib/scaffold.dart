@@ -87,7 +87,9 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
-                decoration: strikeThroughList[index] ? TextDecoration.lineThrough : TextDecoration.none,
+                decoration: strikeThroughList[index]
+                    ? TextDecoration.lineThrough
+                    : TextDecoration.none,
               ),
             ),
             leading: GestureDetector(
@@ -95,7 +97,9 @@ class _HomePageState extends State<HomePage> {
                 checkBoxToggle(index);
                 strikeThrough(index);
               },
-              child: checkBoxes[index] ? const Icon(Icons.check_box) : const Icon(Icons.check_box_outline_blank),
+              child: checkBoxes[index]
+                  ? const Icon(Icons.check_box)
+                  : const Icon(Icons.check_box_outline_blank),
             ),
             trailing: GestureDetector(
               onTap: () {
