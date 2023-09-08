@@ -10,6 +10,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List listOfTasks = [];
   TextEditingController textInput = TextEditingController();
+  bool isBoxChecked = false;
 
   void addTask(String value) {
     setState(() {
@@ -21,6 +22,10 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       listOfTasks.removeAt(index);
     });
+  }
+
+  void checkBox(int index) {
+    isBoxChecked = !isBoxChecked;
   }
 
   @override
@@ -66,7 +71,17 @@ class _HomePageState extends State<HomePage> {
           return ListTile(
             title: Text(
               listOfTasks[index],
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                decoration: TextDecoration.none,
+              ),
+            ),
+            leading: GestureDetector(
+              onTap: () {
+                checkBox(index);
+              },
+              child: isBoxChecked ? const Icon(Icons.check_box_outline_blank) : const Icon(Icons.check_box),
             ),
             trailing: GestureDetector(
               onTap: () {
