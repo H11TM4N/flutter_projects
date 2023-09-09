@@ -23,8 +23,20 @@ class _MainPageState extends State<MainPage> {
         children: pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) {
+          setState(() {
+            currentPage = value;
+          });
+        },
         items: const [
-          
+          BottomNavigationBarItem(
+            icon: Icon(Icons.lock_clock_outlined),
+            label: 'Clock',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.timer_3_select),
+            label: 'Clock',
+          ),
         ],
       ),
     );
