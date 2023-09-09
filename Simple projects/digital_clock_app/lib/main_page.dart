@@ -29,6 +29,10 @@ class _MainPageState extends State<MainPage> {
         children: pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentPage,
+        fixedColor: Colors.white,
+        unselectedItemColor: Colors.white70,
+        showUnselectedLabels: true,
         onTap: (value) {
           setState(() {
             currentPage = value;
