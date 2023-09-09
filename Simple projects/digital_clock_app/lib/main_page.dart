@@ -35,7 +35,7 @@ class _MainPageState extends State<MainPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.timer_3_select),
-            label: 'Clock',
+            label: 'Alarm',
           ),
         ],
       ),
