@@ -45,8 +45,8 @@ class _ClockScreenState extends State<ClockScreen> {
           children: [
             Text(
               _currentTime,
-              style: const TextStyle(
-                fontSize: 95.0,
+              style: TextStyle(
+                fontSize: MediaQuery.of(context).size.width * 0.21,
                 color: Colors.white,
               ),
             ),

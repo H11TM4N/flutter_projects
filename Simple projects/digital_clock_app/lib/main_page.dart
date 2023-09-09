@@ -36,7 +36,9 @@ class _MainPageState extends State<MainPage> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.lock_clock_outlined),
+            icon: Icon(
+              Icons.lock_clock_outlined,
+            ),
             label: 'Alarm',
           ),
           BottomNavigationBarItem(
