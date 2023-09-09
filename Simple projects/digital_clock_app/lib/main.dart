@@ -1,5 +1,6 @@
+import 'package:digital_clock_app/clock_page.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+
 
 void main() {
   runApp(const ClockApp());
@@ -13,70 +14,9 @@ class ClockApp extends StatelessWidget {
     return MaterialApp(
       title: "Digital Clock App",
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.grey),
+      theme: ThemeData.dark(useMaterial3: true),
       home: const ClockScreen(),
     );
   }
 }
 
-class ClockScreen extends StatefulWidget {
-  const ClockScreen({super.key});
-
-  @override
-  State<ClockScreen> createState() => _ClockScreenState();
-}
-
-class _ClockScreenState extends State<ClockScreen> {
-  String _currentTime = ' ';
-  String _currentDate = ' ';
-
-  @override
-  void initState() {
-    super.initState();
-    _updateTime();
-  }
-
-  void _updateTime() {
-    setState(() {
-      _currentTime = DateFormat('HH:mm:ss').format(DateTime.now());
-      _currentDate = DateFormat('EEE, MMM d').format(DateTime.now());
-    });
-    Future.delayed(const Duration(seconds: 1), _updateTime);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'DIGITAL CLOCK',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        forceMaterialTransparency: true,
-        centerTitle: true,
-      ),
-      body: Column(
-        children: [
-          Text(
-            _currentTime,
-            style: const TextStyle(
-              fontSize: 95.0,
-              color: Colors.white,
-            ),
-          ),
-          Text(
-            _currentDate,
-            style: const TextStyle(
-              fontSize: 25.0,
-              color: Colors.white,
-            ),
-          ),
-        ],
-      ),
-      backgroundColor: const Color.fromARGB(255, 56, 53, 53),
-    );
-  }
-}
