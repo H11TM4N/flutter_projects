@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class StopwachScreen extends StatelessWidget {
-  const StopwachScreen({super.key});
+class StopwatchScreen extends StatelessWidget {
+  const StopwatchScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

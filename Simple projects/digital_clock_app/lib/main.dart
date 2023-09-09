@@ -14,7 +14,9 @@ class ClockApp extends StatelessWidget {
     return MaterialApp(
       title: "Digital Clock App",
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(useMaterial3: true),
+      theme: ThemeData.dark(
+        useMaterial3: true,
+      ),
       home: const MainPage(),
     );
   }
