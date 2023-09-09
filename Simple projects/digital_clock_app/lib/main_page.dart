@@ -37,24 +37,24 @@ class _MainPageState extends State<MainPage> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.lock_clock_outlined,
+              Icons.alarm,
             ),
             label: 'Alarm',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.timer_3_select),
+            icon: Icon(Icons.access_time_rounded),
             label: 'Clock',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.timer_3_select),
+            icon: Icon(Icons.hourglass_bottom_outlined),
             label: 'Timer',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.timer_3_select),
+            icon: Icon(Icons.timer_outlined),
             label: 'Stopwatch',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.bed_outlined),
+            icon: Icon(Icons.bed),
             label: 'Bedtime',
           ),
         ],
