@@ -1,3 +1,4 @@
+import 'package:digital_clock_app/popup_menu_button.dart';
 import 'package:flutter/material.dart';
 
 class StopwatchScreen extends StatelessWidget {
@@ -7,6 +8,9 @@ class StopwatchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          popupMenuButton
+        ],
         title: const Text('Stopwatch'),
       ),
     );
