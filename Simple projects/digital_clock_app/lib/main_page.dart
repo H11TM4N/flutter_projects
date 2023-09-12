@@ -1,8 +1,8 @@
-import 'package:digital_clock_app/alarm_page.dart';
-import 'package:digital_clock_app/bedtime_page.dart';
-import 'package:digital_clock_app/clock_page.dart';
-import 'package:digital_clock_app/stopwatch.dart';
-import 'package:digital_clock_app/timer_page.dart';
+import 'package:digital_clock_app/pages/alarm_page.dart';
+import 'package:digital_clock_app/pages/bedtime_page.dart';
+import 'package:digital_clock_app/pages/clock_page.dart';
+import 'package:digital_clock_app/pages/stopwatch_page.dart';
+import 'package:digital_clock_app/pages/timer_page.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
