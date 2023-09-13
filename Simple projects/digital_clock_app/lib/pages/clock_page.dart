@@ -32,7 +32,7 @@ class _ClockScreenState extends State<ClockScreen> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          popupMenuButton
+          popupMenuButton()
         ],
         title: const Padding(
           padding: EdgeInsets.all(16.0),

@@ -9,7 +9,7 @@ class TimerScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          popupMenuButton
+          popupMenuButton()
         ],
         title: const Text('Timer'),
       ),

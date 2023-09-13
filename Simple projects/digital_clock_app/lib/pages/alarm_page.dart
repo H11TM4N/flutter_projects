@@ -8,7 +8,7 @@ class AlarmScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [popupMenuButton],
+        actions: [popupMenuButton()],
         title: const Text('Alarm'),
       ),
     );

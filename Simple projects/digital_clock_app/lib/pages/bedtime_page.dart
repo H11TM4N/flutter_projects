@@ -9,7 +9,7 @@ class BedtimeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          popupMenuButton
+          popupMenuButton()
         ],
         title: const Text('Bedtime'),
       ),
