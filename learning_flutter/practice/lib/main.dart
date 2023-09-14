@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice/calculator_page.dart';
 import 'package:practice/counter_page.dart';
+import 'package:practice/practice.dart';
 import 'package:practice/time_page.dart';
 import 'package:practice/to_do.dart';
 
@@ -38,6 +39,7 @@ class HomePage extends StatelessWidget {
             Tab(text: 'Counter'),
             Tab(text: 'Todo'),
             Tab(text: 'Calculator'),
+            Tab(text: 'Practice'),
           ]),
         ),
         body: const TabBarView(
@@ -46,10 +48,10 @@ class HomePage extends StatelessWidget {
             CounterPage(),
             TodoPage(),
             CalculatorScreen(),
+            Practice(),
           ],
         ),
       ),
     );
   }
 }
-
