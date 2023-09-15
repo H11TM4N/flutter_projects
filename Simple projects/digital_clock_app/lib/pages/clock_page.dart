@@ -1,4 +1,4 @@
-import 'package:digital_clock_app/popup_menu_button.dart';
+import 'package:digital_clock_app/provider/popup_menu_button.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -31,9 +31,7 @@ class _ClockScreenState extends State<ClockScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          popupMenuButton()
-        ],
+        actions: [popupMenuButton()],
         title: const Padding(
           padding: EdgeInsets.all(16.0),
           child: Text(

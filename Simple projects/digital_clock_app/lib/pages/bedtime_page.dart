@@ -1,4 +1,4 @@
-import 'package:digital_clock_app/popup_menu_button.dart';
+import 'package:digital_clock_app/provider/popup_menu_button.dart';
 import 'package:flutter/material.dart';
 
 class BedtimeScreen extends StatelessWidget {
@@ -8,9 +8,7 @@ class BedtimeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          popupMenuButton()
-        ],
+        actions: [popupMenuButton()],
         title: const Text('Bedtime'),
       ),
     );
