@@ -1,4 +1,4 @@
-import 'package:digital_clock_app/provider/popup_menu_button.dart';
+import 'package:digital_clock_app/utils/popup_menu_button.dart';
 import 'package:flutter/material.dart';
 
 class BedtimeScreen extends StatelessWidget {

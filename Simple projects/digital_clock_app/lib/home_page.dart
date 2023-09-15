@@ -1,9 +1,11 @@
-import 'package:digital_clock_app/pages/alarm_page.dart';
-import 'package:digital_clock_app/pages/bedtime_page.dart';
-import 'package:digital_clock_app/pages/clock_page.dart';
-import 'package:digital_clock_app/pages/stopwatch_page.dart';
-import 'package:digital_clock_app/pages/timer_page.dart';
+import 'package:digital_clock_app/screens/alarm_screen.dart';
+import 'package:digital_clock_app/screens/bedtime_screen.dart';
+import 'package:digital_clock_app/screens/clock_screen.dart';
+import 'package:digital_clock_app/screens/stopwatch_screen.dart';
+import 'package:digital_clock_app/screens/timer_screen.dart';
+import 'package:digital_clock_app/utils/popup_menu_button.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
