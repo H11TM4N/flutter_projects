@@ -1,8 +1,8 @@
-import 'package:digital_clock_app/popup_pages/feedback_page.dart';
-import 'package:digital_clock_app/popup_pages/help.dart';
-import 'package:digital_clock_app/popup_pages/privacy_policy_page.dart';
-import 'package:digital_clock_app/popup_pages/screensaver_page.dart';
-import 'package:digital_clock_app/popup_pages/setings_page.dart';
+import 'package:digital_clock_app/screens/popup_screens/feedback_page.dart';
+import 'package:digital_clock_app/screens/popup_screens/help.dart';
+import 'package:digital_clock_app/screens/popup_screens/privacy_policy_page.dart';
+import 'package:digital_clock_app/screens/popup_screens/screensaver_page.dart';
+import 'package:digital_clock_app/screens/popup_screens/setings_page.dart';
 import 'package:flutter/material.dart';
 
 PopupMenuItem popupMenuItem(BuildContext context, String text, widget) {
