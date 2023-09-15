@@ -1,3 +1,5 @@
+import 'package:digital_clock_app/provider/clock_provider.dart';
+import 'package:digital_clock_app/provider/stopwatch_provider.dart';
 import 'package:digital_clock_app/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,8 +13,11 @@ class ClockApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ChangeNotifier(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => StopWatchProvider()),
+        ChangeNotifierProvider(create: (context) => ClockProvider()),
+      ],
       child: MaterialApp(
         title: "Digital Clock App",
         debugShowCheckedModeBanner: false,
