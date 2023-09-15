@@ -4,6 +4,7 @@ import 'package:digital_clock_app/pages/clock_page.dart';
 import 'package:digital_clock_app/pages/stopwatch_page.dart';
 import 'package:digital_clock_app/pages/timer_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

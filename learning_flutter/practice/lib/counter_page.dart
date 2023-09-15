@@ -1,61 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:practice/Provider/counter_provider.dart';
+import 'package:provider/provider.dart';
 
-class CounterPage extends StatefulWidget {
-  const CounterPage({super.key});
-
-  @override
-  State<CounterPage> createState() => _CounterPageState();
-}
-
-class _CounterPageState extends State<CounterPage> {
-  int counter = 0;
-
-  void addition() {
-    setState(() {
-      counter++;
-    });
-  }
-  
-  void subtraction() {
-    setState(() {
-      counter--;
-    });
-  }
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    CounterProvider counterProvider = Provider.of<CounterProvider>(context);
+
+    ElevatedButton elevatedButton(text, int counter) {
+      return ElevatedButton(
+        onPressed: () {
+          text == '+'
+              ? counterProvider.increment()
+              : counterProvider.decrement();
+        },
+        child: Text(text),
+      );
+    }
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Simple Counter')),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            '$counter',
-            style: const TextStyle(fontSize: 30),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Center(
-            child: FloatingActionButton(
-              onPressed: () {
-                return addition();
-              },
-              elevation: 4,
-              child: const Icon(Icons.add),
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Center(
-            child: FloatingActionButton(
-              onPressed: () {
-                return subtraction();
-              },
-              elevation: 4,
-              child: const Icon(Icons.remove),
-            ),
+          Text('${counterProvider.counter}'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              elevatedButton('+', counterProvider.counter),
+              elevatedButton('+', counterProvider.counter),
+            ],
           ),
         ],
       ),
