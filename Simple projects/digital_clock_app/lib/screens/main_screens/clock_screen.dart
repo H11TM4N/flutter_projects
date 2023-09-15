@@ -1,17 +1,11 @@
 import 'package:digital_clock_app/provider/clock_provider.dart';
 import 'package:digital_clock_app/utils/popup_menu_button.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-class ClockScreen extends StatefulWidget {
+class ClockScreen extends StatelessWidget {
   const ClockScreen({super.key});
 
-  @override
-  State<ClockScreen> createState() => _ClockScreenState();
-}
-
-class _ClockScreenState extends State<ClockScreen> {
   @override
   Widget build(BuildContext context) {
     ClockProvider clockProvider = Provider.of<ClockProvider>(context);

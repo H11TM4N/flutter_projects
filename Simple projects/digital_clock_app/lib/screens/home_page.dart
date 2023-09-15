@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'main_screens/alarm_screen.dart';
 import 'main_screens/bedtime_screen.dart';
 import 'main_screens/clock_screen.dart';
