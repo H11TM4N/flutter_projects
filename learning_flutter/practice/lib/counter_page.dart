@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               elevatedButton('+', counterProvider.counter),
-              elevatedButton('+', counterProvider.counter),
+              elevatedButton('-', counterProvider.counter),
             ],
           ),
         ],
