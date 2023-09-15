@@ -1,6 +1,8 @@
+import 'package:digital_clock_app/provider/clock_provider.dart';
 import 'package:digital_clock_app/utils/popup_menu_button.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class ClockScreen extends StatefulWidget {
   const ClockScreen({super.key});
@@ -10,25 +12,10 @@ class ClockScreen extends StatefulWidget {
 }
 
 class _ClockScreenState extends State<ClockScreen> {
-  String _currentTime = ' ';
-  String _currentDate = ' ';
-
-  @override
-  void initState() {
-    super.initState();
-    _updateTime();
-  }
-
-  void _updateTime() {
-    setState(() {
-      _currentTime = DateFormat('HH:mm:ss').format(DateTime.now());
-      _currentDate = DateFormat('EEE, MMM d').format(DateTime.now());
-    });
-    Future.delayed(const Duration(seconds: 1), _updateTime);
-  }
-
   @override
   Widget build(BuildContext context) {
+    ClockProvider clockProvider = Provider.of<ClockProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         actions: [popupMenuButton()],
@@ -46,14 +33,14 @@ class _ClockScreenState extends State<ClockScreen> {
         child: Column(
           children: [
             Text(
-              _currentTime,
+              clockProvider.currentTime,
               style: TextStyle(
                 fontSize: MediaQuery.of(context).size.width * 0.21,
                 color: Colors.white,
               ),
             ),
             Text(
-              _currentDate,
+              clockProvider.currentDate,
               style: const TextStyle(
                 fontSize: 25.0,
                 color: Colors.white,
