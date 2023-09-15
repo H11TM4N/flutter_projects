@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/scaffold.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/todo_provider.dart';
 
 void main() {
   runApp(const TodoApp());
@@ -10,11 +12,14 @@ class TodoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'A simple todo app',
-      theme: ThemeData.dark(useMaterial3: true),
-      home: const HomePage(),
+    return ChangeNotifierProvider(
+      create: (context) => TodoProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'A simple todo app',
+        theme: ThemeData.dark(useMaterial3: true),
+        home: const HomePage(),
+      ),
     );
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/todo_provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,41 +10,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List listOfTasks = [];
-  TextEditingController textInput = TextEditingController();
-  List<bool> checkBoxes = [];
-  List<bool> strikeThroughList = [];
-
-  void addTask(String value) {
-    setState(() {
-      listOfTasks.add(value);
-      checkBoxes.add(false);
-      strikeThroughList.add(false);
-    });
-  }
-
-  void removeTask(int index) {
-    setState(() {
-      listOfTasks.removeAt(index);
-      checkBoxes.removeAt(index);
-      strikeThroughList.removeAt(index);
-    });
-  }
-
-  void checkBoxToggle(int index) {
-    setState(() {
-      checkBoxes[index] = !checkBoxes[index];
-    });
-  }
-
-  void strikeThrough(int index) {
-    setState(() {
-      strikeThroughList[index] = !strikeThroughList[index];
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    TodoProvider todoProvider = Provider.of<TodoProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         bottomOpacity: 67.8,
@@ -55,14 +26,14 @@ class _HomePageState extends State<HomePage> {
                 builder: (BuildContext context) => AlertDialog(
                   title: const Text('Add task'),
                   content: TextField(
-                    controller: textInput,
+                    controller: todoProvider.textInput,
                   ),
                   actions: [
                     TextButton(
                         onPressed: () {
                           Navigator.pop(context);
-                          addTask(textInput.text);
-                          textInput.clear();
+                          todoProvider.addTask(todoProvider.textInput.text);
+                          todoProvider.textInput.clear();
                         },
                         child: const Text('add')),
                     TextButton(
@@ -79,31 +50,31 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: ListView.builder(
-        itemCount: listOfTasks.length,
+        itemCount: todoProvider.listOfTasks.length,
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             title: Text(
-              listOfTasks[index],
+              todoProvider.listOfTasks[index],
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
-                decoration: strikeThroughList[index]
+                decoration: todoProvider.strikeThroughList[index]
                     ? TextDecoration.lineThrough
                     : TextDecoration.none,
               ),
             ),
             leading: GestureDetector(
               onTap: () {
-                checkBoxToggle(index);
-                strikeThrough(index);
+                todoProvider.checkBoxToggle(index);
+                todoProvider.strikeThrough(index);
               },
-              child: checkBoxes[index]
+              child: todoProvider.checkBoxes[index]
                   ? const Icon(Icons.check_box)
                   : const Icon(Icons.check_box_outline_blank),
             ),
             trailing: GestureDetector(
               onTap: () {
-                removeTask(index);
+                todoProvider.removeTask(index);
               },
               child: const Icon(Icons.delete),
             ),
