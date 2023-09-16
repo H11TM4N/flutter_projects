@@ -19,7 +19,7 @@ class StopwatchScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
               height: 300,
@@ -37,6 +37,9 @@ class StopwatchScreen extends StatelessWidget {
                 '00:00',
                 style: TextStyle(fontSize: 30),
               )),
+            ),
+            const SizedBox(
+              height: 40,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

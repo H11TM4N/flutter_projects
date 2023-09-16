@@ -5,6 +5,8 @@ import 'package:digital_clock_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'widgets/bottom_navigation.dart';
+
 void main() {
   runApp(const ClockApp());
 }
@@ -18,6 +20,7 @@ class ClockApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => StopWatchProvider()),
         ChangeNotifierProvider(create: (context) => ClockProvider()),
+        ChangeNotifierProvider(create: (context) => BottomNavBarProvider())
       ],
       child: MaterialApp(
         title: "Digital Clock App",
