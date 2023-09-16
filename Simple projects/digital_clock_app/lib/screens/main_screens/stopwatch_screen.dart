@@ -21,23 +21,7 @@ class StopwatchScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Container(
-              height: 300,
-              width: 300,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: const Color.fromARGB(137, 123, 119, 119),
-                  width: 8.0,
-                ),
-                color: Colors.transparent,
-              ),
-              child: const Center(
-                  child: Text(
-                '00:00',
-                style: TextStyle(fontSize: 30),
-              )),
-            ),
+            stopWatchProvider.streamBuilder(),
             const SizedBox(
               height: 200,
             ),
@@ -49,25 +33,7 @@ class StopwatchScreen extends StatelessWidget {
                   child: Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: FloatingActionButton.large(
-                        backgroundColor:
-                            const Color.fromARGB(255, 149, 216, 248),
-                        shape: stopWatchProvider.shape
-                            ? const CircleBorder()
-                            : RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25),
-                                side: const BorderSide()),
-                        child: Icon(
-                          stopWatchProvider.shape
-                              ? Icons.play_arrow
-                              : Icons.pause,
-                          color: Colors.black,
-                          size: 25,
-                        ),
-                        onPressed: () {
-                          stopWatchProvider.shapeChange();
-                        },
-                      ),
+                      child: stopWatchProvider.floatingActionButton(),
                     ),
                   ),
                 ),
