@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class AnimatedIcon extends StatelessWidget {
+class MyAnimatedIcon extends StatelessWidget {
   final IconData iconData;
   final bool isSelected;
   final VoidCallback onTap;
 
-  const AnimatedIcon({
+  const MyAnimatedIcon({
     super.key,
     required this.iconData,
     required this.isSelected,
@@ -19,6 +19,10 @@ class AnimatedIcon extends StatelessWidget {
       decoration: BoxDecoration(
         color: isSelected ? Colors.blue : Colors.transparent,
         borderRadius: BorderRadius.circular(30.0),
+      ),
+      child: InkWell(
+        onTap: onTap,
+        child: Icon(iconData, size: 25.0),
       ),
     );
   }
