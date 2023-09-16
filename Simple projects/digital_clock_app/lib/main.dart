@@ -1,11 +1,10 @@
 import 'package:digital_clock_app/provider/clock_provider.dart';
 import 'package:digital_clock_app/provider/stopwatch_provider.dart';
 import 'package:digital_clock_app/screens/home_page.dart';
-import 'package:digital_clock_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'widgets/bottom_navigation.dart';
+import 'provider/bottom_nav_provider.dart';
 
 void main() {
   runApp(const ClockApp());

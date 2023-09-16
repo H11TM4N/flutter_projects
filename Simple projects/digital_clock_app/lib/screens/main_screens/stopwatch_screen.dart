@@ -39,7 +39,7 @@ class StopwatchScreen extends StatelessWidget {
               )),
             ),
             const SizedBox(
-              height: 40,
+              height: 200,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -47,23 +47,27 @@ class StopwatchScreen extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * .43,
                   child: Expanded(
-                    child: FloatingActionButton.large(
-                      backgroundColor: const Color.fromARGB(255, 149, 216, 248),
-                      shape: stopWatchProvider.shape
-                          ? const CircleBorder()
-                          : RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25),
-                              side: const BorderSide()),
-                      child: Icon(
-                        stopWatchProvider.shape
-                            ? Icons.play_arrow
-                            : Icons.pause,
-                        color: Colors.black,
-                        size: 25,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: FloatingActionButton.large(
+                        backgroundColor:
+                            const Color.fromARGB(255, 149, 216, 248),
+                        shape: stopWatchProvider.shape
+                            ? const CircleBorder()
+                            : RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25),
+                                side: const BorderSide()),
+                        child: Icon(
+                          stopWatchProvider.shape
+                              ? Icons.play_arrow
+                              : Icons.pause,
+                          color: Colors.black,
+                          size: 25,
+                        ),
+                        onPressed: () {
+                          stopWatchProvider.shapeChange();
+                        },
                       ),
-                      onPressed: () {
-                        stopWatchProvider.shapeChange();
-                      },
                     ),
                   ),
                 ),

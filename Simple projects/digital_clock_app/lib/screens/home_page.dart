@@ -1,4 +1,4 @@
-import 'package:digital_clock_app/widgets/bottom_navigation.dart';
+import 'package:digital_clock_app/provider/bottom_nav_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
