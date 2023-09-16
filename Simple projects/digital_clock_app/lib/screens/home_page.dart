@@ -12,7 +12,7 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   int currentPage = 0;
   List<Widget> pages = [
     const AlarmScreen(),
@@ -21,6 +21,7 @@ class _MainPageState extends State<MainPage> {
     const StopwatchScreen(),
     const BedtimeScreen(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

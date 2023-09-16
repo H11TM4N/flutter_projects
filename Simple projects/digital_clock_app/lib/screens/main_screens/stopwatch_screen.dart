@@ -8,7 +8,8 @@ class StopwatchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    StopWatchProvider stopWatchProvider = Provider.of<StopWatchProvider>(context);
+    StopWatchProvider stopWatchProvider =
+        Provider.of<StopWatchProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -18,8 +19,25 @@ class StopwatchScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Container(
+              height: 300,
+              width: 300,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: const Color.fromARGB(137, 123, 119, 119),
+                  width: 8.0,
+                ),
+                color: Colors.transparent,
+              ),
+              child: const Center(
+                  child: Text(
+                '00:00',
+                style: TextStyle(fontSize: 30),
+              )),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -34,7 +52,9 @@ class StopwatchScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(25),
                               side: const BorderSide()),
                       child: Icon(
-                        stopWatchProvider.shape ? Icons.play_arrow : Icons.pause,
+                        stopWatchProvider.shape
+                            ? Icons.play_arrow
+                            : Icons.pause,
                         color: Colors.black,
                         size: 25,
                       ),

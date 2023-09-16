@@ -73,7 +73,7 @@ class _TimerScreenState extends State<TimerScreen> {
                     children: [
                       elevatedButton('00', 1, Colors.transparent),
                       elevatedButton('0', 1, Colors.transparent),
-                      elevatedButton('xx', 1, Colors.teal),
+                      elevatedButton('xx', 1, const Color.fromRGBO(51, 124, 207, 29)),
                     ],
                   ),
                 ],
