@@ -28,6 +28,7 @@ class StopwatchScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                stopWatchProvider.elevatedButton(Icons.refresh),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * .43,
                   child: Expanded(
@@ -37,6 +38,7 @@ class StopwatchScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                stopWatchProvider.elevatedButton(Icons.timer_sharp)
               ],
             ),
           ],

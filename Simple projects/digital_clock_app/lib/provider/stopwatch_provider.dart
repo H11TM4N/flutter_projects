@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class StopWatchProvider extends ChangeNotifier {
   bool _shape = false;
@@ -60,13 +59,13 @@ class StopWatchProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  RoundedRectangleBorder rectangleBorder = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(25), side: const BorderSide());
+
   FloatingActionButton floatingActionButton() {
     return FloatingActionButton.large(
       backgroundColor: const Color.fromARGB(255, 149, 216, 248),
-      shape: _shape
-          ? RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(25), side: const BorderSide())
-          : const CircleBorder(),
+      shape: _shape ? rectangleBorder : const CircleBorder(),
       child: Icon(
         _shape ? Icons.pause : Icons.play_arrow,
         color: Colors.black,
@@ -79,4 +78,25 @@ class StopWatchProvider extends ChangeNotifier {
       },
     );
   }
+
+  ElevatedButton elevatedButton(IconData icon) => ElevatedButton(
+        onPressed: () {
+          if (icon == Icons.refresh) {
+            _timerValue = 0;
+            _paused = true;
+            _shape = false;
+            notifyListeners();
+          }
+        },
+        style: ElevatedButton.styleFrom(
+            shape: const CircleBorder(),
+            animationDuration: const Duration(seconds: 2),
+            backgroundColor: const Color.fromARGB(255, 27, 86, 29),
+            elevation: 5,
+            minimumSize: const Size(50, 50)),
+        child: Icon(
+          icon,
+          color: Colors.white,
+        ),
+      );
 }
