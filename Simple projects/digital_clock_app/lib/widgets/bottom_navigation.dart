@@ -6,7 +6,8 @@ import '../screens/main_screens/stopwatch_screen.dart';
 import '../screens/main_screens/timer_screen.dart';
 
 class BottomNavBarProvider extends ChangeNotifier {
-  int currentPage = 0;
+  int _currentPage = 0;
+  int get currentPage => _currentPage;
 
   List<Widget> pages = [
     const AlarmScreen(),
@@ -16,15 +17,15 @@ class BottomNavBarProvider extends ChangeNotifier {
     const BedtimeScreen(),
   ];
 
-  BottomNavigationBar bottomNavBar(int currentPage) {
+  BottomNavigationBar bottomNavBar() {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      currentIndex: currentPage,
+      currentIndex: _currentPage,
       fixedColor: Colors.white,
       unselectedItemColor: Colors.white70,
       showUnselectedLabels: true,
       onTap: (value) {
-        currentPage = value;
+        _currentPage = value;
         notifyListeners();
       },
       items: [
@@ -40,7 +41,7 @@ class BottomNavBarProvider extends ChangeNotifier {
   BottomNavigationBarItem barItem(IconData icon, String label) {
     return BottomNavigationBarItem(
       icon: Icon(icon),
-      label: 'Alarm',
+      label: label,
     );
   }
 }
