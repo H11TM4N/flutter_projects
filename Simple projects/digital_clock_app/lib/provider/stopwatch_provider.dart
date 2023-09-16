@@ -1,27 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class StopWatchProvider extends ChangeNotifier {
-  bool shape = false;
+  bool _shape = false;
 
-  int timerValue = 0;
-  bool paused = true;
-  final Stream<int> periodicStream = Stream.periodic(
+  int _timerValue = 0;
+  bool _paused = true;
+  final Stream<int> _periodicStream = Stream.periodic(
     const Duration(milliseconds: 1000),
     (i) => i,
   );
   int previousStreamValue = 0;
   StreamBuilder streamBuilder() {
     return StreamBuilder(
-      stream: periodicStream,
+      stream: _periodicStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
           if (snapshot.data != previousStreamValue) {
             previousStreamValue = snapshot.data!;
-            if (!paused) {
-              timerValue++;
+            if (!_paused) {
+              _timerValue++;
             }
           }
         }
+        final hours = _timerValue ~/ 3600; // 3600 seconds in an hour
+        final remainingSeconds = _timerValue % 3600;
+        final minutes = remainingSeconds ~/ 60; // 60 seconds in a minute
+        final seconds = remainingSeconds % 60;
+
+        // Format the time based on the values
+        final formattedTime =
+            '${hours > 0 ? '${hours.toString().padLeft(2, '0')}:' : ''}'
+            '${minutes > 0 || hours > 0 ? '${minutes.toString().padLeft(2, '0')}:' : ''}'
+            '${seconds.toString().padLeft(2, '0')}';
+
         return Container(
           height: 300,
           width: 300,
@@ -35,7 +47,7 @@ class StopWatchProvider extends ChangeNotifier {
           ),
           child: Center(
               child: Text(
-            '$timerValue',
+            formattedTime,
             style: const TextStyle(fontSize: 40),
           )),
         );
@@ -44,25 +56,25 @@ class StopWatchProvider extends ChangeNotifier {
   }
 
   void shapeChange() {
-    shape = !shape;
+    _shape = !_shape;
     notifyListeners();
   }
 
   FloatingActionButton floatingActionButton() {
     return FloatingActionButton.large(
       backgroundColor: const Color.fromARGB(255, 149, 216, 248),
-      shape: shape
+      shape: _shape
           ? RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25), side: const BorderSide())
           : const CircleBorder(),
       child: Icon(
-        shape ? Icons.pause : Icons.play_arrow,
+        _shape ? Icons.pause : Icons.play_arrow,
         color: Colors.black,
         size: 25,
       ),
       onPressed: () {
         shapeChange();
-        paused = !paused;
+        _paused = !_paused;
         notifyListeners();
       },
     );
