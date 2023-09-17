@@ -1,4 +1,4 @@
-import 'package:digital_clock_app/provider/stopwatch_provider.dart';
+import 'package:digital_clock_app/providers/stopwatch_provider.dart';
 import 'package:digital_clock_app/utils/popup_menu_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +23,7 @@ class StopwatchScreen extends StatelessWidget {
           children: [
             stopWatchProvider.streamBuilder(),
             const SizedBox(
-              height: 200,
+              height: 150,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

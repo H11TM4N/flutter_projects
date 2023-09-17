@@ -34,13 +34,13 @@ class StopWatchProvider extends ChangeNotifier {
             '${seconds.toString().padLeft(2, '0')}';
 
         return Container(
-          height: 300,
-          width: 300,
+          height: 280,
+          width: 280,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(
               color: const Color.fromARGB(137, 123, 119, 119),
-              width: 8.0,
+              width: 10.0,
             ),
             color: Colors.transparent,
           ),

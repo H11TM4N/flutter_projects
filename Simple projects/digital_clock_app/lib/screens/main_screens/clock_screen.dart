@@ -1,4 +1,4 @@
-import 'package:digital_clock_app/provider/clock_provider.dart';
+import 'package:digital_clock_app/providers/clock_provider.dart';
 import 'package:digital_clock_app/utils/popup_menu_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
