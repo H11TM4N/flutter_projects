@@ -1,36 +1,31 @@
 import 'package:digital_clock_app/utils/popup_menu_button.dart';
 import 'package:flutter/material.dart';
 
-class TimerScreen extends StatefulWidget {
+class TimerScreen extends StatelessWidget {
   const TimerScreen({super.key});
 
   @override
-  State<TimerScreen> createState() => _TimerScreenState();
-}
-
-class _TimerScreenState extends State<TimerScreen> {
-  SizedBox elevatedButton(String text, buttonheight, Color butttonColor) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.1091 * buttonheight,
-      child: Padding(
-        padding: const EdgeInsets.all(2.0),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: butttonColor,
-            shape: const CircleBorder(),
-          ),
-          onPressed: () {},
-          child: Text(
-            text,
-            style: const TextStyle(fontSize: 25),
+  Widget build(BuildContext context) {
+    SizedBox elevatedButton(String text, buttonheight, Color butttonColor) {
+      return SizedBox(
+        height: MediaQuery.of(context).size.height * 0.1091 * buttonheight,
+        child: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: butttonColor,
+              shape: const CircleBorder(),
+            ),
+            onPressed: () {},
+            child: Text(
+              text,
+              style: const TextStyle(fontSize: 25),
+            ),
           ),
         ),
-      ),
-    );
-  }
+      );
+    }
 
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: [popupMenuButton()],
@@ -41,7 +36,11 @@ class _TimerScreenState extends State<TimerScreen> {
         children: [
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.15,
-            child: const Center(child: Text('00h 00m 00s')),
+            child: const Center(
+                child: Text(
+              '00h 00m 00s',
+              style: TextStyle(fontSize: 40, fontWeight: FontWeight.w300),
+            )),
           ),
           SizedBox(
             child: Padding(
@@ -73,7 +72,8 @@ class _TimerScreenState extends State<TimerScreen> {
                     children: [
                       elevatedButton('00', 1, Colors.transparent),
                       elevatedButton('0', 1, Colors.transparent),
-                      elevatedButton('xx', 1, const Color.fromRGBO(51, 124, 207, 29)),
+                      elevatedButton(
+                          'xx', 1, const Color.fromRGBO(51, 124, 207, 29)),
                     ],
                   ),
                 ],
