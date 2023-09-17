@@ -1,14 +1,18 @@
+import 'package:digital_clock_app/providers/timer_provider.dart';
 import 'package:digital_clock_app/utils/popup_menu_button.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TimerScreen extends StatelessWidget {
   const TimerScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
+    TimerProvider timerProvider = Provider.of<TimerProvider>(context);
     SizedBox elevatedButton(String text, buttonheight, Color butttonColor) {
       return SizedBox(
-        height: MediaQuery.of(context).size.height * 0.1091 * buttonheight,
+        height: mediaQueryData.size.height * 0.1091 * buttonheight,
         child: Padding(
           padding: const EdgeInsets.all(2.0),
           child: ElevatedButton(
@@ -16,10 +20,12 @@ class TimerScreen extends StatelessWidget {
               backgroundColor: butttonColor,
               shape: const CircleBorder(),
             ),
-            onPressed: () {},
+            onPressed: () {
+              timerProvider.onPressedFunc(text);
+            },
             child: Text(
               text,
-              style: const TextStyle(fontSize: 25),
+              style: const TextStyle(fontSize: 25, color: Colors.white),
             ),
           ),
         ),
@@ -34,14 +40,7 @@ class TimerScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.15,
-            child: const Center(
-                child: Text(
-              '00h 00m 00s',
-              style: TextStyle(fontSize: 40, fontWeight: FontWeight.w300),
-            )),
-          ),
+          timerProvider.sizedBox(mediaQueryData.size.height * 0.15),
           SizedBox(
             child: Padding(
               padding: const EdgeInsets.all(32.0),
@@ -80,8 +79,21 @@ class TimerScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.15,
+          Row(
+            children: [
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: timerProvider.elevatedButton(),
+              ),
+              SizedBox(
+                height: mediaQueryData.size.height * 0.15,
+                child: timerProvider.floatingActionButton(),
+              ),
+              const Spacer(),
+              const Spacer(),
+              const Spacer(),
+            ],
           ),
         ],
       ),

@@ -2,49 +2,56 @@ import 'package:flutter/material.dart';
 
 class TimerProvider extends ChangeNotifier {
   String text = '';
-  SizedBox sizedBox(BuildContext context) => SizedBox(
-        height: MediaQuery.of(context).size.height * 0.15,
-        child: const Center(
+  SizedBox sizedBox(double height) => SizedBox(
+        height: height,
+        child: Center(
           child: Text(
-            '00h 00m 00s',
-            style: TextStyle(fontSize: 40, fontWeight: FontWeight.w300),
+            text,
+            style: const TextStyle(fontSize: 40, fontWeight: FontWeight.w300),
           ),
         ),
       );
 
-  SizedBox elevatedButton(
-      BuildContext context, buttonheight, Color butttonColor) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.1091 * buttonheight,
-      child: Padding(
-        padding: const EdgeInsets.all(2.0),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: butttonColor,
-            shape: const CircleBorder(),
-          ),
-          onPressed: () {
-            _onPressedFunc(text);
-          },
-          child: Text(
-            text,
-            style: const TextStyle(fontSize: 25),
-          ),
-        ),
+  void onPressedFunc(String buttonText) {
+    if (buttonText == 'xx') {
+      text = text.substring(0, text.length - 1);
+    } else {
+      if (text == "0") {
+        text = buttonText;
+      } else {
+        text = text + buttonText;
+      }
+    }
+    notifyListeners();
+  }
+
+  FloatingActionButton floatingActionButton() {
+    return FloatingActionButton.large(
+      backgroundColor: const Color.fromARGB(255, 149, 216, 248),
+      shape: const CircleBorder(),
+      child: const Icon(
+        Icons.add,
+        color: Colors.black,
+        size: 25,
       ),
+      onPressed: () {
+        notifyListeners();
+      },
     );
   }
 
-  String string = '';
-  void _onPressedFunc(String buttonText) {
-    if (buttonText == 'XX') {
-      string = string.substring(0, string.length - 1);
-    } else {
-      if (string == "0") {
-        string = buttonText;
-      } else {
-        string = string + buttonText;
-      }
-    }
-  }
+  ElevatedButton elevatedButton() => ElevatedButton(
+        onPressed: () {
+          notifyListeners();
+        },
+        style: ElevatedButton.styleFrom(
+            shape: const CircleBorder(),
+            backgroundColor: const Color.fromARGB(255, 27, 86, 29),
+            elevation: 5,
+            minimumSize: const Size(50, 50)),
+        child: const Icon(
+          Icons.delete,
+          color: Colors.white,
+        ),
+      );
 }
