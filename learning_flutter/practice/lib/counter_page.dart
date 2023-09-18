@@ -9,17 +9,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     CounterProvider counterProvider = Provider.of<CounterProvider>(context);
 
-    ElevatedButton elevatedButton(text, int counter) {
-      return ElevatedButton(
-        onPressed: () {
-          text == '+'
-              ? counterProvider.increment()
-              : counterProvider.decrement();
-        },
-        child: Text(text),
-      );
-    }
-
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -28,8 +17,8 @@ class HomePage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              elevatedButton('+', counterProvider.counter),
-              elevatedButton('-', counterProvider.counter),
+              counterProvider.elevatedButton('+', counterProvider.counter),
+              counterProvider.elevatedButton('-', counterProvider.counter),
             ],
           ),
         ],
