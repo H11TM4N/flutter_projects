@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice/Provider/counter_provider.dart';
+import 'package:practice/image_page.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -20,6 +21,12 @@ class HomePage extends StatelessWidget {
               counterProvider.elevatedButton('+', counterProvider.counter),
               counterProvider.elevatedButton('-', counterProvider.counter),
             ],
+          ),
+          ElevatedButton(
+            onPressed: () {
+             
+            },
+            child: const Text('0'),
           ),
         ],
       ),
