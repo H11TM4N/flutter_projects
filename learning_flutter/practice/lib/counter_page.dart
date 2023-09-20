@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:practice/Provider/counter_provider.dart';
-import 'package:practice/image_page.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
