@@ -25,7 +25,7 @@ class ExpenseItem extends StatelessWidget {
                     const SizedBox(
                       height: 7,
                     ),
-                    Text(expense.date.toString())
+                    Text(expense.formattedDAte)
                   ],
                 ),
               ],
