@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-import 'package:practice/implicit_animations/shopping_cart.dart';
-
 class AnimationPractice extends StatefulWidget {
   const AnimationPractice({super.key});
 
