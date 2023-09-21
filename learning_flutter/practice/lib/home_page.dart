@@ -5,28 +5,20 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ListTile listTile(String title, String route) => ListTile(
+          leading: const Icon(Icons.numbers),
+          title: Text(title),
+          onTap: () => Navigator.pushNamed(context, route),
+        );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Animations'),
       ),
       body: ListView(
         children: [
-          ListTile(
-            title: const Text('Animation containers'),
-            onTap: () => Navigator.pushNamed(context, 'page1'),
-          ),
-          ListTile(
-            title: const Text('Button conversion'),
-            onTap: () => Navigator.pushNamed(context, 'page2'),
-          ),
-          ListTile(
-            title: const Text('Animation containers'),
-            onTap: () => Navigator.pushNamed(context, 'page1'),
-          ),
-          ListTile(
-            title: const Text('Animation containers'),
-            onTap: () => Navigator.pushNamed(context, 'page1'),
-          ),
+          listTile('Animation Containers', 'page1'),
+          listTile('Button Conversion', 'page2'),
         ],
       ),
     );

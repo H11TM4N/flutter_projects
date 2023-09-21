@@ -37,12 +37,18 @@ class _ButtonConversionState extends State<ButtonConversion> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
               child: isExpanded
-                  ? const Center(
-                      child: Text(
-                        'Added to cart',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
+                  ? const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Icon(Icons.check),
+                        Center(
+                          child: Text(
+                            'Added to cart',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
                     )
                   : const Icon(
                       Icons.shopping_cart,
