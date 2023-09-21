@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import '../../models/expense.dart';
 
 class ExpensesList extends StatelessWidget {
-  const ExpensesList({super.key, required this.expenses, required this.onRemovedExpense,});
+  const ExpensesList({
+    super.key,
+    required this.expenses,
+    required this.onRemovedExpense,
+  });
 
   final List<Expense> expenses;
   final void Function(Expense expense) onRemovedExpense;
@@ -14,6 +18,7 @@ class ExpensesList extends StatelessWidget {
       itemCount: expenses.length,
       itemBuilder: (context, index) => Dismissible(
         key: ValueKey(expenses[index]),
+        background: Container(color: Theme.of(context).colorScheme.error),
         onDismissed: (direction) {
           onRemovedExpense(expenses[index]);
         },
