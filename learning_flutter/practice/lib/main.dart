@@ -1,5 +1,7 @@
+import 'package:practice/home_page.dart';
 import 'package:practice/implicit_animations/animation_practice.dart';
 import 'package:flutter/material.dart';
+import 'package:practice/implicit_animations/shopping_cart.dart';
 
 void main() {
   runApp(const MainPage());
@@ -14,7 +16,14 @@ class MainPage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Practice App',
       theme: ThemeData.dark(useMaterial3: true),
-      home: const AnimationPractice(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomePage(),
+        'page1': (context) => const AnimationPractice(),
+        'page2': (context) => const ButtonConversion(),
+        'page3': (context) => const AnimationPractice(),
+        'page4': (context) => const AnimationPractice(),
+      },
     );
   }
 }

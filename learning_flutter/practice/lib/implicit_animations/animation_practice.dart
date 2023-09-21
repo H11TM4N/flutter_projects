@@ -35,13 +35,15 @@ class _AnimationPracticeState extends State<AnimationPractice> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Animated container'),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 30),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('Animated container'),
               for (Color color in currentPalette)
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 600),
@@ -55,17 +57,6 @@ class _AnimationPracticeState extends State<AnimationPractice> {
                   randomColorsfunc();
                 },
                 child: const Text('Animate'),
-              ),
-              Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => const ButtonConversion()));
-                    },
-                    child: const Text('one'),
-                  )
-                ],
               ),
             ],
           ),
