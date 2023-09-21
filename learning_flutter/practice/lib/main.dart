@@ -2,6 +2,7 @@ import 'package:practice/home_page.dart';
 import 'package:practice/implicit_animations/animation_practice.dart';
 import 'package:flutter/material.dart';
 import 'package:practice/implicit_animations/button_conversion.dart';
+import 'package:practice/implicit_animations/pulsating_circle.dart';
 
 void main() {
   runApp(const MainPage());
@@ -15,14 +16,14 @@ class MainPage extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Practice App',
-      theme: ThemeData.dark(useMaterial3: true),
+      theme: ThemeData(useMaterial3: true),
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(),
-        'page1': (context) => const AnimationPractice(),
+        'page1': (context) => const AnimationContainer(),
         'page2': (context) => const ButtonConversion(),
-        'page3': (context) => const AnimationPractice(),
-        'page4': (context) => const AnimationPractice(),
+        'page3': (context) => const PulsatingCircle(),
+        'page4': (context) => const AnimationContainer(),
       },
     );
   }
