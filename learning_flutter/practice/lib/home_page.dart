@@ -19,7 +19,8 @@ class HomePage extends StatelessWidget {
         children: [
           listTile('Animation Containers', 'page1'),
           listTile('Button Conversion', 'page2'),
-          listTile('Tween Animation', 'page3')
+          listTile('Tween Animation', 'page3'),
+          listTile('Login Page Animation', 'page4')
         ],
       ),
     );
