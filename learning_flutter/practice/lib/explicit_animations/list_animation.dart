@@ -10,8 +10,9 @@ class ListAnimation extends StatefulWidget {
 class _ListAnimationState extends State<ListAnimation>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
-  late Animation<Offset> _slideTransition;
   bool toggle = false;
+  late List<Animation<Offset>> _stagAnimation;
+  final int itemCount = 5;
 
   @override
   void initState() {
@@ -20,21 +21,18 @@ class _ListAnimationState extends State<ListAnimation>
       vsync: this,
       duration: const Duration(seconds: 2),
     );
-    _slideTransition = Tween(
-      begin: const Offset(-1, -1),
-      end: Offset.zero,
-    ).animate(_animationController);
-
-    _animationController.forward();
-  }
-
-  void toggleButton() {
-    if (toggle == true) {
-      _animationController.forward();
-    } else {
-      _animationController.reverse();
-    }
-    toggle = !toggle;
+    _stagAnimation = List.generate(
+      itemCount,
+      (index) => Tween(
+        begin: const Offset(-1, -1),
+        end: Offset.zero,
+      ).animate(
+        CurvedAnimation(
+          parent: _animationController,
+          curve: Interval(index * (1 / itemCount), 1),
+        ),
+      ),
+    );
   }
 
   @override
@@ -44,10 +42,10 @@ class _ListAnimationState extends State<ListAnimation>
         title: const Text('List Animation'),
       ),
       body: ListView.builder(
-        itemCount: 5,
+        itemCount: itemCount,
         itemBuilder: (context, index) {
           return SlideTransition(
-            position: _slideTransition,
+            position: _stagAnimation[index],
             child: ListTile(
               title: Text('Hello World, Jeremiah. ${index.toString()}'),
             ),
@@ -56,9 +54,11 @@ class _ListAnimationState extends State<ListAnimation>
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {
-            toggleButton();
-          });
+          if (_animationController.isCompleted) {
+            _animationController.reverse();
+          } else {
+            _animationController.forward();
+          }
         },
         child: const Icon(Icons.done),
       ),
