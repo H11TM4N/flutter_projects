@@ -9,20 +9,20 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
-  late AnimationController animationController;
-  late Animation<Offset> slideAnimation;
+  late AnimationController _animationController;
+  late Animation<Offset> _slideAnimation;
 
   @override
   void initState() {
     super.initState();
-    animationController = AnimationController(
+    _animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 1500));
-    slideAnimation = Tween(
+    _slideAnimation = Tween(
       begin: const Offset(-1, -1),
       end: Offset.zero,
-    ).animate(animationController);
+    ).animate(_animationController);
 
-    animationController.forward();
+    _animationController.forward();
   }
 
   @override
@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage>
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SlideTransition(
-        position: slideAnimation,
+        position: _slideAnimation,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
