@@ -21,7 +21,9 @@ class HomePage extends StatelessWidget {
           listTile('Button Conversion', 'page2'),
           listTile('Tween Animation', 'page3'),
           listTile('Login Page Animation', 'page4'),
-          listTile('List Animation', 'page5')
+          listTile('List Animation', 'page5'),
+          listTile('Progress Animation', 'page6'),
+          listTile('---', 'page7'),
         ],
       ),
     );
