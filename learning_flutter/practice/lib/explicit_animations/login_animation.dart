@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
 
-class LoginScreenAnimation extends StatelessWidget {
+class LoginScreenAnimation extends StatefulWidget {
   const LoginScreenAnimation({super.key});
+
+  @override
+  State<LoginScreenAnimation> createState() => _LoginScreenAnimationState();
+}
+
+class _LoginScreenAnimationState extends State<LoginScreenAnimation>
+    with SingleTickerProviderStateMixin {
+  late Animation<double> logoFadeAnimation;
+  late AnimationController animationController;
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 2500));
+    logoFadeAnimation =
+        Tween<double>(begin: 0, end: 1).animate(animationController);
+
+    animationController.forward();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +30,11 @@ class LoginScreenAnimation extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const FlutterLogo(
-              size: 100.0,
+            FadeTransition(
+              opacity: logoFadeAnimation,
+              child: const FlutterLogo(
+                size: 100.0,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
