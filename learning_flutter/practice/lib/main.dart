@@ -1,3 +1,4 @@
+import 'package:practice/custom_painter_animations/bouncing_ball_animation.dart';
 import 'package:practice/explicit_animations/list_animation.dart';
 import 'package:practice/explicit_animations/loading_animation.dart';
 import 'package:practice/home_page.dart';
@@ -35,7 +36,7 @@ class MainPage extends StatelessWidget {
               color: Colors.blue,
             ),
         'page7': (context) => const SplashAnimation(),
-        'page8': (context) => const ListAnimation(),
+        'page8': (context) => const BouncingBallAnimation(),
       },
     );
   }
