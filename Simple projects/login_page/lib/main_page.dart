@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'login_page.dart';
+import 'register_page.dart';
+
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
   @override
@@ -23,66 +26,6 @@ class MainPage extends StatelessWidget {
             RegisterPage(),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          const TextField(
-            decoration: InputDecoration(
-                prefixIcon: Icon(Icons.person),
-                hintText: 'Enter your username'),
-          ),
-          const TextField(
-            decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock, size: 20),
-                hintText: 'Enter your password'),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Login'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          const TextField(
-            decoration: InputDecoration(
-                prefixIcon: Icon(Icons.person),
-                hintText: 'Enter your username'),
-          ),
-          const TextField(
-            decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock, size: 20),
-                hintText: 'Enter your password'),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Register'),
-          ),
-        ],
       ),
     );
   }
