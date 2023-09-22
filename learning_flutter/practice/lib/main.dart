@@ -1,3 +1,4 @@
+import 'package:practice/explicit_animations/list_animation.dart';
 import 'package:practice/home_page.dart';
 import 'package:practice/implicit_animations/animation_practice.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,10 @@ class MainPage extends StatelessWidget {
         'page2': (context) => const ButtonConversion(),
         'page3': (context) => const PulsatingCircle(),
         'page4': (context) => const LoginScreenAnimation(),
+        'page5': (context) => const ListAnimation(),
+        'page6': (context) => const ListAnimation(),
+        'page7': (context) => const ListAnimation(),
+        'page8': (context) => const ListAnimation(),
       },
     );
   }
