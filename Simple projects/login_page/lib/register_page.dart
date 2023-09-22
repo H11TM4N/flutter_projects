@@ -8,12 +8,14 @@ class RegisterPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const TextField(
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.person),
                 hintText: 'Enter your username'),
           ),
+          const SizedBox(height: 20),
           const TextField(
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.lock, size: 20),
