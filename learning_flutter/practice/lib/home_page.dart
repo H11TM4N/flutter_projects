@@ -23,7 +23,8 @@ class HomePage extends StatelessWidget {
           listTile('Login Page Animation', 'page4'),
           listTile('List Animation', 'page5'),
           listTile('Progress Animation', 'page6'),
-          listTile('---', 'page7'),
+          listTile('Page Navigation Animation', 'page7'),
+          listTile('Bouncing Ball Animation', 'page8'),
         ],
       ),
     );

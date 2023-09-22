@@ -5,6 +5,7 @@ import 'package:practice/implicit_animations/animation_practice.dart';
 import 'package:flutter/material.dart';
 import 'package:practice/implicit_animations/button_conversion.dart';
 import 'package:practice/implicit_animations/pulsating_circle.dart';
+import 'package:practice/page_route_builder_animation/splash_animation.dart';
 
 import 'explicit_animations/login_animation.dart';
 
@@ -33,7 +34,7 @@ class MainPage extends StatelessWidget {
               progress: 0.65,
               color: Colors.blue,
             ),
-        'page7': (context) => const ListAnimation(),
+        'page7': (context) => const SplashAnimation(),
         'page8': (context) => const ListAnimation(),
       },
     );
