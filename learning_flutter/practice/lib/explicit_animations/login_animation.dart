@@ -31,7 +31,10 @@ class _LoginScreenAnimationState extends State<LoginScreenAnimation>
       curve: Curves.ease,
     ));
 
-    scaleAnimation = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(
+    scaleAnimation = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(CurvedAnimation(
       parent: animationController,
       curve: Curves.bounceOut,
     ));
