@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:practice/implicit_animations/button_conversion.dart';
 import 'package:practice/implicit_animations/pulsating_circle.dart';
 import 'package:practice/page_route_builder_animation/splash_animation.dart';
+import 'package:practice/providers/list_tile_provider.dart';
+import 'package:provider/provider.dart';
 
 import 'explicit_animations/login_animation.dart';
 
@@ -19,25 +21,28 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Practice App',
-      theme: ThemeData(useMaterial3: true),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const HomePage(),
-        'page1': (context) => const AnimationContainer(),
-        'page2': (context) => const ButtonConversion(),
-        'page3': (context) => const PulsatingCircle(),
-        'page4': (context) => const LoginScreenAnimation(),
-        'page5': (context) => const ListAnimation(),
-        'page6': (context) => const RadialProgressAnimation(
-              progress: 0.65,
-              color: Colors.blue,
-            ),
-        'page7': (context) => const SplashAnimation(),
-        'page8': (context) => const BouncingBallAnimation(),
-      },
+    return ChangeNotifierProvider(
+      create: (context) => ListTileProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Practice App',
+        theme: ThemeData(useMaterial3: true),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const HomePage(),
+          'page1': (context) => const AnimationContainer(),
+          'page2': (context) => const ButtonConversion(),
+          'page3': (context) => const PulsatingCircle(),
+          'page4': (context) => const LoginScreenAnimation(),
+          'page5': (context) => const ListAnimation(),
+          'page6': (context) => const RadialProgressAnimation(
+                progress: 0.65,
+                color: Colors.blue,
+              ),
+          'page7': (context) => const SplashAnimation(),
+          'page8': (context) => const BouncingBallAnimation(),
+        },
+      ),
     );
   }
 }
