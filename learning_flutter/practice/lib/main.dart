@@ -1,4 +1,4 @@
-import 'package:practice/API/photos_api.dart';
+import 'package:practice/API/photos_apii/photos_api.dart';
 import 'package:practice/Animations/custom_painter_animations/bouncing_ball_animation.dart';
 import 'package:practice/Animations/explicit_animations/list_animation.dart';
 import 'package:practice/Animations/explicit_animations/loading_animation.dart';
