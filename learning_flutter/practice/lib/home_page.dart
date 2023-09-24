@@ -33,6 +33,13 @@ class HomePage extends StatelessWidget {
               listTile('Bouncing Ball Animation', 'page8'),
             ],
           ),
+          ExpansionTile(
+            title: const Text('API Practice'),
+            leading: const Icon(Icons.api),
+            children: [
+              listTile('Photos API', 'page11'),
+            ],
+          ),
         ],
       ),
     );
