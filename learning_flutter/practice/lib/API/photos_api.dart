@@ -7,8 +7,13 @@ class PhotosApi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Column(
-        
+      body: Column(
+        children: [
+          FloatingActionButton(
+            onPressed: () {},
+            child: const Icon(Icons.add),
+          )
+        ],
       ),
     );
   }
