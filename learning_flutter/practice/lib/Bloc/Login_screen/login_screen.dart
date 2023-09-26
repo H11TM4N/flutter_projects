@@ -49,8 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
         return null;
       },
       onSaved: (newValue) {
-        // _formEmail = newValue!;
-        print(newValue);
+        _formEmail = newValue!;
       },
     );
   }
@@ -69,8 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
         return null;
       },
       onSaved: (newValue) {
-        print(newValue);
-        // _formPassword = newValue!;
+        _formPassword = newValue!;
       },
     );
   }
@@ -80,6 +78,8 @@ class _LoginScreenState extends State<LoginScreen> {
       onPressed: () {
         if (_formKey.currentState!.validate()) {
           _formKey.currentState!.save();
+          // use the formEmail and _formPassword
+          // do smth with the data
         }
       },
       child: const Text('Submit'),
