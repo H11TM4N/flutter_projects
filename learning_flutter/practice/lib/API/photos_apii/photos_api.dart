@@ -19,7 +19,7 @@ class _PhotosApiState extends State<PhotosApi> {
   void fetchImage() async {
     counter++;
     var response = await get(
-        'https://jsonplaceholder.typicode.com/photos/$counter' as Uri);
+        Uri.parse('https://jsonplaceholder.typicode.com/photos/$counter'));
     var imageModel = ImageModel.fromJson(json.decode(response.body));
     setState(() {
       images.add(imageModel);
