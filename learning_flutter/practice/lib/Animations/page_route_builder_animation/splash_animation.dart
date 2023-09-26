@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class SplashAnimation extends StatefulWidget {
@@ -20,6 +22,26 @@ class _SplashAnimationState extends State<SplashAnimation>
       duration: const Duration(milliseconds: 500),
     );
 
+    _animationController.addListener(() {
+      if (_animationController.isCompleted) {
+        Navigator.of(context).push(PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) {
+            return const Destination();
+          },
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+        ));
+
+        Timer(const Duration(milliseconds: 500), () {
+          _animationController.reset();
+        });
+      }
+    });
+
     _scaleAnimation = Tween<double>(
       begin: 1,
       end: 10,
@@ -34,9 +56,6 @@ class _SplashAnimationState extends State<SplashAnimation>
         child: GestureDetector(
           onTap: () {
             _animationController.forward();
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const Destination(),
-            ));
           },
           child: ScaleTransition(
             scale: _scaleAnimation,
