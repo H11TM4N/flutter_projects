@@ -2,6 +2,7 @@ import 'package:practice/API/photos_apii/photos_api.dart';
 import 'package:practice/Animations/custom_painter_animations/bouncing_ball_animation.dart';
 import 'package:practice/Animations/explicit_animations/list_animation.dart';
 import 'package:practice/Animations/explicit_animations/loading_animation.dart';
+import 'package:practice/Bloc/Login_screen/login_screen.dart';
 import 'package:practice/home_page.dart';
 import 'package:practice/Animations/implicit_animations/animation_practice.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,7 @@ class MainPage extends StatelessWidget {
         'page7': (context) => const SplashAnimation(),
         'page8': (context) => const BouncingBallAnimation(),
         'page11': (context) => const PhotosApi(),
+        'page21':(context) => const LoginScreen(),
       },
     );
   }

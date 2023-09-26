@@ -40,6 +40,13 @@ class HomePage extends StatelessWidget {
               listTile('Photos API', 'page11'),
             ],
           ),
+          ExpansionTile(
+            title: const Text('Bloc'),
+            leading: const Icon(Icons.block),
+            children: [
+              listTile('Login Screen', 'page21'),
+            ],
+          ),
         ],
       ),
     );
