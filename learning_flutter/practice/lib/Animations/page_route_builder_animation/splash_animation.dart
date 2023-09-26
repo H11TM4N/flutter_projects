@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../widgets/custom_route_transition.dart';
+
 class SplashAnimation extends StatefulWidget {
   const SplashAnimation({super.key});
 
@@ -24,17 +26,9 @@ class _SplashAnimationState extends State<SplashAnimation>
 
     _animationController.addListener(() {
       if (_animationController.isCompleted) {
-        Navigator.of(context).push(PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) {
-            return const Destination();
-          },
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: animation,
-              child: child,
-            );
-          },
-        ));
+        Navigator.of(context).push(
+          MyCustomRouteTransition(route: const Destination()),
+        );
 
         Timer(const Duration(milliseconds: 500), () {
           _animationController.reset();
