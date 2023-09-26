@@ -8,7 +8,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
+  String _formEmail = '';
+  String _formPassword = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Container(
         margin: const EdgeInsets.all(8.0),
         child: Form(
-          key: formKey,
+          key: _formKey,
           child: Column(
             children: [
               emailField(),
@@ -40,8 +43,14 @@ class _LoginScreenState extends State<LoginScreen> {
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter your email';
+        } else if (!value.contains('@')) {
+          return 'Please enter a valid email';
         }
         return null;
+      },
+      onSaved: (newValue) {
+        // _formEmail = newValue!;
+        print(newValue);
       },
     );
   }
@@ -53,13 +62,25 @@ class _LoginScreenState extends State<LoginScreen> {
           hintText: 'Enter your password',
           hintStyle: TextStyle(fontWeight: FontWeight.w300)),
       obscureText: true,
+      validator: (value) {
+        if (value!.length < 6) {
+          return 'password must contain at least 6 characters';
+        }
+        return null;
+      },
+      onSaved: (newValue) {
+        print(newValue);
+        // _formPassword = newValue!;
+      },
     );
   }
 
   Widget submitButton() {
     return ElevatedButton(
       onPressed: () {
-        formKey.currentState?.reset();
+        if (_formKey.currentState!.validate()) {
+          _formKey.currentState!.save();
+        }
       },
       child: const Text('Submit'),
     );
