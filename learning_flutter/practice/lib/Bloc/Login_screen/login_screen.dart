@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package/../validation_mixin.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -7,10 +8,10 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> with ValidationMixin {
   final _formKey = GlobalKey<FormState>();
-  String _formEmail = '';
-  String _formPassword = '';
+  String formEmail = '';
+  String formPassword = '';
 
   @override
   Widget build(BuildContext context) {
@@ -40,16 +41,9 @@ class _LoginScreenState extends State<LoginScreen> {
           hintText: 'Enter your email',
           hintStyle: TextStyle(fontWeight: FontWeight.w300)),
       keyboardType: TextInputType.emailAddress,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter your email';
-        } else if (!value.contains('@')) {
-          return 'Please enter a valid email';
-        }
-        return null;
-      },
+      validator: validateEmail,
       onSaved: (newValue) {
-        _formEmail = newValue!;
+        formEmail = newValue!;
       },
     );
   }
@@ -61,14 +55,9 @@ class _LoginScreenState extends State<LoginScreen> {
           hintText: 'Enter your password',
           hintStyle: TextStyle(fontWeight: FontWeight.w300)),
       obscureText: true,
-      validator: (value) {
-        if (value!.length < 6) {
-          return 'password must contain at least 6 characters';
-        }
-        return null;
-      },
+      validator: validatePassword,
       onSaved: (newValue) {
-        _formPassword = newValue!;
+        formPassword = newValue!;
       },
     );
   }
@@ -78,6 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
       onPressed: () {
         if (_formKey.currentState!.validate()) {
           _formKey.currentState!.save();
+          print('$formEmail and $formPassword');
           // use the formEmail and _formPassword
           // do smth with the data
         }
