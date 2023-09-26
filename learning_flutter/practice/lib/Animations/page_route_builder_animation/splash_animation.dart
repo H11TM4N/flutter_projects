@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../widgets/custom_route_transition.dart';
+import '../../widgets/custom_route_transition.dart';
 
 class SplashAnimation extends StatefulWidget {
   const SplashAnimation({super.key});
