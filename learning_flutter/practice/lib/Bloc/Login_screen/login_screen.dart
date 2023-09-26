@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,6 +16,7 @@ class LoginScreen extends StatelessWidget {
       body: Container(
         margin: const EdgeInsets.all(8.0),
         child: Form(
+          key: formKey,
           child: Column(
             children: [
               emailField(),
@@ -30,6 +37,12 @@ class LoginScreen extends StatelessWidget {
           hintText: 'Enter your email',
           hintStyle: TextStyle(fontWeight: FontWeight.w300)),
       keyboardType: TextInputType.emailAddress,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter your email';
+        }
+        return null;
+      },
     );
   }
 
@@ -45,7 +58,9 @@ class LoginScreen extends StatelessWidget {
 
   Widget submitButton() {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        formKey.currentState?.reset();
+      },
       child: const Text('Submit'),
     );
   }
