@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:practice/Animations/implicit_animations/button_conversion.dart';
 import 'package:practice/Animations/implicit_animations/pulsating_circle.dart';
 import 'package:practice/Animations/page_route_builder_animation/splash_animation.dart';
+import 'package:practice/zerotomastery/practice.dart';
 import 'Animations/explicit_animations/login_animation.dart';
 
 void main() {
@@ -40,6 +41,7 @@ class MainPage extends StatelessWidget {
         'page8': (context) => const BouncingBallAnimation(),
         'page11': (context) => const PhotosApi(),
         'page21':(context) => const LoginScreen(),
+        'page31':(context) => const Practice(),
       },
     );
   }
