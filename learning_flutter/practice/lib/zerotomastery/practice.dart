@@ -7,6 +7,8 @@ class Practice extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    int counter = ref.watch(counterProvider);
+    CounterNotifier counterController = ref.watch(counterProvider.notifier);
     return Scaffold(
       appBar: AppBar(
         title: const Text('RiverPod practice'),
@@ -17,6 +19,7 @@ class Practice extends ConsumerWidget {
           Center(
             child: Column(
               children: [
+                Text('counter: $counter'),
                 Text(
                   ref.read(normalProvider),
                 ),
@@ -29,6 +32,12 @@ class Practice extends ConsumerWidget {
             ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          counterController.add();
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }

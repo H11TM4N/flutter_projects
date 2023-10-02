@@ -10,3 +10,15 @@ final futureProvider = FutureProvider<String>((ref) async {
     () => 'Future Provider Practice',
   );
 });
+
+final counterProvider = StateNotifierProvider<CounterNotifier, int>((ref) {
+  return CounterNotifier();
+});
+
+class CounterNotifier extends StateNotifier<int> {
+  CounterNotifier() : super(0);
+
+  void add() {
+    state = state + 1;
+  }
+}
