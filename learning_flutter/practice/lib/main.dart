@@ -1,3 +1,4 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:practice/API/photos_apii/photos_api.dart';
 import 'package:practice/Animations/custom_painter_animations/bouncing_ball_animation.dart';
 import 'package:practice/Animations/explicit_animations/list_animation.dart';
@@ -13,7 +14,9 @@ import 'package:practice/zerotomastery/practice.dart';
 import 'Animations/explicit_animations/login_animation.dart';
 
 void main() {
-  runApp(const MainPage());
+  runApp(
+    const ProviderScope(child: MainPage()),
+  );
 }
 
 class MainPage extends StatelessWidget {
@@ -40,8 +43,8 @@ class MainPage extends StatelessWidget {
         'page7': (context) => const SplashAnimation(),
         'page8': (context) => const BouncingBallAnimation(),
         'page11': (context) => const PhotosApi(),
-        'page21':(context) => const LoginScreen(),
-        'page31':(context) => const Practice(),
+        'page21': (context) => const LoginScreen(),
+        'page31': (context) => const Practice(),
       },
     );
   }

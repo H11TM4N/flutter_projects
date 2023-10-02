@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:practice/zerotomastery/providers/providers.dart';
 
 class Practice extends StatefulWidget {
   const Practice({super.key});
@@ -8,51 +10,24 @@ class Practice extends StatefulWidget {
 }
 
 class _PracticeState extends State<Practice> {
-  bool _switchVal = true;
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: const Text('RiverPod practice'),
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
-            child: Image.network('https://picsum.photos/200/200'),
-          ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: TextField(
-              decoration: InputDecoration(
-                  labelText: 'Username',
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(),
-                  ),
-                  focusedBorder: OutlineInputBorder()),
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text('Notification'),
-              Switch(
-                value: _switchVal,
-                onChanged: (value) {
-                  setState(() {
-                    _switchVal = value;
-                  });
-                },
-              ),
-            ],
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Save'),
+          Consumer(
+            builder: (context, ref, child) {
+              return Text(ref.read(testProvider));
+            },
           )
         ],
-      ),
+      )
     );
   }
 }

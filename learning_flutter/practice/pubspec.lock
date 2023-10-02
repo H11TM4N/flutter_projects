@@ -164,7 +164,7 @@ packages:
     source: hosted
     version: "6.0.5"
   riverpod:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: riverpod
       sha256: a600120d6f213a9922860eea1abc32597436edd5b2c4e73b91410f8c2af67d22
