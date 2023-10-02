@@ -2,18 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:practice/zerotomastery/providers/providers.dart';
 
-class Practice extends StatefulWidget {
+class Practice extends ConsumerWidget {
   const Practice({super.key});
 
   @override
-  State<Practice> createState() => _PracticeState();
-}
-
-class _PracticeState extends State<Practice> {
-  
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('RiverPod practice'),
@@ -21,13 +14,22 @@ class _PracticeState extends State<Practice> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Consumer(
-            builder: (context, ref, child) {
-              return Text(ref.read(testProvider));
-            },
-          )
+          Center(
+            child: Column(
+              children: [
+                Text(
+                  ref.read(normalProvider),
+                ),
+                ref.watch(futureProvider).when(
+                      data: (data) => Text(data),
+                      error: (error, stackTrace) => const Text('error'),
+                      loading: () => const CircularProgressIndicator(),
+                    ),
+              ],
+            ),
+          ),
         ],
-      )
+      ),
     );
   }
 }

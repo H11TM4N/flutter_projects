@@ -51,7 +51,7 @@ class HomePage extends StatelessWidget {
             title: const Text('Zero to mastery'),
             leading: const Icon(Icons.block),
             children: [
-              listTile('Login Screen', 'page31'),
+              listTile('Riverpod Practice', 'page31'),
             ],
           ),
         ],
