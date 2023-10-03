@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "494563465828",
+    "project_id": "just-a-lil-login-page",
+    "storage_bucket": "just-a-lil-login-page.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494563465828:android:c712a1b13fb8427fd7dd71",
+        "android_client_info": {
+          "package_name": "com.example.login_page"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIsC-M3gu5lR1algr-ebfvITQEjYhLTx8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
