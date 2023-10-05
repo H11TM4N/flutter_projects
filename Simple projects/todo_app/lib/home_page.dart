@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/todo_provider.dart';
+import 'package:todo_app/providers/todo_provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -47,31 +47,41 @@ class HomePage extends StatelessWidget {
       body: ListView.builder(
         itemCount: todoProvider.listOfTasks.length,
         itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            title: Text(
-              todoProvider.listOfTasks[index],
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                decoration: todoProvider.strikeThroughList[index]
-                    ? TextDecoration.lineThrough
-                    : TextDecoration.none,
+          return Card(
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(13.0),
+                bottomRight: Radius.circular(13.0),
               ),
             ),
-            leading: GestureDetector(
-              onTap: () {
-                todoProvider.checkBoxToggle(index);
-                todoProvider.strikeThrough(index);
-              },
-              child: todoProvider.checkBoxes[index]
-                  ? const Icon(Icons.check_box)
-                  : const Icon(Icons.check_box_outline_blank),
-            ),
-            trailing: GestureDetector(
-              onTap: () {
-                todoProvider.removeTask(index);
-              },
-              child: const Icon(Icons.delete),
+            elevation: 9,
+            color: Colors.transparent,
+            child: ListTile(
+              title: Text(
+                todoProvider.listOfTasks[index].title,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  decoration: todoProvider.strikeThroughList[index]
+                      ? TextDecoration.lineThrough
+                      : TextDecoration.none,
+                ),
+              ),
+              leading: GestureDetector(
+                onTap: () {
+                  todoProvider.checkBoxToggle(index);
+                  todoProvider.strikeThrough(index);
+                },
+                child: todoProvider.checkBoxes[index]
+                    ? const Icon(Icons.check_box)
+                    : const Icon(Icons.check_box_outline_blank),
+              ),
+              trailing: GestureDetector(
+                onTap: () {
+                  todoProvider.removeTask(index);
+                },
+                child: const Icon(Icons.delete),
+              ),
             ),
           );
         },

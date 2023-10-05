@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/scaffold.dart';
+import 'package:todo_app/home_page.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/todo_provider.dart';
+import 'package:todo_app/providers/todo_provider.dart';
 
 void main() {
   runApp(const TodoApp());
@@ -17,7 +17,7 @@ class TodoApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'A simple todo app',
-        theme: ThemeData.dark(useMaterial3: true),
+        theme: ThemeData.dark().copyWith(),
         home: const HomePage(),
       ),
     );
