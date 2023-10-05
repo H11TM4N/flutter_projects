@@ -47,41 +47,31 @@ class HomePage extends StatelessWidget {
       body: ListView.builder(
         itemCount: todoProvider.listOfTasks.length,
         itemBuilder: (BuildContext context, int index) {
-          return Card(
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(13.0),
-                bottomRight: Radius.circular(13.0),
+          return ListTile(
+            title: Text(
+              todoProvider.listOfTasks[index].title,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                decoration: todoProvider.strikeThroughList[index]
+                    ? TextDecoration.lineThrough
+                    : TextDecoration.none,
               ),
             ),
-            elevation: 9,
-            color: Colors.transparent,
-            child: ListTile(
-              title: Text(
-                todoProvider.listOfTasks[index].title,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  decoration: todoProvider.strikeThroughList[index]
-                      ? TextDecoration.lineThrough
-                      : TextDecoration.none,
-                ),
-              ),
-              leading: GestureDetector(
-                onTap: () {
-                  todoProvider.checkBoxToggle(index);
-                  todoProvider.strikeThrough(index);
-                },
-                child: todoProvider.checkBoxes[index]
-                    ? const Icon(Icons.check_box)
-                    : const Icon(Icons.check_box_outline_blank),
-              ),
-              trailing: GestureDetector(
-                onTap: () {
-                  todoProvider.removeTask(index);
-                },
-                child: const Icon(Icons.delete),
-              ),
+            leading: GestureDetector(
+              onTap: () {
+                todoProvider.checkBoxToggle(index);
+                todoProvider.strikeThrough(index);
+              },
+              child: todoProvider.checkBoxes[index]
+                  ? const Icon(Icons.check_box)
+                  : const Icon(Icons.check_box_outline_blank),
+            ),
+            trailing: GestureDetector(
+              onTap: () {
+                todoProvider.removeTask(index);
+              },
+              child: const Icon(Icons.delete),
             ),
           );
         },
