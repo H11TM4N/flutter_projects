@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:todo_app/providers/todo_provider.dart';
+import 'package:todo_app/cubit/todo_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    TodoProvider todoProvider = Provider.of<TodoProvider>(context);
-
+    TaskCubit taskCubit = BlocProvider.of<TaskCubit>(context);
+    TextEditingController textInput = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         bottomOpacity: 67.8,
@@ -21,16 +21,17 @@ class HomePage extends StatelessWidget {
                 builder: (BuildContext context) => AlertDialog(
                   title: const Text('Add task'),
                   content: TextField(
-                    controller: todoProvider.textInput,
+                    controller: textInput,
                   ),
                   actions: [
                     TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          todoProvider.addTask(todoProvider.textInput.text);
-                          todoProvider.textInput.clear();
-                        },
-                        child: const Text('add')),
+                      onPressed: () {
+                        Navigator.pop(context);
+                        taskCubit.addTask(textInput.text);
+                        textInput.clear();
+                      },
+                      child: const Text('add'),
+                    ),
                     TextButton(
                         onPressed: () {
                           Navigator.pop(context);
@@ -44,35 +45,22 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: todoProvider.listOfTasks.length,
-        itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            title: Text(
-              todoProvider.listOfTasks[index].title,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                decoration: todoProvider.strikeThroughList[index]
-                    ? TextDecoration.lineThrough
-                    : TextDecoration.none,
-              ),
-            ),
-            leading: GestureDetector(
-              onTap: () {
-                todoProvider.checkBoxToggle(index);
-                todoProvider.strikeThrough(index);
-              },
-              child: todoProvider.checkBoxes[index]
-                  ? const Icon(Icons.check_box)
-                  : const Icon(Icons.check_box_outline_blank),
-            ),
-            trailing: GestureDetector(
-              onTap: () {
-                todoProvider.removeTask(index);
-              },
-              child: const Icon(Icons.delete),
-            ),
+      body: BlocBuilder<TaskCubit, List<TaskState>>(
+        builder: (context, state) {
+          return ListView.builder(
+            itemCount: state.length,
+            itemBuilder: (BuildContext context, int index) {
+              final task = state[index];
+              return ListTile(
+                title: Text(
+                  task.name,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+              );
+            },
           );
         },
       ),
