@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/cubit/todo_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_app/widgets/habit_tile.dart';
+import 'package:todo_app/widgets/slidable_widget.dart';
+
+import 'cubit/todo_state.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -51,13 +55,12 @@ class HomePage extends StatelessWidget {
             itemCount: state.length,
             itemBuilder: (BuildContext context, int index) {
               final task = state[index];
-              return ListTile(
-                title: Text(
-                  task.name,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
+              final localIndex = index;
+              return Kslidable(
+                key: Key('index $localIndex'),
+                onDelete: (ctx) => taskCubit.removeTask(task.id),
+                child: KlistTile(
+                  title: task.name,
                 ),
               );
             },

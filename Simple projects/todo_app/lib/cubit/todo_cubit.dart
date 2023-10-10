@@ -1,12 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'todo_state.dart';
+import 'todo_state.dart';
 
 class TaskCubit extends Cubit<List<TaskState>> {
   TaskCubit() : super([]);
 
   void addTask(String newName) {
-    final newTask = TaskState(id: state.length + 1, name: newName);
+    final newTask =
+        TaskState(id: state.length + 1, name: newName, isCompleted: false);
 
     final updatedTasks = List<TaskState>.from(state)..add(newTask);
 
