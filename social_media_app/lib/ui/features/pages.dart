@@ -5,3 +5,4 @@ export './authentication/pages/auth_toggle_page.dart';
 export 'home/pages/home_page.dart';
 export './authentication/pages/auth_page.dart';
 export './home/views/drawer_view.dart';
+export './users/pages/users_page.dart';

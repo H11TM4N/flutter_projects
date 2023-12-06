@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:social_media_app/common/common.dart';
+import 'package:social_media_app/ui/features/pages.dart';
 import 'package:social_media_app/ui/widgets/widgets.dart';
 
 class DrawerView extends StatelessWidget {
@@ -17,13 +19,35 @@ class DrawerView extends StatelessWidget {
               color: theme.inversePrimary,
             ),
           ),
-          const DrawerTile(text: 'H O M E', icon: Icons.home),
-          const DrawerTile(text: 'P R O F I L E', icon: Icons.person_2),
-          const DrawerTile(text: 'U S E R S', icon: Icons.group),
+          DrawerTile(
+            text: 'H O M E',
+            icon: Icons.home,
+            onTap: () {
+              popAndNavigate(context, HomePage.routeName);
+            },
+          ),
+          DrawerTile(
+            text: 'P R O F I L E',
+            icon: Icons.person_2,
+            onTap: () {
+              popAndNavigate(context, ProfilePage.routeName);
+            },
+          ),
+          DrawerTile(
+            text: 'U S E R S',
+            icon: Icons.group,
+            onTap: () {
+              popAndNavigate(context, UsersPage.routeName);
+            },
+          ),
           const Spacer(),
-          const Padding(
-            padding: EdgeInsets.only(bottom: 8.0),
-            child: DrawerTile(text: 'L O G O U T', icon: Icons.logout),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: DrawerTile(
+              text: 'L O G O U T',
+              icon: Icons.logout,
+              onTap: () {},
+            ),
           ),
         ],
       ),

@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class DrawerTile extends StatelessWidget {
   final String text;
   final IconData icon;
+  final void Function()? onTap;
   const DrawerTile({
     super.key,
     required this.text,
     required this.icon,
+    required this.onTap,
   });
 
   @override
@@ -20,9 +22,7 @@ class DrawerTile extends StatelessWidget {
           color: theme.inversePrimary,
         ),
         title: Text(text),
-        onTap: () {
-          Navigator.pop(context);
-        },
+        onTap: onTap,
       ),
     );
   }

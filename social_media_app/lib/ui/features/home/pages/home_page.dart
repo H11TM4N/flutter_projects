@@ -3,6 +3,7 @@ import 'package:social_media_app/ui/features/authentication/controller/auth_cont
 import 'package:social_media_app/ui/features/pages.dart';
 
 class HomePage extends StatelessWidget {
+  static const routeName = '/home page';
   const HomePage({super.key});
 
   @override

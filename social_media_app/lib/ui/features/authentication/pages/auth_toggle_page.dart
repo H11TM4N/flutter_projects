@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:social_media_app/ui/features/pages.dart';
 
 class AuthToggle extends HookWidget {
+  static const routeName = '/auth toggle page';
   const AuthToggle({super.key});
 
   @override

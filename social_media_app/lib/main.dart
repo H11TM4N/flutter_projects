@@ -23,6 +23,12 @@ class MyApp extends StatelessWidget {
       theme: lightMode,
       darkTheme: darkMode,
       home: const AuthPage(),
+      routes: {
+        HomePage.routeName: (context) => const HomePage(),
+        AuthToggle.routeName: (context) => const AuthToggle(),
+        UsersPage.routeName: (context) => const UsersPage(),
+        ProfilePage.routeName: (context) => const ProfilePage(),
+      },
     );
   }
 }
