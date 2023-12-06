@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:social_media_app/ui/features/authentication/widgets/custom_button.dart';
 import 'package:social_media_app/ui/widgets/widgets.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   LoginPage({super.key});
+
+  login() {}
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +50,24 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 15),
               CustomButton(
-                text: 'text',
-                onPressed: () {},
+                text: 'LOGIN',
+                onPressed: login,
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Don\'t have an account? '),
+                  GestureDetector(
+                    onTap: () {
+                      
+                    },
+                    child: const Text(
+                      'Register here',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
               )
             ],
           ),
