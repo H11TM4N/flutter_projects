@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Social Media App',
       theme: lightMode,
       darkTheme: darkMode,
-      home: const AuthToggle(),
+      home: const AuthPage(),
     );
   }
 }

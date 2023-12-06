@@ -20,4 +20,8 @@ class AuthService {
       password: password,
     );
   }
+
+  logoutUser() async {
+    await FirebaseAuth.instance.signOut();
+  }
 }

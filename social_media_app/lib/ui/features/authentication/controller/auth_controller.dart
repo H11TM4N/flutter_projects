@@ -14,12 +14,7 @@ class AuthController {
     required String confirmPassword,
     required String email,
   }) async {
-    showDialog(
-      context: context,
-      builder: (context) => const Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
+    loadingDialog(context);
     if (password != confirmPassword) {
       Navigator.pop(context);
       displayMessage('Your passwords don\'t match', context);
@@ -42,12 +37,7 @@ class AuthController {
     required String password,
     required String email,
   }) async {
-    showDialog(
-      context: context,
-      builder: (context) => const Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
+    loadingDialog(context);
     try {
       await _authService.loginUser(
         email: email,
@@ -58,5 +48,12 @@ class AuthController {
       Navigator.pop(context);
       displayMessage(e.toString(), context);
     }
+  }
+
+  logoutUser({required BuildContext context}) async {
+    loadingDialog(context);
+    await Future.delayed(const Duration(seconds: 2));
+    _authService.logoutUser();
+    if (context.mounted) Navigator.pop(context);
   }
 }

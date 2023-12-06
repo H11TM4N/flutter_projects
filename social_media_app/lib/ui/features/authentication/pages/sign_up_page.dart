@@ -1,21 +1,17 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:social_media_app/ui/features/authentication/controller/auth_controller.dart';
 import 'package:social_media_app/ui/widgets/widgets.dart';
 
-class SignUpPage extends StatefulWidget {
+class SignUpPage extends HookWidget {
   final void Function() onTap;
-  const SignUpPage({super.key, required this.onTap});
+  SignUpPage({super.key, required this.onTap});
 
-  @override
-  State<SignUpPage> createState() => _SignUpPageState();
-}
-
-class _SignUpPageState extends State<SignUpPage> {
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _passConfirmController = TextEditingController();
+  final _nameController = useTextEditingController();
+  final _emailController = useTextEditingController();
+  final _passwordController = useTextEditingController();
+  final _passConfirmController = useTextEditingController();
 
   final _authController = AuthController();
 
@@ -83,7 +79,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 children: [
                   const Text('Already have an account? '),
                   GestureDetector(
-                    onTap: widget.onTap,
+                    onTap: onTap,
                     child: const Text(
                       'Login here',
                       style: TextStyle(fontWeight: FontWeight.bold),

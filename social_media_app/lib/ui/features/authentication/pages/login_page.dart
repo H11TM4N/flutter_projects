@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:social_media_app/ui/features/authentication/controller/auth_controller.dart';
 import 'package:social_media_app/ui/widgets/widgets.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends HookWidget {
   final void Function() onTap;
   LoginPage({super.key, required this.onTap});
 
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final _emailController = useTextEditingController();
+  final _passwordController = useTextEditingController();
 
-  login() {}
+  final _authController = AuthController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,13 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 15),
               CustomButton(
                 text: 'LOGIN',
-                onPressed: login,
+                onPressed: () {
+                  _authController.loginUser(
+                    context: context,
+                    password: _passwordController.text,
+                    email: _emailController.text,
+                  );
+                },
               ),
               const SizedBox(height: 10),
               Row(
