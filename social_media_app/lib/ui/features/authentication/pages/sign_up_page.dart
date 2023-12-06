@@ -1,16 +1,23 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
+import 'package:social_media_app/ui/features/authentication/controller/auth_controller.dart';
 import 'package:social_media_app/ui/widgets/widgets.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   final void Function() onTap;
-  SignUpPage({super.key, required this.onTap});
+  const SignUpPage({super.key, required this.onTap});
 
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passConfirmController = TextEditingController();
 
-  login() {}
+  final _authController = AuthController();
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +67,13 @@ class SignUpPage extends StatelessWidget {
               ),
               const SizedBox(height: 15),
               CustomButton(
-                text: 'LOGIN',
-                onPressed: login,
+                text: 'REGISTER',
+                onPressed: _authController.registerUser(
+                  context: context,
+                  password: _passwordController.text,
+                  confirmPassword: _passConfirmController.text,
+                  email: _emailController.text,
+                ),
               ),
               const SizedBox(height: 10),
               Row(
@@ -69,7 +81,7 @@ class SignUpPage extends StatelessWidget {
                 children: [
                   const Text('Already have an account? '),
                   GestureDetector(
-                    onTap: onTap,
+                    onTap: widget.onTap,
                     child: const Text(
                       'Login here',
                       style: TextStyle(fontWeight: FontWeight.bold),
