@@ -26,16 +26,10 @@ class AuthController {
           email: email,
           password: password,
         );
-        if (userCredential != null) {
-          await _databaseService.addUserToDB(
-            userCredential: userCredential,
-            username: username,
-          );
-          if (context.mounted) Navigator.pop(context);
-        } else {
-          Navigator.pop(context);
-          displayMessage('Failed to register user. Please try again.', context);
-        }
+        await _databaseService.addUserToDB(
+          userCredential: userCredential,
+          username: username,
+        );
         if (context.mounted) Navigator.pop(context);
       } on FirebaseAuthException catch (e) {
         Navigator.pop(context);
