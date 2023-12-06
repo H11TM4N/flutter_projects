@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:social_media_app/ui/widgets/widgets.dart';
 
 class LoginPage extends StatelessWidget {
+  final void Function() onTap;
+  LoginPage({super.key, required this.onTap});
+
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  LoginPage({super.key});
 
   login() {}
 
@@ -59,9 +61,7 @@ class LoginPage extends StatelessWidget {
                 children: [
                   const Text('Don\'t have an account? '),
                   GestureDetector(
-                    onTap: () {
-                      
-                    },
+                    onTap: onTap,
                     child: const Text(
                       'Register here',
                       style: TextStyle(fontWeight: FontWeight.bold),

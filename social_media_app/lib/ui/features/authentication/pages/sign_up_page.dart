@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:social_media_app/ui/features/authentication/widgets/custom_button.dart';
 import 'package:social_media_app/ui/widgets/widgets.dart';
 
 class SignUpPage extends StatelessWidget {
+  final void Function() onTap;
+  SignUpPage({super.key, required this.onTap});
+
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passConfirmController = TextEditingController();
-
-  SignUpPage({super.key});
 
   login() {}
 
@@ -16,6 +16,7 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: theme.background,
       body: Center(
         child: Padding(
@@ -35,22 +36,27 @@ class SignUpPage extends StatelessWidget {
               ),
               const SizedBox(height: 25),
               CustomTextfield(
+                hintText: 'Enter your username',
+                isObscure: false,
+                controller: _nameController,
+              ),
+              const SizedBox(height: 15),
+              CustomTextfield(
                 hintText: 'Enter your email',
                 isObscure: false,
                 controller: _emailController,
               ),
-              const SizedBox(height: 5),
+              const SizedBox(height: 15),
               CustomTextfield(
                 hintText: 'Enter your password',
                 isObscure: true,
                 controller: _passwordController,
               ),
               const SizedBox(height: 15),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text('Forgot password?'),
-                ],
+              CustomTextfield(
+                hintText: 'Confirm your password',
+                isObscure: true,
+                controller: _passConfirmController,
               ),
               const SizedBox(height: 15),
               CustomButton(
@@ -61,11 +67,11 @@ class SignUpPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Don\'t have an account? '),
+                  const Text('Already have an account? '),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: onTap,
                     child: const Text(
-                      'Register here',
+                      'Login here',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
