@@ -25,15 +25,38 @@ class AuthController {
       displayMessage('Your passwords don\'t match', context);
     } else {
       try {
-        UserCredential? userCredential = _authService.registerUser(
+        UserCredential? userCredential = await _authService.registerUser(
           email: email,
           password: password,
         );
-        Navigator.pop(context);
+        if (context.mounted) Navigator.pop(context);
       } on FirebaseAuthException catch (e) {
         Navigator.pop(context);
         displayMessage(e.toString(), context);
       }
+    }
+  }
+
+  loginUser({
+    required BuildContext context,
+    required String password,
+    required String email,
+  }) async {
+    showDialog(
+      context: context,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+    try {
+      await _authService.loginUser(
+        email: email,
+        password: password,
+      );
+      if (context.mounted) Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      displayMessage(e.toString(), context);
     }
   }
 }

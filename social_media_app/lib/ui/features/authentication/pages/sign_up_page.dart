@@ -68,12 +68,14 @@ class _SignUpPageState extends State<SignUpPage> {
               const SizedBox(height: 15),
               CustomButton(
                 text: 'REGISTER',
-                onPressed: _authController.registerUser(
-                  context: context,
-                  password: _passwordController.text,
-                  confirmPassword: _passConfirmController.text,
-                  email: _emailController.text,
-                ),
+                onPressed: () {
+                  _authController.registerUser(
+                    context: context,
+                    password: _passwordController.text,
+                    confirmPassword: _passConfirmController.text,
+                    email: _emailController.text,
+                  );
+                },
               ),
               const SizedBox(height: 10),
               Row(

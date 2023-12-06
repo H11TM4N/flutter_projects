@@ -1,25 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:social_media_app/ui/features/pages.dart';
 
-class AuthToggle extends StatefulWidget {
+class AuthToggle extends HookWidget {
   const AuthToggle({super.key});
 
   @override
-  State<AuthToggle> createState() => _AuthToggleState();
-}
-
-class _AuthToggleState extends State<AuthToggle> {
-  bool _showLoginPage = true;
-
-  void toggleAuth() {
-    setState(() {
-      _showLoginPage = !_showLoginPage;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    if (_showLoginPage) {
+    final showLoginPage = useState(true);
+
+    toggleAuth() {
+      showLoginPage.value = !showLoginPage.value;
+    }
+
+    if (showLoginPage.value) {
       return LoginPage(onTap: toggleAuth);
     } else {
       return SignUpPage(onTap: toggleAuth);
