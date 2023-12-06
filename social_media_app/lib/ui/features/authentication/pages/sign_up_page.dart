@@ -70,6 +70,7 @@ class SignUpPage extends HookWidget {
                     password: _passwordController.text,
                     confirmPassword: _passConfirmController.text,
                     email: _emailController.text,
+                    username: _nameController.text,
                   );
                 },
               ),

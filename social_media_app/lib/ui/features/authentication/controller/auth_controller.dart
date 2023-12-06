@@ -6,6 +6,7 @@ import 'package:social_media_app/common/common.dart';
 import 'package:social_media_app/logic/services/services.dart';
 
 final _authService = AuthService();
+final _databaseService = DatabaseService();
 
 class AuthController {
   registerUser({
@@ -13,6 +14,7 @@ class AuthController {
     required String password,
     required String confirmPassword,
     required String email,
+    required String username,
   }) async {
     loadingDialog(context);
     if (password != confirmPassword) {
@@ -20,11 +22,20 @@ class AuthController {
       displayMessage('Your passwords don\'t match', context);
     } else {
       try {
-        //  UserCredential? userCredential =
-        await _authService.registerUser(
+        UserCredential? userCredential = await _authService.registerUser(
           email: email,
           password: password,
         );
+        if (userCredential != null) {
+          await _databaseService.addUserToDB(
+            userCredential: userCredential,
+            username: username,
+          );
+          if (context.mounted) Navigator.pop(context);
+        } else {
+          Navigator.pop(context);
+          displayMessage('Failed to register user. Please try again.', context);
+        }
         if (context.mounted) Navigator.pop(context);
       } on FirebaseAuthException catch (e) {
         Navigator.pop(context);
