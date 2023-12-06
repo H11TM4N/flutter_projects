@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_media_app/common/common.dart';
+import 'package:social_media_app/ui/features/authentication/controller/auth_controller.dart';
 import 'package:social_media_app/ui/features/pages.dart';
 import 'package:social_media_app/ui/widgets/widgets.dart';
 
@@ -9,6 +10,7 @@ class DrawerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
+    final authController = AuthController();
     return Drawer(
       backgroundColor: theme.background,
       child: Column(
@@ -23,7 +25,7 @@ class DrawerView extends StatelessWidget {
             text: 'H O M E',
             icon: Icons.home,
             onTap: () {
-              popAndNavigate(context, HomePage.routeName);
+              Navigator.pop(context);
             },
           ),
           DrawerTile(
@@ -46,7 +48,9 @@ class DrawerView extends StatelessWidget {
             child: DrawerTile(
               text: 'L O G O U T',
               icon: Icons.logout,
-              onTap: () {},
+              onTap: () {
+                authController.logoutUser(context: context);
+              },
             ),
           ),
         ],
