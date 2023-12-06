@@ -20,7 +20,8 @@ class AuthController {
       displayMessage('Your passwords don\'t match', context);
     } else {
       try {
-        UserCredential? userCredential = await _authService.registerUser(
+        //  UserCredential? userCredential =
+        await _authService.registerUser(
           email: email,
           password: password,
         );
