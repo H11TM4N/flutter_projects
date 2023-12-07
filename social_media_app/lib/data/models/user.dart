@@ -4,28 +4,23 @@ import 'dart:convert';
 class FirebaseUser {
   final String username;
   final String email;
-  final String password;
 
   const FirebaseUser({
     required this.username,
     required this.email,
-    required this.password,
   });
 
   FirebaseUser.empty()
       : username = '',
-        email = '',
-        password = '';
+        email = '';
 
   FirebaseUser copyWith({
     String? username,
     String? email,
-    String? password,
   }) {
     return FirebaseUser(
       username: username ?? this.username,
       email: email ?? this.email,
-      password: password ?? this.password,
     );
   }
 
@@ -33,7 +28,6 @@ class FirebaseUser {
     return <String, dynamic>{
       'username': username,
       'email': email,
-      'password': password,
     };
   }
 
@@ -41,7 +35,6 @@ class FirebaseUser {
     return FirebaseUser(
       username: map['username'] as String,
       email: map['email'] as String,
-      password: map['password'] as String,
     );
   }
 
@@ -51,18 +44,15 @@ class FirebaseUser {
       FirebaseUser.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() =>
-      'FirebaseUser(username: $username, email: $email, password: $password)';
+  String toString() => 'FirebaseUser(username: $username, email: $email)';
 
   @override
   bool operator ==(covariant FirebaseUser other) {
     if (identical(this, other)) return true;
 
-    return other.username == username &&
-        other.email == email &&
-        other.password == password;
+    return other.username == username && other.email == email;
   }
 
   @override
-  int get hashCode => username.hashCode ^ email.hashCode ^ password.hashCode;
+  int get hashCode => username.hashCode ^ email.hashCode;
 }

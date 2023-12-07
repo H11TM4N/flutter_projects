@@ -1,23 +1,25 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:social_media_app/logic/services/services.dart';
 import 'package:social_media_app/ui/features/authentication/controller/auth_controller.dart';
 import 'package:social_media_app/ui/widgets/widgets.dart';
 
-class SignUpPage extends HookWidget {
+class SignUpPage extends HookConsumerWidget {
   final void Function() onTap;
-  SignUpPage({super.key, required this.onTap});
-
-  final _nameController = useTextEditingController();
-  final _emailController = useTextEditingController();
-  final _passwordController = useTextEditingController();
-  final _passConfirmController = useTextEditingController();
-
-  final _authController = AuthController();
+  const SignUpPage({super.key, required this.onTap});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final nameController = useTextEditingController();
+    final emailController = useTextEditingController();
+    final passwordController = useTextEditingController();
+    final passConfirmController = useTextEditingController();
+
     final theme = Theme.of(context).colorScheme;
+    final databaseService = DatabaseService();
+    final authController = AuthController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: theme.background,
@@ -41,36 +43,40 @@ class SignUpPage extends HookWidget {
               CustomTextfield(
                 hintText: 'Enter your username',
                 isObscure: false,
-                controller: _nameController,
+                controller: nameController,
               ),
               const SizedBox(height: 15),
               CustomTextfield(
                 hintText: 'Enter your email',
                 isObscure: false,
-                controller: _emailController,
+                controller: emailController,
               ),
               const SizedBox(height: 15),
               CustomTextfield(
                 hintText: 'Enter your password',
                 isObscure: true,
-                controller: _passwordController,
+                controller: passwordController,
               ),
               const SizedBox(height: 15),
               CustomTextfield(
                 hintText: 'Confirm your password',
                 isObscure: true,
-                controller: _passConfirmController,
+                controller: passConfirmController,
               ),
               const SizedBox(height: 15),
               CustomButton(
                 text: 'REGISTER',
-                onPressed: () {
-                  _authController.registerUser(
+                onPressed: () async {
+                  await authController.registerUser(
                     context: context,
-                    password: _passwordController.text,
-                    confirmPassword: _passConfirmController.text,
-                    email: _emailController.text,
-                    username: _nameController.text,
+                    password: passwordController.text,
+                    confirmPassword: passConfirmController.text,
+                    email: emailController.text,
+                    username: nameController.text,
+                  );
+                  await databaseService.addUserToDB(
+                    username: nameController.text,
+                    email: emailController.text,
                   );
                 },
               ),
