@@ -8,15 +8,9 @@ class UsersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).colorScheme;
     final databaseService = DatabaseService();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('UsersPage'),
-        backgroundColor: theme.inversePrimary,
-        elevation: 0,
-      ),
       body: StreamBuilder(
         stream: databaseService.userCollection().snapshots(),
         builder: (context, snapshot) {
@@ -34,15 +28,30 @@ class UsersPage extends StatelessWidget {
           }
           final users = snapshot.data!.docs;
 
-          return ListView.builder(
-            itemCount: users.length,
-            itemBuilder: (context, index) {
-              final user = users[index];
-              return ListTile(
-                title: Text(user['username']),
-                subtitle: Text(user['email']),
-              );
-            },
+          return Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(top: 50.0, left: 25),
+                child: Row(
+                  children: [
+                    CustomBackButton(),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  padding: const EdgeInsets.all(0),
+                  itemCount: users.length,
+                  itemBuilder: (context, index) {
+                    final user = users[index];
+                    return ListTile(
+                      title: Text(user['username']),
+                      subtitle: Text(user['email']),
+                    );
+                  },
+                ),
+              ),
+            ],
           );
         },
       ),
