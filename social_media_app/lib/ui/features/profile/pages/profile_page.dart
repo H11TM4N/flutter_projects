@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_media_app/common/common.dart';
 import 'package:social_media_app/logic/services/database_service.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -11,11 +12,6 @@ class ProfilePage extends StatelessWidget {
     final databaseService = DatabaseService();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ProfilePage'),
-        backgroundColor: theme.inversePrimary,
-        elevation: 0,
-      ),
       body: FutureBuilder(
         future: databaseService.getUserData(),
         builder: (context, snapshot) {
@@ -26,12 +22,49 @@ class ProfilePage extends StatelessWidget {
           } else if (snapshot.hasData) {
             Map<String, dynamic>? user = snapshot.data!.data();
 
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(user!['email']),
-                Text(user['username']),
-              ],
+            return SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        CustomBackButton(),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: theme.primary,
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(12),
+                        ),
+                      ),
+                      padding: const EdgeInsets.all(30.0),
+                      child: const Icon(
+                        Icons.person_2,
+                        size: 50,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      user!['username'],
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    Text(
+                      user['email'],
+                      style: TextStyle(
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             );
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
