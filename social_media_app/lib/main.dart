@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
         AuthToggle.routeName: (context) => const AuthToggle(),
         UsersPage.routeName: (context) => const UsersPage(),
         ProfilePage.routeName: (context) => const ProfilePage(),
+        ConnectPage.routeName: (context) => const ConnectPage(),
       },
     );
   }
