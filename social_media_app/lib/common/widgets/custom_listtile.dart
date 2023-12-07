@@ -14,11 +14,9 @@ class CustomListTile extends StatelessWidget {
     final theme = Theme.of(context).colorScheme;
     return Padding(
       padding: const EdgeInsets.only(left: 8.0, right: 20, bottom: 10),
-      child: Container(
-        decoration: BoxDecoration(
-          color: theme.primary,
-          borderRadius: BorderRadius.circular(12),
-        ),
+      child: Card(
+        shadowColor: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         child: ListTile(
           title: Text(title),
           subtitle: Text(

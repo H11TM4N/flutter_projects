@@ -42,6 +42,13 @@ class DrawerView extends StatelessWidget {
               popAndNavigate(context, UsersPage.routeName);
             },
           ),
+          DrawerTile(
+            text: 'C O N N E C T',
+            icon: Icons.chat_bubble,
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
           const Spacer(),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),

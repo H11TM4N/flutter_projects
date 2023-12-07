@@ -18,7 +18,7 @@ class HomePage extends HookWidget {
     return Scaffold(
       backgroundColor: theme.background,
       appBar: AppBar(
-        title: const Text('Home Page'),
+        title: const Text('WORLD CHAT'),
         backgroundColor: Colors.transparent,
         foregroundColor: theme.inversePrimary,
         elevation: 0,
