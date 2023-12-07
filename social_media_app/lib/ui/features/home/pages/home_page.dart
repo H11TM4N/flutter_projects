@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:social_media_app/ui/features/home/controllers/post_controller.dart';
+import 'package:social_media_app/common/widgets/custom_listtile.dart';
+import 'package:social_media_app/logic/services/services.dart';
 import 'package:social_media_app/ui/features/pages.dart';
 import 'package:social_media_app/ui/widgets/widgets.dart';
 
@@ -11,8 +12,9 @@ class HomePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
-    final postController = PostController();
+    final databaseService = DatabaseService();
     final postTextController = useTextEditingController();
+
     return Scaffold(
       backgroundColor: theme.background,
       appBar: AppBar(
@@ -35,12 +37,51 @@ class HomePage extends HookWidget {
               ),
               PostButton(
                 onTap: () {
-                  postController.postMessage(postTextController.text);
+                  databaseService.addPost(postText: postTextController.text);
+                  postTextController.clear();
                 },
               ),
             ],
           ),
         ),
+        StreamBuilder(
+          stream: databaseService.getUserPosts(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            final posts = snapshot.data!.docs;
+
+            if (snapshot.data == null || posts.isEmpty) {
+              return const Center(
+                child: Padding(
+                  padding: EdgeInsets.all(25.0),
+                  child: Text('No posts...'),
+                ),
+              );
+            }
+            return Expanded(
+              child: ListView.builder(
+                itemCount: posts.length,
+                itemBuilder: (context, index) {
+                  final post = posts[index];
+
+                  String message = post['postText'];
+                  String userEmail = post['userEmail'];
+                  //* Timestamp timeStamp = post['TimeStamp'];
+
+                  return CustomListTile(
+                    title: message,
+                    subtitle: userEmail,
+                  );
+                },
+              ),
+            );
+          },
+        )
       ]),
       drawer: const DrawerView(),
     );
