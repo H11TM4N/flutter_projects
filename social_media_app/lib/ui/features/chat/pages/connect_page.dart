@@ -12,7 +12,7 @@ class ConnectPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final databaseService = DatabaseService();
+    final databaseService = PostService();
 
     return Scaffold(
       appBar: AppBar(
@@ -49,9 +49,7 @@ class ConnectPage extends StatelessWidget {
         onTap: () {
           rightToLeftNavigation(
             context,
-            ChatPage(
-                userEmail: FirebaseAuth.instance.currentUser!.email!,
-                userId: FirebaseAuth.instance.currentUser!.uid),
+            ChatPage(userEmail: data['email'], userId: data['uid']),
           );
         },
       );

@@ -12,7 +12,7 @@ class HomePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
-    final databaseService = DatabaseService();
+    final databaseService = PostService();
     final postTextController = useTextEditingController();
 
     return Scaffold(

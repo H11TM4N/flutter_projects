@@ -1,24 +1,21 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:social_media_app/logic/services/services.dart';
 import 'package:social_media_app/ui/features/authentication/controller/auth_controller.dart';
 import 'package:social_media_app/ui/widgets/widgets.dart';
 
-class SignUpPage extends HookConsumerWidget {
+class SignUpPage extends HookWidget {
   final void Function() onTap;
   const SignUpPage({super.key, required this.onTap});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final nameController = useTextEditingController();
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
     final passConfirmController = useTextEditingController();
 
     final theme = Theme.of(context).colorScheme;
-    final databaseService = DatabaseService();
     final authController = AuthController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -73,10 +70,6 @@ class SignUpPage extends HookConsumerWidget {
                     confirmPassword: passConfirmController.text,
                     email: emailController.text,
                     username: nameController.text,
-                  );
-                  await databaseService.addUserToDB(
-                    username: nameController.text,
-                    email: emailController.text,
                   );
                 },
               ),

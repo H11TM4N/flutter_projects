@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:provider/provider.dart';
 import 'package:social_media_app/firebase_options.dart';
+import 'package:social_media_app/logic/services/auth_service.dart';
 import 'package:social_media_app/theme/theme.dart';
 import 'package:social_media_app/ui/features/pages.dart';
 
@@ -10,9 +11,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const ProviderScope(
-    child: MyApp(),
-  ));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -20,19 +19,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Social Media App',
-      theme: lightMode,
-      darkTheme: darkMode,
-      home: const AuthPage(),
-      routes: {
-        HomePage.routeName: (context) => const HomePage(),
-        AuthToggle.routeName: (context) => const AuthToggle(),
-        UsersPage.routeName: (context) => const UsersPage(),
-        ProfilePage.routeName: (context) => const ProfilePage(),
-        ConnectPage.routeName: (context) => const ConnectPage(),
-      },
+    return ChangeNotifierProvider(
+      create: (context) => AuthService(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Social Media App',
+        theme: lightMode,
+        darkTheme: darkMode,
+        home: const AuthPage(),
+        routes: {
+          HomePage.routeName: (context) => const HomePage(),
+          AuthToggle.routeName: (context) => const AuthToggle(),
+          UsersPage.routeName: (context) => const UsersPage(),
+          ProfilePage.routeName: (context) => const ProfilePage(),
+          ConnectPage.routeName: (context) => const ConnectPage(),
+        },
+      ),
     );
   }
 }

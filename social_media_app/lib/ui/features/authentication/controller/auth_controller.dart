@@ -24,6 +24,7 @@ class AuthController {
         await _authService.registerUser(
           email: email,
           password: password,
+          username: username,
         );
         if (context.mounted) Navigator.pop(context);
       } on FirebaseAuthException catch (e) {

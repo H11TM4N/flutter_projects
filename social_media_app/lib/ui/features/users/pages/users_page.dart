@@ -8,7 +8,7 @@ class UsersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final databaseService = DatabaseService();
+    final databaseService = PostService();
 
     return Scaffold(
       body: StreamBuilder(
@@ -19,13 +19,15 @@ class UsersPage extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           }
-          if (snapshot.hasData) {}
+
           if (snapshot.hasError) {
             displayMessage("Something went wrong", context);
           }
-          if (snapshot.data == null) {
+
+          if (!snapshot.hasData || snapshot.data == null) {
             return const Center(child: Text('No data'));
           }
+
           final users = snapshot.data!.docs;
 
           return Column(

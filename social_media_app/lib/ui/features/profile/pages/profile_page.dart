@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:social_media_app/common/common.dart';
-import 'package:social_media_app/logic/services/database_service.dart';
+import 'package:social_media_app/logic/services/auth_service.dart';
 
 class ProfilePage extends StatelessWidget {
   static const routeName = '/profile page';
@@ -9,11 +10,9 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
-    final databaseService = DatabaseService();
-
     return Scaffold(
       body: FutureBuilder(
-        future: databaseService.getUserData(),
+        future: context.read<AuthService>().getUserData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
