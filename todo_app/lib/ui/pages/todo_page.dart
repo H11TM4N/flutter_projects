@@ -33,13 +33,21 @@ class _TodoPageState extends State<TodoPage> {
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: theme.secondary,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(12),
+          bottomRight: Radius.circular(12),
+        )),
         centerTitle: true,
         title: const Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.task_alt),
+            Icon(Icons.task_alt, color: Colors.white),
             SizedBox(width: 4),
-            Text('Todos'),
+            Text(
+              'Todos',
+              style: TextStyle(color: Colors.white),
+            ),
           ],
         ),
       ),
