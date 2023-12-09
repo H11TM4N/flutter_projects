@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app/widgets/textfield.dart';
-import 'package:todo_app/todo.dart';
+import 'package:todo_app/ui/widgets/textfield.dart';
+import 'package:todo_app/data/models/todo.dart';
 import 'package:todo_app/logic/blocs/todo_bloc/todo_bloc.dart';
 import 'package:todo_app/logic/blocs/todo_bloc/todo_state.dart';
-import 'package:todo_app/todo_repo.dart';
+import 'package:todo_app/logic/repositories/todo_repo.dart';
 import 'package:todo_app/ui/views/todo_view.dart';
 
 class TodoPage extends StatefulWidget {

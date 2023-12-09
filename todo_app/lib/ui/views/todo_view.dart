@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
-import 'package:todo_app/text_style.dart';
-import 'package:todo_app/tile.dart';
+import 'package:todo_app/common/utils/text_style.dart';
+import 'package:todo_app/ui/widgets/tile.dart';
 import 'package:todo_app/logic/blocs/todo_bloc/todo_bloc.dart';
 import 'package:todo_app/logic/blocs/todo_bloc/todo_state.dart';
-import 'package:todo_app/todo_repo.dart';
+import 'package:todo_app/logic/repositories/todo_repo.dart';
 
 class TodoView extends StatefulWidget {
   const TodoView({super.key});

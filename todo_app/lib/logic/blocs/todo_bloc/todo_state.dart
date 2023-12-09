@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_firs
 import 'package:equatable/equatable.dart';
-import 'package:todo_app/enums.dart';
-import 'package:todo_app/todo.dart';
+import 'package:todo_app/common/constants/enums.dart';
+import 'package:todo_app/data/models/todo.dart';
 
 class TodoState extends Equatable {
   final List<Todo> todos;

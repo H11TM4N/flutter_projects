@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app/enums.dart';
-import 'package:todo_app/todo.dart';
+import 'package:todo_app/common/constants/enums.dart';
+import 'package:todo_app/data/models/todo.dart';
 import 'package:todo_app/logic/blocs/todo_bloc/todo_event.dart';
 import 'package:todo_app/logic/blocs/todo_bloc/todo_state.dart';
 

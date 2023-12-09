@@ -1,4 +1,4 @@
-import 'package:todo_app/todo.dart';
+import 'package:todo_app/data/models/todo.dart';
 import 'package:todo_app/logic/blocs/todo_bloc/todo_bloc.dart';
 import 'package:todo_app/logic/blocs/todo_bloc/todo_event.dart';
 

@@ -17,7 +17,7 @@ class TodoApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'A simple todo app',
-        theme: ThemeData(),
+        theme: ThemeData.light().copyWith(useMaterial3: true),
         home: const TodoPage(),
       ),
     );
