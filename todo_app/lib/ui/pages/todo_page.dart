@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:todo_app/data/models/todo.dart';
+import 'package:todo_app/ui/pages/add_todo_page.dart';
 import 'package:todo_app/ui/views/todo_view.dart';
 import 'package:todo_app/ui/widgets/icon_button.dart';
 import 'package:todo_app/logic/blocs/todo_bloc/todo_bloc.dart';
@@ -53,7 +55,7 @@ class _TodoPageState extends State<TodoPage> {
               ],
             ),
             const SizedBox(height: 25),
-            Expanded(
+            const Expanded(
               child: Column(
                 children: [
                   Row(
@@ -85,7 +87,16 @@ class _TodoPageState extends State<TodoPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AddTodoPage(
+                    todo: Todo(
+                  title: controller.text,
+                )),
+              ));
+        },
         shape: const CircleBorder(),
         child: const Icon(Icons.add),
       ),
