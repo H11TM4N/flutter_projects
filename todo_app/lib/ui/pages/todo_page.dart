@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app/ui/widgets/textfield.dart';
-import 'package:todo_app/data/models/todo.dart';
-import 'package:todo_app/logic/blocs/todo_bloc/todo_bloc.dart';
-import 'package:todo_app/logic/blocs/todo_bloc/todo_state.dart';
-import 'package:todo_app/logic/repositories/todo_repo.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:todo_app/ui/views/todo_view.dart';
+import 'package:todo_app/ui/widgets/icon_button.dart';
+import 'package:todo_app/logic/blocs/todo_bloc/todo_bloc.dart';
+import 'package:todo_app/logic/repositories/todo_repo.dart';
 
 class TodoPage extends StatefulWidget {
   const TodoPage({super.key});
@@ -28,80 +27,67 @@ class _TodoPageState extends State<TodoPage> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).colorScheme;
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: AppBar(
-        backgroundColor: theme.secondary,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(12),
-          bottomRight: Radius.circular(12),
-        )),
-        centerTitle: true,
-        title: const Row(
-          mainAxisSize: MainAxisSize.min,
+      backgroundColor: const Color(0xffF5F7F8),
+      body: SafeArea(
+        child: Column(
           children: [
-            Icon(Icons.task_alt, color: Colors.white),
-            SizedBox(width: 4),
-            Text(
-              'Todos',
-              style: TextStyle(color: Colors.white),
+            Row(
+              children: [
+                DrawerButton(
+                  onPressed: () {},
+                  style: const ButtonStyle(
+                      iconSize: MaterialStatePropertyAll(28),
+                      iconColor: MaterialStatePropertyAll(Color(0xff96B6C5))),
+                ),
+                const Spacer(),
+                CustomIconButton(
+                  onPressed: () {},
+                  icon: FontAwesomeIcons.magnifyingGlass,
+                ),
+                CustomIconButton(
+                  onPressed: () {},
+                  icon: FontAwesomeIcons.bell,
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
-      backgroundColor: theme.background,
-      body: BlocBuilder<TodoBloc, TodoState>(
-        builder: (context, state) {
-          return Column(
-            children: [
-              const Expanded(
-                child: TodoView(),
-              ),
-              ClipRRect(
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(12),
-                    topRight: Radius.circular(12)),
-                child: Container(
-                  color: theme.primary,
-                  child: Row(
+            const SizedBox(height: 25),
+            Expanded(
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Expanded(
-                          child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: KtextField(
-                                  controller: controller,
-                                  hintText: 'Enter your task todo'))),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 8),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            _todoRepository.addTodo(
-                              Todo(
-                                title: controller.text,
-                              ),
-                            );
-                            controller.clear();
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(5),
-                              ),
-                            ),
-                          ),
-                          child: const Text('add'),
+                      Text(
+                        'What\'s up, Jerry!',
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
                   ),
-                ),
-              )
-            ],
-          );
-        },
+                  SizedBox(height: 35),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text('PROGRESS'),
+                    ],
+                  ),
+                  SizedBox(height: 25),
+                  Expanded(child: TodoView())
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        shape: const CircleBorder(),
+        child: const Icon(Icons.add),
       ),
     );
   }

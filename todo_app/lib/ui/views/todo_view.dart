@@ -26,7 +26,6 @@ class _TodoViewState extends State<TodoView> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).colorScheme;
     return BlocBuilder<TodoBloc, TodoState>(
       builder: (ctx, state) {
         if (state.todos.isNotEmpty) {
@@ -34,33 +33,13 @@ class _TodoViewState extends State<TodoView> {
             itemCount: state.todos.length,
             itemBuilder: (ctx, index) {
               final todo = state.todos[index];
-              return Row(
-                children: [
-                  Checkbox(
-                    shape: const CircleBorder(),
-                    checkColor: theme.background,
-                    value: todo.isCompleted,
-                    onChanged: (value) {
-                      value = todo.isCompleted;
-                      todoRepository.toggleCompletion(index);
-                    },
-                  ),
-                  Expanded(
-                    child: KtodoTile(
-                      title: todo.title,
-                      onRemove: () {
-                        todoRepository.removeTodo(todo);
-                      },
-                      toggleCompletion: () {
-                        todoRepository.toggleCompletion(index);
-                      },
-                      isCompleted: todo.isCompleted,
-                      tileColor: todo.isCompleted
-                          ? const Color(0xff61677A)
-                          : theme.secondary,
-                    ),
-                  ),
-                ],
+              return KtodoTile(
+                title: todo.title,
+                onChanged: (value) {
+                  value = todo.isCompleted;
+                  todoRepository.toggleCompletion(index);
+                },
+                isCompleted: todo.isCompleted,
               );
             },
           );
