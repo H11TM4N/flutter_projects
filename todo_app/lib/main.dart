@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app/logic/blocs/todo_bloc/todo_bloc.dart';
-import 'package:todo_app/ui/pages/todo_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/ui/theme/theme.dart';
+import 'ui/pages.dart';
 
 void main() {
-  runApp(const TodoApp());
+  runApp(
+    const ProviderScope(
+      child: TodoApp(),
+    ),
+  );
 }
 
 class TodoApp extends StatelessWidget {
@@ -12,14 +16,12 @@ class TodoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => TodoBloc(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'A simple todo app',
-        theme: ThemeData.light().copyWith(useMaterial3: true),
-        home: const TodoPage(),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'A simple todo app',
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      home: const HomePage(),
     );
   }
 }

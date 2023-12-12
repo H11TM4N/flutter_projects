@@ -1,6 +1,5 @@
-enum TodoStatus {
+enum TaskStatus {
   initial,
-  loading,
   success,
   failure,
 }
