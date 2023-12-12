@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Theme.of(context).colorScheme.primary,
         currentIndex: _currentIndex,
         onTap: _onTap,
         type: BottomNavigationBarType.fixed,

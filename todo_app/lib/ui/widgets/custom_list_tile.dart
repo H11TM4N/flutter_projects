@@ -13,8 +13,21 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0,
+    return Container(
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.blue,
+              Colors.deepPurple,
+            ],
+          ),
+          boxShadow: [
+            BoxShadow(
+                // blurRadius: 20.0,
+                // color: Colors.purple,
+                ),
+          ],
+          borderRadius: BorderRadius.all(Radius.circular(15))),
       child: ListTile(
         leading: Checkbox(
           shape: const CircleBorder(),
