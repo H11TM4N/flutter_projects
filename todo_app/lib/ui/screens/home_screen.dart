@@ -15,6 +15,7 @@ class HomeScreen extends ConsumerWidget {
     TextEditingController taskController = TextEditingController();
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Column(
           children: [
@@ -32,24 +33,33 @@ class HomeScreen extends ConsumerWidget {
                       showModalBottomSheet(
                         backgroundColor: theme.primary,
                         context: context,
+                        isScrollControlled: true,
                         builder: (context) {
-                          return Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              CustomTextField(
-                                controller: taskController,
+                          return SingleChildScrollView(
+                            child: Container(
+                              padding: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).viewInsets.bottom,
                               ),
-                              CustomButton(
-                                onTap: () {
-                                  ref.read(taskProvider.notifier).addTask(
-                                        Task(
-                                          title: taskController.text,
-                                        ),
-                                      );
-                                },
-                                title: 'add task',
-                              )
-                            ],
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  CustomTextField(
+                                    controller: taskController,
+                                  ),
+                                  CustomButton(
+                                    onTap: () {
+                                      ref.read(taskProvider.notifier).addTask(
+                                            Task(
+                                              title: taskController.text,
+                                            ),
+                                          );
+                                    },
+                                    title: 'add task',
+                                  )
+                                ],
+                              ),
+                            ),
                           );
                         },
                       );

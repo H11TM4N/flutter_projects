@@ -23,6 +23,7 @@ class CustomButton extends StatelessWidget {
           shape: BoxShape.rectangle,
         ),
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+        margin: const EdgeInsets.only(bottom: 8),
         child: Text(title),
       ),
     );
