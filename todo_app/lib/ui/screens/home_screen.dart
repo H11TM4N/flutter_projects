@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_app/models/task.dart';
 import 'package:todo_app/providers/task_provider.dart';
+import 'package:todo_app/ui/widgets/custom_button.dart';
 import 'package:todo_app/ui/widgets/custom_list_tile.dart';
 import 'package:todo_app/ui/widgets/custom_textfield.dart';
 
@@ -29,6 +30,7 @@ class HomeScreen extends ConsumerWidget {
                   IconButton.filled(
                     onPressed: () {
                       showModalBottomSheet(
+                        backgroundColor: theme.primary,
                         context: context,
                         builder: (context) {
                           return Column(
@@ -37,16 +39,16 @@ class HomeScreen extends ConsumerWidget {
                               CustomTextField(
                                 controller: taskController,
                               ),
-                              ElevatedButton(
-                                onPressed: () {
+                              CustomButton(
+                                onTap: () {
                                   ref.read(taskProvider.notifier).addTask(
                                         Task(
                                           title: taskController.text,
                                         ),
                                       );
                                 },
-                                child: const Text('Add'),
-                              ),
+                                title: 'add task',
+                              )
                             ],
                           );
                         },

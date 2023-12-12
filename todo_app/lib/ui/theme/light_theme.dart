@@ -5,7 +5,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   colorScheme: const ColorScheme.light(
     primary: Color(0xff89CFF3),
     secondary: Color(0xff427D9D),
-    background: Color(0xff),
+    background: Color(0xff749BC2),
   ),
   useMaterial3: true,
 );
