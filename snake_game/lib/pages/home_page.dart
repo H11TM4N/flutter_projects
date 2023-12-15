@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:snake_game/common/enums.dart';
 import 'package:snake_game/widgets/snake.dart';
+import 'package:snake_game/widgets/start_button.dart';
 
 class GameBoard extends StatefulWidget {
   const GameBoard({super.key});
@@ -16,6 +17,8 @@ class _GameBoardState extends State<GameBoard> {
   final List<int> _snakePos = [0, 1, 2, 3];
 
   Direction snakeDirection = Direction.left;
+
+  void startGame() {}
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +40,7 @@ class _GameBoardState extends State<GameBoard> {
               },
             ),
           ),
+          StartButton(onTap: () {})
         ],
       ),
     );
