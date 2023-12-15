@@ -5,6 +5,7 @@ import 'package:todo_app/providers/task_provider.dart';
 import 'package:todo_app/ui/widgets/custom_button.dart';
 import 'package:todo_app/ui/widgets/custom_list_tile.dart';
 import 'package:todo_app/ui/widgets/custom_textfield.dart';
+import 'package:todo_app/ui/widgets/slidable.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -54,6 +55,7 @@ class HomeScreen extends ConsumerWidget {
                                               title: taskController.text,
                                             ),
                                           );
+                                      taskController.clear();
                                     },
                                     title: 'add task',
                                   )
@@ -76,15 +78,20 @@ class HomeScreen extends ConsumerWidget {
                   itemCount: ref.watch(taskProvider).tasks.length,
                   itemBuilder: (context, index) {
                     final tasks = ref.watch(taskProvider).tasks;
-                    return CustomListTile(
-                      title: tasks[index].title,
-                      isCompleted: tasks[index].isCompleted,
-                      onChanged: (_) {
-                        ref.read(taskProvider.notifier).toggleCompleted(
-                              index,
-                              tasks[index],
-                            );
+                    return CustomSlidable(
+                      onPressed: (context) {
+                        ref.read(taskProvider.notifier).removeTask(index);
                       },
+                      child: CustomListTile(
+                        title: tasks[index].title,
+                        isCompleted: tasks[index].isCompleted,
+                        onChanged: (_) {
+                          ref.read(taskProvider.notifier).toggleCompleted(
+                                index,
+                                tasks[index],
+                              );
+                        },
+                      ),
                     );
                   },
                 ),

@@ -42,6 +42,8 @@ class CustomListTile extends StatelessWidget {
               decoration: isCompleted
                   ? TextDecoration.lineThrough
                   : TextDecoration.none,
+              fontSize: 17,
+              color: isCompleted ? Colors.grey.shade500 : null,
             ),
           ),
           contentPadding: const EdgeInsets.all(8.0),

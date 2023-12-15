@@ -36,6 +36,7 @@ class _HomePageState extends State<HomePage> {
           currentIndex: _currentIndex,
           onTap: _onTap,
           type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.white,
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'profile')
