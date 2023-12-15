@@ -13,43 +13,40 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.blue,
-                Colors.deepPurple,
-              ],
-            ),
-            boxShadow: [
-              BoxShadow(
-                  // blurRadius: 20.0,
-                  // color: Colors.purple,
-                  ),
+    return Container(
+      // margin: const EdgeInsets.symmetric(vertical: 8),
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.blue,
+              Colors.deepPurple,
             ],
-            borderRadius: BorderRadius.all(Radius.circular(15))),
-        child: ListTile(
-          leading: Checkbox(
-            shape: const CircleBorder(),
-            onChanged: onChanged,
-            value: isCompleted,
           ),
-          title: Text(
-            title,
-            style: TextStyle(
-              decoration: isCompleted
-                  ? TextDecoration.lineThrough
-                  : TextDecoration.none,
-              fontSize: 17,
-              color: isCompleted ? Colors.grey.shade500 : null,
-            ),
+          boxShadow: [
+            BoxShadow(
+                // blurRadius: 20.0,
+                // color: Colors.purple,
+                ),
+          ],
+          borderRadius: BorderRadius.all(Radius.circular(15))),
+      child: ListTile(
+        leading: Checkbox(
+          shape: const CircleBorder(),
+          onChanged: onChanged,
+          value: isCompleted,
+        ),
+        title: Text(
+          title,
+          style: TextStyle(
+            decoration:
+                isCompleted ? TextDecoration.lineThrough : TextDecoration.none,
+            fontSize: 17,
+            color: isCompleted ? Colors.grey.shade500 : null,
           ),
-          contentPadding: const EdgeInsets.all(8.0),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
+        ),
+        contentPadding: const EdgeInsets.all(8.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
         ),
       ),
     );
