@@ -38,7 +38,8 @@ class _HomePageState extends State<HomePage> {
           type: BottomNavigationBarType.fixed,
           selectedItemColor: Colors.white,
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.list_alt_rounded), label: 'tasks'),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'profile')
           ],
         ),

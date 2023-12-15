@@ -58,9 +58,13 @@ class ProfileScreen extends ConsumerWidget {
                         radius: 40.0,
                         animation: true,
                         lineWidth: 5.0,
-                        percent: completed.length / tasks.length,
+                        percent: (completed.length / tasks.length).isNaN
+                            ? 0
+                            : completed.length / tasks.length,
                         center: Text(
-                          "${(completed.length / tasks.length * 100).toInt()}%",
+                          (completed.length / tasks.length * 100).isNaN
+                              ? '0%'
+                              : '${(completed.length / tasks.length * 100).toInt()}%',
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 17,

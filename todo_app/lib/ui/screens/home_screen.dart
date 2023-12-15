@@ -25,7 +25,7 @@ class HomeScreen extends ConsumerWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Todos',
+                  const Text('Tasks',
                       style: TextStyle(
                         fontSize: 26,
                       )),
