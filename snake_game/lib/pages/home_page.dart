@@ -31,14 +31,14 @@ class _GameBoardState extends State<GameBoard> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          const SizedBox(height: 40),
-          Expanded(
-            child: GestureDetector(
-              onVerticalDragUpdate: onVerticalDragUpdate,
-              onHorizontalDragUpdate: onHorizontalDragUpdate,
+    return GestureDetector(
+      onVerticalDragUpdate: onVerticalDragUpdate,
+      onHorizontalDragUpdate: onHorizontalDragUpdate,
+      child: Scaffold(
+        body: Column(
+          children: [
+            const SizedBox(height: 40),
+            Expanded(
               child: GridView.builder(
                 itemCount: _rowCount * _colCount,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -52,16 +52,17 @@ class _GameBoardState extends State<GameBoard> {
                 },
               ),
             ),
-          ),
-          StartButton(
-            onTap: startGame,
-          )
-        ],
+            StartButton(
+              onTap: startGame,
+            )
+          ],
+        ),
       ),
     );
   }
 
-  void onHorizontalDragUpdate(details) {
+  void onHorizontalDragUpdate(DragUpdateDetails details) {
+    print("Horizontal drag update: ${details.primaryDelta}");
     if (details.primaryDelta! > 0 && _snakeDirection != Direction.left) {
       _snakeDirection = Direction.right;
     } else if (details.primaryDelta! < 0 &&
@@ -70,7 +71,8 @@ class _GameBoardState extends State<GameBoard> {
     }
   }
 
-  void onVerticalDragUpdate(details) {
+  void onVerticalDragUpdate(DragUpdateDetails details) {
+    print("Vertical drag update: ${details.primaryDelta}");
     if (details.primaryDelta! > 0 && _snakeDirection != Direction.up) {
       _snakeDirection = Direction.down;
     } else if (details.primaryDelta! < 0 && _snakeDirection != Direction.down) {
