@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/common/db/boxes.dart';
 import 'package:todo_app/models/task.dart';
 
 class UserTasks {
@@ -23,15 +24,17 @@ final taskProvider = StateNotifierProvider<TaskNotifier, UserTasks>((ref) {
 });
 
 class TaskNotifier extends StateNotifier<UserTasks> {
-  TaskNotifier() : super(UserTasks(tasks: []));
+  TaskNotifier() : super(UserTasks(tasks: [])) {
+    state = state.copyWith(tasks: taskBox.values.toList());
+  }
 
   void addTask(Task task) {
     try {
-      List<Task> temp = List.from(state.tasks);
-      temp.insert(0, task);
-      state = state.copyWith(
-        tasks: temp,
+      taskBox.put(
+        'key ${task.title}',
+        task,
       );
+      state = state.copyWith(tasks: taskBox.values.toList());
     } catch (e) {
       throw 'An unexpected error occured';
     }
@@ -39,10 +42,9 @@ class TaskNotifier extends StateNotifier<UserTasks> {
 
   void removeTask(int index) {
     try {
-      List<Task> temp = List.from(state.tasks);
-      temp.removeAt(index);
+      taskBox.deleteAt(index);
       state = state.copyWith(
-        tasks: temp,
+        tasks: taskBox.values.toList(),
       );
     } catch (e) {
       throw 'An unexpected error occured';
@@ -51,12 +53,10 @@ class TaskNotifier extends StateNotifier<UserTasks> {
 
   void toggleCompleted(int index, Task task) {
     try {
-      List<Task> temp = List.from(state.tasks);
-      temp[index] = task.copyWith(
-        isCompleted: !task.isCompleted,
-      );
+      task.isCompleted = !task.isCompleted;
+      taskBox.putAt(index, task);
       state = state.copyWith(
-        tasks: temp,
+        tasks: taskBox.values.toList(),
       );
     } catch (e) {
       throw 'An unexpected error occured';
