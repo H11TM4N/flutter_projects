@@ -7,11 +7,16 @@ import 'package:todo_app/ui/widgets/custom_list_tile.dart';
 import 'package:todo_app/ui/widgets/custom_textfield.dart';
 import 'package:todo_app/ui/widgets/slidable.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  @override
+  Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
     TextEditingController taskController = TextEditingController();
 
