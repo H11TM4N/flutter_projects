@@ -30,13 +30,14 @@ class TaskNotifier extends StateNotifier<UserTasks> {
 
   void addTask(Task task) {
     try {
+      final int newIndex = state.tasks.length;
       taskBox.put(
-        'key ${task.title}',
+        newIndex,
         task,
       );
       state = state.copyWith(tasks: taskBox.values.toList());
     } catch (e) {
-      throw 'An unexpected error occured';
+      throw 'An unexpected error occurred';
     }
   }
 
