@@ -18,11 +18,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Expense Tracker App',
       darkTheme: ThemeData.dark().copyWith(
-        useMaterial3: true,
         colorScheme: kDarkColorScheme,
       ),
       theme: ThemeData().copyWith(
-        useMaterial3: true,
         colorScheme: kColorScheme,
         appBarTheme: const AppBarTheme().copyWith(
           backgroundColor: kColorScheme.onPrimaryContainer,
