@@ -7,5 +7,4 @@ ThemeData lightTheme = ThemeData.light().copyWith(
       secondary: Color(0xff427D9D),
       background: Color(0xff749BC2),
       tertiary: Colors.white70),
-  useMaterial3: true,
 );

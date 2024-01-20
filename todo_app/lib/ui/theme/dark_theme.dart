@@ -8,5 +8,4 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
     background: Color(0xff4F709C),
     tertiary: Color(0xff213555),
   ),
-  useMaterial3: true,
 );
