@@ -1,4 +1,0 @@
-1.) create a variable that stores the converted value
-2.) create a function that multiplies the value given by the text
-3.) store a the value in the variable we created
-4.) display the variable.
