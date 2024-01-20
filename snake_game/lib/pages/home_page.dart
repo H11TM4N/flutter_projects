@@ -62,7 +62,7 @@ class _GameBoardState extends State<GameBoard> {
   }
 
   void onHorizontalDragUpdate(DragUpdateDetails details) {
-    print("Horizontal drag update: ${details.primaryDelta}");
+    // print("Horizontal drag update: ${details.primaryDelta}");
     if (details.primaryDelta! > 0 && _snakeDirection != Direction.left) {
       _snakeDirection = Direction.right;
     } else if (details.primaryDelta! < 0 &&
@@ -72,7 +72,7 @@ class _GameBoardState extends State<GameBoard> {
   }
 
   void onVerticalDragUpdate(DragUpdateDetails details) {
-    print("Vertical drag update: ${details.primaryDelta}");
+    // print("Vertical drag update: ${details.primaryDelta}");
     if (details.primaryDelta! > 0 && _snakeDirection != Direction.up) {
       _snakeDirection = Direction.down;
     } else if (details.primaryDelta! < 0 && _snakeDirection != Direction.down) {
