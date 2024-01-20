@@ -16,7 +16,6 @@ class _HomePageState extends State<HomePage> {
     ProductList(),
     CardPage(),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
