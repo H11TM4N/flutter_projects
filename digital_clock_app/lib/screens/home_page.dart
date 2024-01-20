@@ -1,20 +1,46 @@
-import 'package:digital_clock_app/providers/bottom_nav_provider.dart';
+import 'package:digital_clock_app/providers/clock_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class MainPage extends StatelessWidget {
-  const MainPage({super.key});
+class ClockScreen extends StatelessWidget {
+  const ClockScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    BottomNavBarProvider bottomNavbarProvider =
-        Provider.of<BottomNavBarProvider>(context);
+    ClockProvider clockProvider = Provider.of<ClockProvider>(context);
+
     return Scaffold(
-      body: IndexedStack(
-        index: bottomNavbarProvider.currentPage,
-        children: bottomNavbarProvider.pages,
+      appBar: AppBar(
+        title: const Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Text(
+            'Clock',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
       ),
-      bottomNavigationBar: bottomNavbarProvider.bottomNavBar(),
+      body: Center(
+        child: Column(
+          children: [
+            Text(
+              clockProvider.currentTime,
+              style: TextStyle(
+                fontSize: MediaQuery.of(context).size.width * 0.21,
+                color: Colors.white,
+              ),
+            ),
+            Text(
+              clockProvider.currentDate,
+              style: const TextStyle(
+                fontSize: 25.0,
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
