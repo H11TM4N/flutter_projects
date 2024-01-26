@@ -1,3 +1,4 @@
+import 'package:advice_generator/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class LoadingWidget extends StatelessWidget {
@@ -5,8 +6,13 @@ class LoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: CircularProgressIndicator.adaptive(),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 30),
+      child: Center(
+        child: CircularProgressIndicator.adaptive(
+          backgroundColor: neonGreen.toColor(),
+        ),
+      ),
     );
   }
 }
