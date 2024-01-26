@@ -1,6 +1,6 @@
 # advice_generator
 
-A new Flutter project.
+A simple responsive app that displays random advices
 
 ## Getting Started
 
