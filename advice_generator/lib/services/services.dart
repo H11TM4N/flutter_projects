@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static Future<List<dynamic>> getAdviceData() async {
+  static Future<Map<String, dynamic>> getAdviceData() async {
     try {
       final res = await http.get(
         Uri.parse('https://api.adviceslip.com/advice'),
@@ -19,3 +19,4 @@ class ApiService {
     }
   }
 }
+

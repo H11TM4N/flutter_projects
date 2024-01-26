@@ -10,7 +10,7 @@ class MobileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: darkBlue.toColor(),
       body: const Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: EdgeInsets.symmetric(horizontal: 12.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
