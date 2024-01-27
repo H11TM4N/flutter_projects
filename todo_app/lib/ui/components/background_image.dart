@@ -9,10 +9,11 @@ class BackgroundImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (isMobile) {
-      return Image.asset('assets/images/bg-mobile-light.jpg');
-    } else {
-      return Image.asset('assets/images/bg-desktop-light.jpg');
-    }
+    return SizedBox(
+      // width: MediaQuery.of(context).size.width,
+      child: isMobile
+          ? Image.asset('assets/images/bg-mobile-light.jpg')
+          : Image.asset('assets/images/bg-desktop-light.jpg'),
+    );
   }
 }
