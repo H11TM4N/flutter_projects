@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_app/common/db/boxes.dart';
+import 'package:todo_app/ui/pages/pages.dart';
 import 'package:todo_app/ui/theme/theme.dart';
 import 'models/task.dart';
-import 'ui/pages.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -28,7 +28,10 @@ class TodoApp extends StatelessWidget {
       title: 'A simple todo app',
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: const HomePage(),
+      home: const HomePage(
+        mobilePage: MobilePage(),
+        webPage: WebPage(),
+      ),
     );
   }
 }
