@@ -25,7 +25,7 @@ class TodoTextField extends StatelessWidget {
         ),
         contentPadding: EdgeInsets.zero,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(5),
           borderSide: BorderSide.none,
         ),
       ),

@@ -9,11 +9,17 @@ class TodoListView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final todos = ref.watch(taskProvider).tasks;
-    return Expanded(
-      child: ListView.builder(
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * .5,
+      child: ListView.separated(
         itemCount: todos.length,
+        separatorBuilder: (context, index) => const Divider(
+          height: 1,
+          thickness: 0.3,
+        ),
         itemBuilder: (context, index) {
           return TodoTile(
+            isFirst: index == 0,
             title: todos[index].title,
             isCompleted: todos[index].isCompleted,
           );

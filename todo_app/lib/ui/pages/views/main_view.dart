@@ -14,6 +14,7 @@ class MainView extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    final theme = Theme.of(context).colorScheme;
     final isDarkMode = ref.watch(themeProvider);
     final textController = useTextEditingController();
 
@@ -41,8 +42,11 @@ class MainView extends HookConsumerWidget {
                 );
           },
         ),
+        const SizedBox(height: 10),
+        const TodoListView(),
+        const MobileBottomContainer(),
         const SizedBox(height: 20),
-        const TodoListView()
+        const MobileBottomContainer2(),
       ],
     );
   }
