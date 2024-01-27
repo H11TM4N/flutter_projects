@@ -11,7 +11,7 @@ const checkBackground = [
 
 //* # Light Theme
 const veryLightGray = HSLColor.fromAHSL(1.0, 0, 0, 0.98);
-const veryLightGreyishBlue = HSLColor.fromAHSL(1.0, 236, 0.33, 0.92);
+const veryLightGrayishBlue = HSLColor.fromAHSL(1.0, 236, 0.33, 0.92);
 const lightGrayishBlue = HSLColor.fromAHSL(1.0, 233, 0.11, 0.84);
 const darkGrayishBlue = HSLColor.fromAHSL(1.0, 236, 0.9, 0.61);
 const veryDarkGrayishBlue = HSLColor.fromAHSL(1.0, 235, 0.19, 0.35);

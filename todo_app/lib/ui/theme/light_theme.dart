@@ -6,7 +6,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   colorScheme: ColorScheme.light(
     primary: const Color(0xff89CFF3),
     secondary: const Color(0xff427D9D),
-    background: veryLightGray.toColor(),
+    background: veryLightGrayishBlue.toColor(),
     tertiary: Colors.white70,
   ),
 );
