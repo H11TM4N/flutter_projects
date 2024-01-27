@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/ui/components/components.dart';
+import 'package:todo_app/ui/pages/views/todo_view.dart';
 
 class MobilePage extends StatelessWidget {
   const MobilePage({super.key});
@@ -14,6 +15,10 @@ class MobilePage extends StatelessWidget {
               BackgroundImage(isMobile: true),
             ],
           ),
+          Padding(
+            padding: EdgeInsets.only(left: 50, right: 50, top: 20, bottom: 10),
+            child: TodoView(),
+          )
         ],
       ),
     );

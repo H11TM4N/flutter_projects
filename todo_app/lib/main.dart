@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_app/common/db/boxes.dart';
+import 'package:todo_app/providers/theme_provider.dart';
 import 'package:todo_app/ui/pages/pages.dart';
 import 'package:todo_app/ui/theme/theme.dart';
 import 'models/task.dart';
@@ -18,16 +19,16 @@ void main() async {
   );
 }
 
-class TodoApp extends StatelessWidget {
+class TodoApp extends ConsumerWidget {
   const TodoApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    final isDarkMode = ref.watch(themeProvider);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'A simple todo app',
-      theme: lightTheme,
-      darkTheme: darkTheme,
+      theme: isDarkMode ? darkTheme : lightTheme,
       home: const HomePage(
         mobilePage: MobilePage(),
         webPage: WebPage(),
