@@ -5,8 +5,9 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   scaffoldBackgroundColor: const Color(0xff232D3F),
   colorScheme: ColorScheme.dark(
     primary: veryDarkDesatratedBlue.toColor(),
-    secondary: const Color(0xff04364A),
+    secondary: lightGrayishBlue2.toColor(),
     background: veryDarkBlue.toColor(),
-    tertiary: const Color(0xff213555),
+    tertiary: darkGrayishBlue2.toColor(),
+    onTertiary: veryDarkGrayishBlue2.toColor(),
   ),
 );

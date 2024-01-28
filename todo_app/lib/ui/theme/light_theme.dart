@@ -5,8 +5,9 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   scaffoldBackgroundColor: const Color(0xffDDF2FD),
   colorScheme: ColorScheme.light(
     primary: veryLightGray.toColor(),
-    secondary: const Color(0xff427D9D),
+    secondary: veryDarkGrayishBlue.toColor(),
     background: veryLightGrayishBlue.toColor(),
-    tertiary: Colors.white70,
+    tertiary: lightGrayishBlue.toColor(),
+    onTertiary: veryLightGrayishBlue.toColor(),
   ),
 );

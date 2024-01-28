@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TodoTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -15,14 +17,20 @@ class TodoTextField extends StatelessWidget {
 
     return TextField(
       controller: controller,
+      cursorColor: Colors.grey.shade700,
       decoration: InputDecoration(
         filled: true,
         fillColor: theme.primary,
-        prefixIcon: const Icon(Icons.check_box_outline_blank),
+        prefixIcon: Icon(
+          CupertinoIcons.checkmark_alt_circle,
+          color: theme.tertiary,
+        ),
         suffixIcon: GestureDetector(
           onTap: onTap,
           child: const Icon(Icons.add),
         ),
+        labelText: 'Create a new todo...',
+        labelStyle: GoogleFonts.josefinSans(color: theme.tertiary),
         contentPadding: EdgeInsets.zero,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),

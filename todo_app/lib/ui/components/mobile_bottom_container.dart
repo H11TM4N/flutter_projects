@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MobileBottomContainer extends StatelessWidget {
-  const MobileBottomContainer({super.key});
+  final int notCompleted;
+  const MobileBottomContainer({
+    super.key,
+    required this.notCompleted,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).colorScheme;
+    final textStyle = GoogleFonts.josefinSans(
+      color: theme.tertiary,
+    );
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primary,
@@ -13,13 +22,19 @@ class MobileBottomContainer extends StatelessWidget {
         ),
         border: const Border(top: BorderSide(color: Colors.white24)),
       ),
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 18),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 18),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('5 items left'),
-            Text('Clear completed'),
+            Text(
+              '$notCompleted items left',
+              style: textStyle,
+            ),
+            Text(
+              'Clear completed',
+              style: textStyle,
+            ),
           ],
         ),
       ),

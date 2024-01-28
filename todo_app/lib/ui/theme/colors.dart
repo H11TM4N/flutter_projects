@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 const brightBlue = HSLColor.fromAHSL(1.0, 220, 0.98, 0.61);
 
-const checkBackground = [
-  HSLColor.fromAHSL(1.0, 192, 1.0, 0.67),
-  HSLColor.fromAHSL(1.0, 280, 0.87, 0.65),
+List<Color> checkboxGradient = [
+  const HSLColor.fromAHSL(1.0, 192, 1.0, 0.67).toColor(),
+  const HSLColor.fromAHSL(1.0, 280, 0.87, 0.65).toColor(),
 ];
 
 //* # Light Theme

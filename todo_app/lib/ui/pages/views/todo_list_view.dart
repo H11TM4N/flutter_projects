@@ -9,20 +9,28 @@ class TodoListView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final todos = ref.watch(taskProvider).tasks;
-    return SizedBox(
+    return Container(
       height: MediaQuery.of(context).size.height * .5,
-      child: ListView.separated(
+      color: Theme.of(context).colorScheme.primary,
+      child: ReorderableListView.builder(
         itemCount: todos.length,
-        separatorBuilder: (context, index) => const Divider(
-          height: 1,
-          thickness: 0.3,
-        ),
         itemBuilder: (context, index) {
+          final todo = todos[index];
           return TodoTile(
+            key: ValueKey(index),
             isFirst: index == 0,
-            title: todos[index].title,
-            isCompleted: todos[index].isCompleted,
+            title: todo.title,
+            isCompleted: todo.isCompleted,
+            onChanged: (isChecked) {
+              ref.read(taskProvider.notifier).toggleCompleted(index, todo);
+            },
+            onDelete: () {
+              ref.read(taskProvider.notifier).removeTask(index);
+            },
           );
+        },
+        onReorder: (int oldIndex, int newIndex) {
+          ref.read(taskProvider.notifier).reorderTasks(oldIndex, newIndex);
         },
       ),
     );
