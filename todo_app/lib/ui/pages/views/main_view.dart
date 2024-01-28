@@ -8,9 +8,14 @@ import 'package:todo_app/providers/task_provider.dart';
 import 'package:todo_app/providers/theme_provider.dart';
 import 'package:todo_app/ui/components/components.dart';
 import 'package:todo_app/ui/pages/views/todo_list_view.dart';
+import 'package:todo_app/ui/theme/colors.dart';
 
 class MainView extends HookConsumerWidget {
-  const MainView({super.key});
+  final bool isMobile;
+  const MainView({
+    super.key,
+    required this.isMobile,
+  });
 
   @override
   Widget build(BuildContext context, ref) {
@@ -23,39 +28,48 @@ class MainView extends HookConsumerWidget {
         .where((todo) => !todo.isCompleted)
         .toList();
 
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Center(
+      child: Container(
+        constraints: !isMobile
+            ? BoxConstraints(maxWidth: MediaQuery.of(context).size.width * .4)
+            : null,
+        child: Column(
           children: [
-            Text('TODO', style: GoogleFonts.josefinSans()),
-            GestureDetector(
-              onTap: () {
-                ref.read(themeProvider.notifier).toggleTheme();
-              },
-              child: SvgPicture.asset(
-                  'assets/images/icon-${isDarkMode ? 'sun' : 'moon'}.svg'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('TODO',
+                    style: GoogleFonts.josefinSans(
+                        fontSize: 28, color: veryLightGray.toColor())),
+                GestureDetector(
+                  onTap: () {
+                    ref.read(themeProvider.notifier).toggleTheme();
+                  },
+                  child: SvgPicture.asset(
+                      'assets/images/icon-${isDarkMode ? 'sun' : 'moon'}.svg'),
+                ),
+              ],
             ),
+            const SizedBox(height: 20),
+            TodoTextField(
+              controller: textController,
+              onTap: () {
+                ref.read(taskProvider.notifier).addTask(
+                      Task(title: textController.text.trim()),
+                    );
+                textController.clear();
+              },
+            ),
+            const SizedBox(height: 10),
+            const TodoListView(),
+            MobileBottomContainer(
+              notCompleted: itemsNotChecked.length,
+            ),
+            const SizedBox(height: 20),
+            const MobileBottomContainer2(),
           ],
         ),
-        const SizedBox(height: 20),
-        TodoTextField(
-          controller: textController,
-          onTap: () {
-            ref.read(taskProvider.notifier).addTask(
-                  Task(title: textController.text.trim()),
-                );
-            textController.clear();
-          },
-        ),
-        const SizedBox(height: 10),
-        const TodoListView(),
-        MobileBottomContainer(
-          notCompleted: itemsNotChecked.length,
-        ),
-        const SizedBox(height: 20),
-        const MobileBottomContainer2(),
-      ],
+      ),
     );
   }
 }

@@ -31,9 +31,14 @@ class MobileBottomContainer extends StatelessWidget {
               '$notCompleted items left',
               style: textStyle,
             ),
-            Text(
-              'Clear completed',
-              style: textStyle,
+            MouseRegion(
+              onEnter: (event) {},
+              onExit: (event) {},
+              onHover: (event) {},
+              child: Text(
+                'Clear completed',
+                style: textStyle,
+              ),
             ),
           ],
         ),

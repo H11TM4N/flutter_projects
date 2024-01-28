@@ -9,18 +9,21 @@ class WebPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: const Stack(
-        children: [
-          Column(
-            children: [
-              BackgroundImage(isMobile: false),
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 50, right: 50, top: 20, bottom: 10),
-            child: MainView(),
-          ),
-        ],
+      body: const SingleChildScrollView(
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                BackgroundImage(isMobile: false),
+              ],
+            ),
+            Padding(
+              padding:
+                  EdgeInsets.only(left: 50, right: 50, top: 20, bottom: 10),
+              child: MainView(isMobile: false),
+            ),
+          ],
+        ),
       ),
     );
   }

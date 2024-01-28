@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: LayoutBuilder(
         builder: (context, constraints) {
-          if (constraints.maxWidth < 500) {
+          if (constraints.maxWidth < 600) {
             return mobilePage;
           } else {
             return webPage;

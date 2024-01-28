@@ -13,6 +13,7 @@ class TodoListView extends ConsumerWidget {
       height: MediaQuery.of(context).size.height * .5,
       color: Theme.of(context).colorScheme.primary,
       child: ReorderableListView.builder(
+        buildDefaultDragHandles: false, //TODO : reorderable listner
         itemCount: todos.length,
         itemBuilder: (context, index) {
           final todo = todos[index];
