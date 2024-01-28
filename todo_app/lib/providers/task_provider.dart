@@ -31,11 +31,7 @@ class TaskNotifier extends StateNotifier<UserTasks> {
   void addTask(Task task) {
     try {
       if (task.title.isNotEmpty) {
-        final int newIndex = state.tasks.length;
-        taskBox.put(
-          newIndex,
-          task,
-        );
+        taskBox.add(task);
         state = state.copyWith(tasks: taskBox.values.toList());
       }
     } catch (e) {
@@ -54,10 +50,15 @@ class TaskNotifier extends StateNotifier<UserTasks> {
     }
   }
 
-  void toggleCompleted(int index, Task task) {
+  void clearCompletedTasks() {
     try {
-      task.isCompleted = !task.isCompleted;
-      taskBox.putAt(index, task);
+      List<Task> completedTasks =
+          state.tasks.where((todo) => todo.isCompleted).toList();
+      for (final completedTask in completedTasks) {
+        final index = state.tasks.indexOf(completedTask);
+        taskBox.deleteAt(index);
+        completedTasks = [];
+      } // TODO: work on this
       state = state.copyWith(
         tasks: taskBox.values.toList(),
       );
@@ -66,14 +67,12 @@ class TaskNotifier extends StateNotifier<UserTasks> {
     }
   }
 
-  void updateTask(int index, Task task) {
+  void toggleCompleted(int index, Task task) {
     try {
-      List<Task> temp = List.from(state.tasks);
-      if (index >= 0 && index < state.tasks.length) {
-        temp[index] = task;
-      }
+      task.isCompleted = !task.isCompleted;
+      taskBox.putAt(index, task);
       state = state.copyWith(
-        tasks: temp,
+        tasks: taskBox.values.toList(),
       );
     } catch (e) {
       throw 'An unexpected error occured';

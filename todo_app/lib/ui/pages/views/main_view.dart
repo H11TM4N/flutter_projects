@@ -64,6 +64,9 @@ class MainView extends HookConsumerWidget {
             const TodoListView(),
             MobileBottomContainer(
               notCompleted: itemsNotChecked.length,
+              onTap: () {
+                ref.read(taskProvider.notifier).clearCompletedTasks();
+              },
             ),
             const SizedBox(height: 20),
             const MobileBottomContainer2(),
