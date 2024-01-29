@@ -53,6 +53,12 @@ class MainView extends HookConsumerWidget {
             const SizedBox(height: 20),
             TodoTextField(
               controller: textController,
+              onSubmitted: (p0) {
+                ref.read(taskProvider.notifier).addTask(
+                      Task(title: textController.text.trim()),
+                    );
+                textController.clear();
+              },
               onTap: () {
                 ref.read(taskProvider.notifier).addTask(
                       Task(title: textController.text.trim()),

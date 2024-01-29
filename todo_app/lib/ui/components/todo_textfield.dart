@@ -5,10 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 class TodoTextField extends StatelessWidget {
   final TextEditingController controller;
   final void Function() onTap;
+  final void Function(String)? onSubmitted;
+
   const TodoTextField({
     super.key,
     required this.controller,
     required this.onTap,
+    required this.onSubmitted,
   });
 
   @override
@@ -18,6 +21,7 @@ class TodoTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       cursorColor: Colors.grey.shade700,
+      onSubmitted: onSubmitted,
       decoration: InputDecoration(
         filled: true,
         fillColor: theme.primary,
@@ -29,8 +33,8 @@ class TodoTextField extends StatelessWidget {
           onTap: onTap,
           child: const Icon(Icons.add),
         ),
-        labelText: 'Create a new todo...',
-        labelStyle: GoogleFonts.josefinSans(color: theme.tertiary),
+        hintText: 'Create a new todo...',
+        hintStyle: GoogleFonts.josefinSans(color: theme.tertiary),
         contentPadding: EdgeInsets.zero,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),

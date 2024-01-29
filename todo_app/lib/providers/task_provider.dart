@@ -52,18 +52,27 @@ class TaskNotifier extends StateNotifier<UserTasks> {
 
   void clearCompletedTasks() {
     try {
-      List<Task> completedTasks =
-          state.tasks.where((todo) => todo.isCompleted).toList();
-      for (final completedTask in completedTasks) {
+      final List<Task> tasksToRemove =
+          List.from(state.tasks.where((task) => task.isCompleted));
+
+      for (int i = tasksToRemove.length - 1; i >= 0; i--) {
+        final completedTask = tasksToRemove[i];
         final index = state.tasks.indexOf(completedTask);
-        taskBox.deleteAt(index);
-        completedTasks = [];
-      } // TODO: work on this
+
+        // print('Deleting task at index $index');
+
+        try {
+          taskBox.deleteAt(index);
+        } catch (e) {
+          // print('Error deleting task at index $index: $e');
+        }
+      }
+      // Remove completed tasks from state.tasks after deleting them from taskBox
       state = state.copyWith(
-        tasks: taskBox.values.toList(),
+        tasks: state.tasks.where((task) => !task.isCompleted).toList(),
       );
     } catch (e) {
-      throw 'An unexpected error occured';
+      throw 'An unexpected error occurred';
     }
   }
 
