@@ -4,11 +4,15 @@ import 'package:todo_app/providers/task_provider.dart';
 import 'package:todo_app/ui/components/components.dart';
 
 class TodoListView extends ConsumerWidget {
+  
   const TodoListView({super.key});
 
   @override
   Widget build(BuildContext context, ref) {
     final todos = ref.watch(taskProvider).tasks;
+    // final completed = todos.where((todo) => todo.isCompleted);
+    // final inCompleted = todos.where((todo) => !todo.isCompleted);
+
     return Container(
       height: MediaQuery.of(context).size.height * .5,
       color: Theme.of(context).colorScheme.primary,

@@ -75,7 +75,9 @@ class MainView extends HookConsumerWidget {
               },
             ),
             const SizedBox(height: 20),
-            const MobileBottomContainer2(),
+            MobileBottomContainer2(
+              isMobile: isMobile,
+            ),
           ],
         ),
       ),

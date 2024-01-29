@@ -3,7 +3,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/ui/theme/colors.dart';
 
 class MobileBottomContainer2 extends StatefulWidget {
-  const MobileBottomContainer2({super.key});
+  final bool isMobile;
+  const MobileBottomContainer2({
+    super.key,
+    required this.isMobile,
+  });
 
   @override
   State<MobileBottomContainer2> createState() => _MobileBottomContainer2State();
@@ -23,13 +27,14 @@ class _MobileBottomContainer2State extends State<MobileBottomContainer2> {
   Widget build(BuildContext context) {
     // final theme = Theme.of(context).colorScheme;
     // final isHovered = useState<bool>(false);
+    final screenSize = MediaQuery.of(context).size;
 
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primary,
         borderRadius: BorderRadius.circular(5),
       ),
-      width: MediaQuery.of(context).size.width,
+      width: screenSize.width,
       child: Padding(
         padding: const EdgeInsets.only(
           top: 18,
@@ -38,7 +43,9 @@ class _MobileBottomContainer2State extends State<MobileBottomContainer2> {
         child: Center(
           child: SizedBox(
             height: 20,
-            width: MediaQuery.of(context).size.width * .20,
+            width: widget.isMobile
+                ? screenSize.width * .75
+                : screenSize.width * .20,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: _textTitles.length,
