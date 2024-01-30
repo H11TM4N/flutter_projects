@@ -28,7 +28,9 @@ class TodoListView extends ConsumerWidget {
 
     return Container(
       height: MediaQuery.of(context).size.height * .5,
-      color: Theme.of(context).colorScheme.primary,
+      decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primary,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(5))),
       child: ListView.builder(
         itemCount: selectedFilter().length,
         itemBuilder: (context, index) {

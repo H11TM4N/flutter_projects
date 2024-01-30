@@ -8,6 +8,7 @@ import 'package:todo_app/ui/theme/theme.dart';
 import 'models/task.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(TaskAdapter()); // Register the adapter
   taskBox = await Hive.openBox<Task>('taskBox'); // Open the Hive box
