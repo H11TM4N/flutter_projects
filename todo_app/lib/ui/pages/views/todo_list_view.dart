@@ -1,26 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/models/selected.dart';
+import 'package:todo_app/models/task.dart';
+import 'package:todo_app/providers/selected_string_provider.dart';
 import 'package:todo_app/providers/task_provider.dart';
 import 'package:todo_app/ui/components/components.dart';
 
 class TodoListView extends ConsumerWidget {
-  
   const TodoListView({super.key});
 
   @override
   Widget build(BuildContext context, ref) {
+    final selectedString = ref.watch(selectedStringProvider);
     final todos = ref.watch(taskProvider).tasks;
-    // final completed = todos.where((todo) => todo.isCompleted);
-    // final inCompleted = todos.where((todo) => !todo.isCompleted);
+    final completed = todos.where((todo) => todo.isCompleted).toList();
+    final active = todos.where((todo) => !todo.isCompleted).toList();
+
+    List<Task> selectedFilter() {
+      if (selectedString == IsSelected.all) {
+        return todos;
+      } else if (selectedString == IsSelected.completed) {
+        return completed;
+      } else {
+        return active;
+      }
+    }
 
     return Container(
       height: MediaQuery.of(context).size.height * .5,
       color: Theme.of(context).colorScheme.primary,
-      child: ReorderableListView.builder(
-        buildDefaultDragHandles: false, //TODO : reorderable listner
-        itemCount: todos.length,
+      child: ListView.builder(
+        itemCount: selectedFilter().length,
         itemBuilder: (context, index) {
-          final todo = todos[index];
+          final todo = selectedFilter()[index];
           return TodoTile(
             key: ValueKey(index),
             isFirst: index == 0,
@@ -33,9 +45,6 @@ class TodoListView extends ConsumerWidget {
               ref.read(taskProvider.notifier).removeTask(index);
             },
           );
-        },
-        onReorder: (int oldIndex, int newIndex) {
-          ref.read(taskProvider.notifier).reorderTasks(oldIndex, newIndex);
         },
       ),
     );
