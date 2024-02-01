@@ -6,17 +6,30 @@ class HomePage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    Stream<String> loadTime() {
-      return Stream.periodic(const Duration(seconds: 1), (_) {
-        return DateTime.now().toIso8601String();
-      });
-    }
-
-    final currentTime = useStream(loadTime());
+    final controller = useTextEditingController();
+    final text = useState<String>('');
+    useEffect(
+      () {
+        controller.addListener(() {
+          text.value = controller.text;
+        });
+        return null;
+      },
+      [controller],
+    );
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('${currentTime.data}'),
+        title: const Text('HomePage'),
+      ),
+      body: Column(
+        children: [
+          TextField(
+            controller: controller,
+          ),
+          const SizedBox(height: 20),
+          Text('You typed: ${text.value}'),
+        ],
       ),
     );
   }
