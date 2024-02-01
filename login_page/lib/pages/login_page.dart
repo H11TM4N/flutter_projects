@@ -1,40 +1,35 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:login_page/pages/register_page.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends HookWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<Offset> _slideAnimation;
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
-  final RegExp _emailValid =
-      RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-
-  @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 1500));
-    _slideAnimation = Tween(
+  Widget build(BuildContext context) {
+    final animationController =
+        useAnimationController(duration: const Duration(milliseconds: 1500));
+    final slideAnimation = Tween(
       begin: const Offset(-1, -1),
       end: Offset.zero,
-    ).animate(_animationController);
+    ).animate(animationController);
 
-    _animationController.forward();
-  }
+    useEffect(() {
+      animationController.forward();
+      return null;
+    }, [animationController]);
 
-  @override
-  Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
+
+    TextEditingController passwordController = TextEditingController();
+
+    final formKey = GlobalKey<FormState>();
+
+    final RegExp emailValid =
+        RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+
+    final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login Page'),
@@ -42,9 +37,9 @@ class _LoginPageState extends State<LoginPage>
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Form(
-          key: _formKey,
+          key: formKey,
           child: SlideTransition(
-            position: _slideAnimation,
+            position: slideAnimation,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -56,7 +51,7 @@ class _LoginPageState extends State<LoginPage>
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your email';
-                    } else if (!_emailValid.hasMatch(value)) {
+                    } else if (!emailValid.hasMatch(value)) {
                       return 'Please enter a valid email';
                     }
                     return null;
@@ -78,9 +73,9 @@ class _LoginPageState extends State<LoginPage>
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
+                    if (formKey.currentState!.validate()) {
                       try {
-                        await _firebaseAuth.signInWithEmailAndPassword(
+                        await firebaseAuth.signInWithEmailAndPassword(
                             email: emailController.text,
                             password: passwordController.text);
                       } catch (e) {
