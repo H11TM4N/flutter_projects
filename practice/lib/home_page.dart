@@ -6,30 +6,36 @@ class HomePage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = useTextEditingController();
-    final text = useState<String>('');
+    final animationController =
+        useAnimationController(duration: const Duration(milliseconds: 1500));
+    final slideAnimation = Tween(
+      begin: const Offset(-1, -1),
+      end: Offset.zero,
+    ).animate(animationController);
+
     useEffect(
       () {
-        controller.addListener(() {
-          text.value = controller.text;
-        });
-        return null;
+        animationController.forward();
+        return animationController.dispose;
       },
-      [controller],
+      [animationController],
     );
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('HomePage'),
       ),
-      body: Column(
-        children: [
-          TextField(
-            controller: controller,
-          ),
-          const SizedBox(height: 20),
-          Text('You typed: ${text.value}'),
-        ],
+      body: SlideTransition(
+        position: slideAnimation,
+        child: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: const Text('jojooooooooo'),
+              tileColor: Colors.red.withOpacity(0.5),
+            );
+          },
+        ),
       ),
     );
   }
