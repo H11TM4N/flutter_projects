@@ -91,7 +91,7 @@ class LoginPage extends HookWidget {
                 ),
                 TextButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const RegisterPage(),

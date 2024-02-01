@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:login_page/pages/login_page.dart';
 
 class RegisterPage extends HookWidget {
   const RegisterPage({super.key});
@@ -89,7 +90,11 @@ class RegisterPage extends HookWidget {
                 ),
                 TextButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginPage(),
+                          ));
                     },
                     child: const Text('Already have an account? Sign in'))
               ],
