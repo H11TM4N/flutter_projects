@@ -20,9 +20,8 @@ class LoginPage extends HookWidget {
       return null;
     }, [animationController]);
 
-    TextEditingController emailController = TextEditingController();
-
-    TextEditingController passwordController = TextEditingController();
+    final emailController = useTextEditingController();
+    final passwordController = useTextEditingController();
 
     final formKey = GlobalKey<FormState>();
 

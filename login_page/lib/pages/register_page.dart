@@ -23,8 +23,8 @@ class RegisterPage extends HookWidget {
     final formKey = GlobalKey<FormState>();
     final RegExp emailValid =
         RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
+    final emailController = useTextEditingController();
+    final passwordController = useTextEditingController();
     final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
     return Scaffold(
