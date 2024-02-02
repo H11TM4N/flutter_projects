@@ -28,6 +28,8 @@ final router = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(path: '/', builder: (context, _) => const HomePage()),
-    GoRoute(path: '/setting', builder: (context, _) => const SettingPage()),
+    GoRoute(path: '/setting/:title', builder: (context, state) => SettingPage(
+      title: state.pathParameters['title']!,
+    )),
   ],
 );

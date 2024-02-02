@@ -35,7 +35,7 @@ class HomePage extends HookWidget {
               title: const Text('jojooooooooo'),
               tileColor: Colors.red.withOpacity(0.5),
               onTap: () {
-                GoRouter.of(context).go('/setting');
+                context.go('/setting/settings');
               },
             );
           },

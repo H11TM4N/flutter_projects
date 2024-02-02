@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class SettingPage extends StatelessWidget {
-  const SettingPage({super.key});
+  final String title;
+  const SettingPage({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class SettingPage extends StatelessWidget {
             context.go('/');
           },
         ),
-        title: const Text('Settings'),
+        title: Text(title),
       ),
     );
   }
