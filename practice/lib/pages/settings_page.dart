@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class SettingPage extends StatelessWidget {
   final String title;
@@ -9,12 +8,6 @@ class SettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.back_hand),
-          onPressed: () {
-            context.go('/');
-          },
-        ),
         title: Text(title),
       ),
     );

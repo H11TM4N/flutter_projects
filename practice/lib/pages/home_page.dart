@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+import 'package:practice/navigation/route_names.dart';
 
 class HomePage extends HookWidget {
   const HomePage({super.key});
@@ -35,7 +36,8 @@ class HomePage extends HookWidget {
               title: const Text('jojooooooooo'),
               tileColor: Colors.red.withOpacity(0.5),
               onTap: () {
-                context.go('/setting/settings');
+                context.goNamed(RouteNames.settings,
+                    pathParameters: {'title': 'settings'});
               },
             );
           },
