@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SettingPage extends StatelessWidget {
   final String title;
@@ -9,6 +10,14 @@ class SettingPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            context.go('/setting/$title/dummy');
+          },
+          child: const Text('NFavigate'),
+        ),
       ),
     );
   }

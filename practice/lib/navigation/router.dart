@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:practice/navigation/route_names.dart';
+import 'package:practice/pages/dummy_page.dart';
 import 'package:practice/pages/home_page.dart';
 import 'package:practice/pages/settings_page.dart';
 
@@ -17,6 +18,13 @@ final router = GoRouter(
           builder: (context, state) => SettingPage(
             title: state.pathParameters['title']!,
           ),
+          routes: [
+            GoRoute(
+              name: RouteNames.dummy,
+              path: 'dummy',
+              builder: (context, state) => const DummyPage(),
+            ),
+          ],
         ),
       ],
     ),
