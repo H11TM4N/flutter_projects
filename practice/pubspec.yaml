@@ -23,6 +23,7 @@ dependencies:
   flutter_local_notifications: ^16.3.2
   dio: ^5.4.0
   dartz: ^0.10.1
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
