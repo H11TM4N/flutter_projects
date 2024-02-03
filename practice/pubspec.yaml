@@ -21,6 +21,8 @@ dependencies:
   cached_network_image: ^3.3.1
   flash: ^3.1.0
   flutter_local_notifications: ^16.3.2
+  dio: ^5.4.0
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:

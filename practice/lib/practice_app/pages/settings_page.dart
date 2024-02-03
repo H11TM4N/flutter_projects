@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:practice/apis/notifications_api.dart';
-import 'package:practice/utils/flashbar.dart';
+import 'package:practice/practice_app/utils/flashbar.dart';
 
 class SettingPage extends StatelessWidget {
   final String title;
