@@ -1,4 +1,4 @@
-import 'package:advice_generator/constants/colors.dart';
+import 'package:advice_generator/common/colors.dart';
 import 'package:advice_generator/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

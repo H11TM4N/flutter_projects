@@ -1,6 +1,6 @@
 import 'package:advice_generator/UI/components/icon_filler.dart';
 import 'package:advice_generator/UI/components/loading_widget.dart';
-import 'package:advice_generator/constants/colors.dart';
+import 'package:advice_generator/common/colors.dart';
 import 'package:advice_generator/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,7 +44,7 @@ class _AdviceContainerState extends State<AdviceContainer> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        '#${randomAdvice['id']}',
+                        '#${randomAdvice.fold((l) => 'Error', (r) => r['id'])}',
                         style: GoogleFonts.manrope(
                           color: neonGreen.toColor(),
                           fontWeight: FontWeight.w800,
@@ -52,7 +52,7 @@ class _AdviceContainerState extends State<AdviceContainer> {
                       ),
                       const SizedBox(height: 20),
                       Text(
-                        '“${randomAdvice['advice']}”',
+                        '“${randomAdvice.fold((l) => 'An unexpected error occurred', (r) => r['advice'])}”',
                         style: GoogleFonts.manrope(
                           color: lightCyan.toColor(),
                           fontSize: 28,

@@ -38,6 +38,7 @@ dependencies:
   flutter_svg: ^2.0.9
   flutter_hooks: ^0.20.4
   http: ^1.2.0
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:

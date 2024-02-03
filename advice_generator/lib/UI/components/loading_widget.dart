@@ -1,4 +1,4 @@
-import 'package:advice_generator/constants/colors.dart';
+import 'package:advice_generator/common/colors.dart';
 import 'package:flutter/material.dart';
 
 class LoadingWidget extends StatelessWidget {
