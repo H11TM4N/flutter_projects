@@ -20,6 +20,7 @@ dependencies:
   go_router: ^13.1.0
   cached_network_image: ^3.3.1
   flash: ^3.1.0
+  flutter_local_notifications: ^16.3.2
 
 dev_dependencies:
   flutter_test:

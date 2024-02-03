@@ -1,7 +1,6 @@
-import 'package:flash/flash.dart';
-import 'package:flash/flash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:practice/apis/notifications_api.dart';
 import 'package:practice/utils/flashbar.dart';
 
 class SettingPage extends StatelessWidget {
@@ -10,8 +9,6 @@ class SettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -39,6 +36,16 @@ class SettingPage extends StatelessWidget {
               context.go('/setting/$title/dummy');
             },
             child: const Text('NFavigate'),
+          ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              // NotificationsApi.showNotification(
+              //     title: 'Jeremiah',
+              //     body: 'Heyyy! Did you sleep well today?',
+              //     payload: 'jeremaih.dev');
+            },
+            child: const Text('Show notification'),
           ),
         ],
       ),
