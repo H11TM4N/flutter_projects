@@ -1,9 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
-import 'package:practice/todos_w_api/ui/config/app_injection_container.dart';
-import 'package:practice/todos_w_api/ui/navigation/router.dart';
+import 'package:practice/firebase_options.dart';
+import 'package:practice/features/navigation/router.dart';
+import 'package:practice/features/todos_w_api/ui/config/app_injection_container.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   setUp();
   runApp(
     const ProviderScope(child: MainPage()),
@@ -19,7 +25,7 @@ class MainPage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Practice App',
       theme: ThemeData(useMaterial3: true),
-      routerConfig: todoRouter,
+      routerConfig: router,
     );
   }
 }

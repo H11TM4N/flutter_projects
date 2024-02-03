@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "717353174274",
+    "firebase_url": "https://backend-practice-94f37-default-rtdb.firebaseio.com",
+    "project_id": "backend-practice-94f37",
+    "storage_bucket": "backend-practice-94f37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:717353174274:android:b0463f313921495a106e1b",
+        "android_client_info": {
+          "package_name": "com.example.practice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn5MLvMwcXlqKYw4-gTBmO4yd5eSLQNTY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

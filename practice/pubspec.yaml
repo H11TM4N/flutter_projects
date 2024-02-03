@@ -25,6 +25,7 @@ dependencies:
   dartz: ^0.10.1
   google_fonts: ^6.1.0
   get_it: ^7.6.7
+  firebase_core: ^2.25.3
 
 dev_dependencies:
   flutter_test:

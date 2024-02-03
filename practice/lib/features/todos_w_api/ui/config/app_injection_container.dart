@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:practice/todos_w_api/ui/services/api_service.dart';
+import 'package:practice/features/todos_w_api/ui/services/api_service.dart';
 
 final locator = GetIt.instance;
 
