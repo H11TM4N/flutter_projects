@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:practice/todos_w_api/components/loading_widget.dart';
+import 'package:practice/todos_w_api/components/todo_tile.dart';
 import 'package:practice/todos_w_api/ui/services/api_service.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,7 +11,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Users'),
+        title: Text(
+          'Todos',
+          style: GoogleFonts.josefinSans(
+            fontSize: 28,
+          ),
+        ),
       ),
       body: FutureBuilder(
         future: TodosApi.getTodoList(),
@@ -26,18 +33,11 @@ class HomePage extends StatelessWidget {
               return ListView.builder(
                 itemCount: userList.length,
                 itemBuilder: (context, index) {
-                
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      height: 50,
-                      alignment: Alignment.center,
-                      child: Text('User ${userList[index]['userId']}'),
-                    ),
+                  return TodoTile(
+                    userId: userList[index]['userId'],
+                    id: userList[index]['id'],
+                    title: userList[index]['title'],
+                    isCompleted: userList[index]['completed'],
                   );
                 },
               );
