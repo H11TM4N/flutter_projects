@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:practice/features/config/app_injection_container.dart';
+import 'package:practice/features/practice_app/apis/firebase_api.dart';
 import 'package:practice/features/practice_app/utils/flashbar.dart';
 
 class SettingPage extends StatelessWidget {
@@ -39,10 +41,7 @@ class SettingPage extends StatelessWidget {
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
-              // NotificationsApi.showNotification(
-              //     title: 'Jeremiah',
-              //     body: 'Heyyy! Did you sleep well today?',
-              //     payload: 'jeremaih.dev');
+              locator<FirebaseApi>().initializeNotifications();
             },
             child: const Text('Show notification'),
           ),

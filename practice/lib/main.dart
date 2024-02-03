@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:practice/firebase_options.dart';
 import 'package:practice/features/navigation/router.dart';
-import 'package:practice/features/todos_w_api/ui/config/app_injection_container.dart';
+import 'package:practice/features/config/app_injection_container.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
