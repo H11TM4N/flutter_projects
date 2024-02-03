@@ -62,8 +62,8 @@ class TodoTile extends StatelessWidget {
             ),
             Row(
               children: [
-                Text('completed: $isCompleted', style: defaultStyle),
-                Text('completed: $isCompleted', style: textStyle),
+                Text('completed: ', style: defaultStyle),
+                Text('$isCompleted', style: textStyle),
               ],
             ),
           ],

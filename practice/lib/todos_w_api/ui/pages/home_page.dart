@@ -22,11 +22,6 @@ class HomePage extends StatelessWidget {
         future: TodosApi.getTodoList(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            // if (snapshot.hasData &&
-            //     snapshot.data!.fold((l) => true, (r) => r.isEmpty)) {
-            //   return const Text('No todos available.');
-            // }
-
             if (snapshot.hasData) {
               final userList = snapshot.data!;
 
