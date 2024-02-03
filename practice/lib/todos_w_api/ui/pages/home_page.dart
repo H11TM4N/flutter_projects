@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:practice/todos_w_api/components/loading_widget.dart';
 import 'package:practice/todos_w_api/components/todo_tile.dart';
+import 'package:practice/todos_w_api/ui/config/app_injection_container.dart';
 import 'package:practice/todos_w_api/ui/services/api_service.dart';
 
 class HomePage extends StatelessWidget {
@@ -19,7 +20,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: FutureBuilder(
-        future: TodosApi.getTodoList(),
+        future: locator<TodosApi>().getTodoList(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {

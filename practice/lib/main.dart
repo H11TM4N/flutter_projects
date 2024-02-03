@@ -1,8 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:practice/todos_w_api/ui/config/app_injection_container.dart';
 import 'package:practice/todos_w_api/ui/navigation/router.dart';
 
 void main() {
+  setUp();
   runApp(
     const ProviderScope(child: MainPage()),
   );
