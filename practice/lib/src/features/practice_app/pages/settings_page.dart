@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:practice/src/app_injection_container.dart';
+import 'package:practice/src/features/navigation/route_names.dart';
 import 'package:practice/src/features/practice_app/apis/firebase_api.dart';
 import 'package:practice/src/features/practice_app/utils/flashbar.dart';
 
@@ -44,6 +45,14 @@ class SettingPage extends StatelessWidget {
               locator<FirebaseApi>().initializeNotifications();
             },
             child: const Text('Show notification'),
+          ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              context.goNamed(RouteNames.urlLauncher,
+                  pathParameters: {'title': 'setting'});
+            },
+            child: const Text('url launcher'),
           ),
         ],
       ),

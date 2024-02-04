@@ -4,4 +4,5 @@ class RouteNames {
   static const dummy = 'dummyPage';
   static const todos = 'todosPage';
   static const anim = 'animated';
+  static const urlLauncher = 'urlLauncher';
 }
