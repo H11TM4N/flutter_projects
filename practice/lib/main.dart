@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:practice/firebase_options.dart';
-import 'package:practice/src/features/navigation/router.dart';
+import 'package:practice/src/app.dart';
 import 'package:practice/src/app_injection_container.dart';
 
 void main() async {
@@ -12,20 +12,6 @@ void main() async {
   );
   setUp();
   runApp(
-    const ProviderScope(child: MainPage()),
+    const ProviderScope(child: App()),
   );
-}
-
-class MainPage extends StatelessWidget {
-  const MainPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: 'Practice App',
-      theme: ThemeData(useMaterial3: true),
-      routerConfig: router,
-    );
-  }
 }
