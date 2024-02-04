@@ -4,6 +4,8 @@ import 'package:practice/src/app_injection_container.dart';
 import 'package:practice/src/features/navigation/route_names.dart';
 import 'package:practice/src/features/practice_app/apis/firebase_api.dart';
 import 'package:practice/src/features/practice_app/utils/flashbar.dart';
+import 'package:practice/src/features/practice_app/utils/tile_container.dart';
+import 'package:practice/src/shared/widgets/animated_column.dart';
 
 class SettingPage extends StatelessWidget {
   final String title;
@@ -15,45 +17,31 @@ class SettingPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: AppAnimatedColumn(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-            child: const Text('Show toast'),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              showSnackBar(context: context, message: 'A Snackbar I am!');
-            },
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
-            child: const Text('Show snackbar'),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              context.go('/setting/$title/dummy');
-            },
-            child: const Text('NFavigate'),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              locator<FirebaseApi>().initializeNotifications();
-            },
-            child: const Text('Show notification'),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              context.goNamed(RouteNames.urlLauncher,
-                  pathParameters: {'title': 'setting'});
-            },
-            child: const Text('url launcher'),
-          ),
+          TileContainer(onTap: () {}, childText: 'Show toast'),
+          TileContainer(
+              onTap: () {
+                showSnackBar(context: context, message: 'A Snackbar I am!');
+              },
+              childText: 'Show snackbar'),
+          TileContainer(
+              onTap: () {
+                context.go('/setting/$title/dummy');
+              },
+              childText: 'Navigate to dummy page'),
+          TileContainer(
+              onTap: () {
+                locator<FirebaseApi>().initializeNotifications();
+              },
+              childText: 'Show notification'),
+          TileContainer(
+              onTap: () {
+                context.goNamed(RouteNames.urlLauncher,
+                    pathParameters: {'title': 'setting'});
+              },
+              childText: 'url launcher'),
         ],
       ),
     );
