@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:practice/features/config/app_injection_container.dart';
-import 'package:practice/features/practice_app/apis/firebase_api.dart';
-import 'package:practice/features/practice_app/utils/flashbar.dart';
+import 'package:practice/src/app_injection_container.dart';
+import 'package:practice/src/features/practice_app/apis/firebase_api.dart';
+import 'package:practice/src/features/practice_app/utils/flashbar.dart';
 
 class SettingPage extends StatelessWidget {
   final String title;

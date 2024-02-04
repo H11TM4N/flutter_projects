@@ -1,9 +1,9 @@
 import 'package:go_router/go_router.dart';
-import 'package:practice/features/navigation/route_names.dart';
-import 'package:practice/features/practice_app/pages/dummy_page.dart';
-import 'package:practice/features/practice_app/pages/home_page.dart';
-import 'package:practice/features/practice_app/pages/settings_page.dart';
-import 'package:practice/features/todos_w_api/ui/pages/todos_page.dart';
+import 'package:practice/src/features/navigation/route_names.dart';
+import 'package:practice/src/features/practice_app/pages/dummy_page.dart';
+import 'package:practice/src/features/practice_app/pages/home_page.dart';
+import 'package:practice/src/features/practice_app/pages/settings_page.dart';
+import 'package:practice/src/features/todos_w_api/ui/pages/todos_page.dart';
 
 final router = GoRouter(
   initialLocation: '/',

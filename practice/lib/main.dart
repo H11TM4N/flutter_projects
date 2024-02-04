@@ -2,8 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:practice/firebase_options.dart';
-import 'package:practice/features/navigation/router.dart';
-import 'package:practice/features/config/app_injection_container.dart';
+import 'package:practice/src/features/navigation/router.dart';
+import 'package:practice/src/app_injection_container.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
