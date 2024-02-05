@@ -4,10 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 class TileContainer extends StatelessWidget {
   final void Function()? onTap;
   final String childText;
+  final List<Color> colors;
   const TileContainer({
     super.key,
     required this.onTap,
     required this.childText,
+    this.colors = const [Colors.blueGrey, Colors.blue],
   });
 
   @override
@@ -22,10 +24,9 @@ class TileContainer extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             gradient: LinearGradient(
-              colors: [
-                Colors.blueGrey.shade700,
-                Colors.blueGrey.shade400,
-              ],
+              colors: colors,
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
           ),
           child: Text(

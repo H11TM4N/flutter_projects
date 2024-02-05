@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:practice/src/features/navigation/route_names.dart';
+import 'package:practice/src/features/practice_app/utils/tile_container.dart';
 
 class HomePage extends HookWidget {
   const HomePage({super.key});
@@ -31,21 +32,25 @@ class HomePage extends HookWidget {
         position: slideAnimation,
         child: ListView(
           children: [
-            ListTile(
-              title: const Text('main practice'),
-              tileColor: Colors.red.withOpacity(0.5),
-              onTap: () {
-                context.goNamed(RouteNames.settings,
-                    pathParameters: {'title': 'settings'});
-              },
-            ),
-            ListTile(
-              title: const Text('todos with api'),
-              tileColor: Colors.blue.withOpacity(0.5),
-              onTap: () {
-                context.goNamed(RouteNames.todos);
-              },
-            ),
+            TileContainer(
+                onTap: () {
+                  context.goNamed(RouteNames.settings,
+                      pathParameters: {'title': 'settings'});
+                },
+                colors: [
+                  Colors.red.withOpacity(0.5),
+                  Colors.red,
+                ],
+                childText: 'main practice'),
+            TileContainer(
+                onTap: () {
+                  context.goNamed(RouteNames.todos);
+                },
+                colors: [
+                  Colors.blue.withOpacity(0.5),
+                  Colors.blue,
+                ],
+                childText: 'todos with api')
           ],
         ),
       ),
