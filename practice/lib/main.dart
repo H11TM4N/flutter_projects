@@ -1,5 +1,4 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:practice/firebase_options.dart';
 import 'package:practice/src/app.dart';
@@ -11,7 +10,5 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   setUp();
-  runApp(
-    const ProviderScope(child: App()),
-  );
+  runApp(const App());
 }
