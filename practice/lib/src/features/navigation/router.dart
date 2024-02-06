@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:practice/src/features/navigation/route_names.dart';
+import 'package:practice/src/features/node_js_practice/pages/book_app.dart';
+import 'package:practice/src/features/node_js_practice/pages/node_homepage.dart';
 import 'package:practice/src/features/practice_app/pages/device_images.dart';
 import 'package:practice/src/features/practice_app/pages/dummy_page.dart';
 import 'package:practice/src/features/practice_app/pages/home_page.dart';
@@ -40,10 +42,21 @@ final router = GoRouter(
           builder: (context, state) => const TodosPage(),
         ),
         GoRoute(
+            name: RouteNames.nodePractice,
+            path: 'nodejs',
+            builder: (context, state) => const NodeHomePage(),
+            routes: [
+              GoRoute(
+                name: RouteNames.bookApp,
+                path: 'bookApp',
+                builder: (context, state) => const NodeBookApp(),
+              ),
+            ]),
+        GoRoute(
           name: RouteNames.images,
           path: 'images',
           builder: (context, state) => const DeviceImages(),
-        )
+        ),
       ],
     ),
   ],

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:practice/src/app_injection_container.dart';
 import 'package:practice/src/features/navigation/route_names.dart';
-import 'package:practice/src/features/practice_app/apis/firebase_api.dart';
+import 'package:practice/src/shared/services/apis/firebase_api.dart';
 import 'package:practice/src/features/practice_app/utils/flashbar.dart';
 import 'package:practice/src/features/practice_app/utils/tile_container.dart';
 import 'package:practice/src/shared/widgets/animated_column.dart';

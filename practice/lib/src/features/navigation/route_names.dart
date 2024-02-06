@@ -6,4 +6,6 @@ class RouteNames {
   static const anim = 'animated';
   static const urlLauncher = 'urlLauncher';
   static const images = 'images';
+  static const nodePractice = 'nodeJsPractice';
+  static const bookApp = 'nodeBookApp';
 }

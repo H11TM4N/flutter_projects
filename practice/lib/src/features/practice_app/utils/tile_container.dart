@@ -5,11 +5,15 @@ class TileContainer extends StatelessWidget {
   final void Function()? onTap;
   final String childText;
   final List<Color> colors;
+  final bool hasSubtitle;
+  final String? subtitle;
   const TileContainer({
     super.key,
     required this.onTap,
     required this.childText,
     this.colors = const [Colors.blueGrey, Colors.blue],
+    this.hasSubtitle = false,
+    this.subtitle,
   });
 
   @override
@@ -29,12 +33,26 @@ class TileContainer extends StatelessWidget {
               end: Alignment.bottomCenter,
             ),
           ),
-          child: Text(
-            childText,
-            style: GoogleFonts.montserrat(
-              fontWeight: FontWeight.w800,
-              color: Colors.white,
-            ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                childText,
+                style: GoogleFonts.montserrat(
+                  fontWeight: FontWeight.w800,
+                  color: Colors.white,
+                ),
+              ),
+              hasSubtitle
+                  ? Text(
+                      subtitle!,
+                      style: GoogleFonts.montserrat(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey,
+                          fontSize: 20),
+                    )
+                  : const SizedBox.shrink(),
+            ],
           ),
         ),
       ),

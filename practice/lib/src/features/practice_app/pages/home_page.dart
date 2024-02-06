@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:practice/src/features/navigation/route_names.dart';
+import 'package:practice/src/features/practice_app/utils/colors.dart';
 import 'package:practice/src/features/practice_app/utils/tile_container.dart';
 import 'package:practice/src/shared/services/blocs/theme_bloc/theme_bloc_bloc.dart';
 import 'package:practice/src/shared/services/blocs/theme_bloc/theme_bloc_state.dart';
@@ -58,33 +59,34 @@ class HomePage extends HookWidget {
             child: ListView(
               children: [
                 TileContainer(
-                    onTap: () {
-                      context.goNamed(RouteNames.settings,
-                          pathParameters: {'title': 'settings'});
-                    },
-                    colors: [
-                      Colors.red.withOpacity(0.9),
-                      Colors.red,
-                    ],
-                    childText: 'main practice'),
+                  onTap: () {
+                    context.goNamed(RouteNames.settings,
+                        pathParameters: {'title': 'settings'});
+                  },
+                  colors: gradColors[0],
+                  childText: 'main practice',
+                ),
                 TileContainer(
-                    onTap: () {
-                      context.goNamed(RouteNames.todos);
-                    },
-                    colors: [
-                      Colors.blue.withOpacity(0.8),
-                      Colors.blue,
-                    ],
-                    childText: 'todos with api'),
+                  onTap: () {
+                    context.goNamed(RouteNames.todos);
+                  },
+                  colors: gradColors[1],
+                  childText: 'todos with api',
+                ),
                 TileContainer(
-                    onTap: () {
-                      context.goNamed(RouteNames.images);
-                    },
-                    colors: const [
-                      Colors.purple,
-                      Colors.purpleAccent,
-                    ],
-                    childText: 'Display device images')
+                  onTap: () {
+                    context.goNamed(RouteNames.nodePractice);
+                  },
+                  colors: gradColors[2],
+                  childText: 'Flutter with Node js',
+                ),
+                TileContainer(
+                  onTap: () {
+                    context.goNamed(RouteNames.images);
+                  },
+                  colors: gradColors[3],
+                  childText: 'Display device images',
+                ),
               ],
             ),
           ),

@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:practice/src/features/todos_w_api/components/loading_widget.dart';
 import 'package:practice/src/features/todos_w_api/components/todo_tile.dart';
 import 'package:practice/src/app_injection_container.dart';
-import 'package:practice/src/features/todos_w_api/ui/services/api_service.dart';
+import 'package:practice/src/shared/services/apis/todos_api.dart';
 
 class TodosPage extends StatelessWidget {
   const TodosPage({super.key});
