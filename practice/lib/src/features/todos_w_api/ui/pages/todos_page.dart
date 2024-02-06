@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:practice/src/features/todos_w_api/components/loading_widget.dart';
-import 'package:practice/src/features/todos_w_api/components/todo_tile.dart';
+import 'package:practice/src/shared/widgets/error_widget.dart';
+import 'package:practice/src/shared/widgets/loading_widget.dart';
+import 'package:practice/src/shared/widgets/todo_tile.dart';
 import 'package:practice/src/app_injection_container.dart';
 import 'package:practice/src/shared/services/apis/todos_api.dart';
 
@@ -38,7 +39,12 @@ class TodosPage extends StatelessWidget {
                 },
               );
             } else if (snapshot.hasError) {
-              return ErrorWidget(snapshot.error.toString());
+              return CustomErrorWidget(
+                errorText: snapshot.error.toString(),
+                onPressed: () {
+                  locator<TodosApi>().getTodoList();
+                },
+              );
             }
           }
           return const LoadingWidget();

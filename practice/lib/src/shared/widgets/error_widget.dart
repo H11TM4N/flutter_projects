@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ErrorWidget extends StatelessWidget {
+class CustomErrorWidget extends StatelessWidget {
   final String errorText;
-  const ErrorWidget({
+  final VoidCallback onPressed;
+  const CustomErrorWidget({
     super.key,
     required this.errorText,
+    required this.onPressed,
   });
 
   @override
@@ -24,9 +26,7 @@ class ErrorWidget extends StatelessWidget {
           ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green.withOpacity(0.2)),
-              onPressed: () {
-                //*TODO: Call api 
-              },
+              onPressed: onPressed,
               child: const Text('Try again'))
         ],
       ),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:practice/src/app_injection_container.dart';
 import 'package:practice/src/features/practice_app/utils/tile_container.dart';
-import 'package:practice/src/features/todos_w_api/components/loading_widget.dart';
+import 'package:practice/src/shared/widgets/error_widget.dart';
+import 'package:practice/src/shared/widgets/loading_widget.dart';
 import 'package:practice/src/shared/services/apis/book_api_service.dart';
 
 class NodeBookApp extends StatelessWidget {
@@ -9,6 +10,7 @@ class NodeBookApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //! This part of the app only works on the web
     return Scaffold(
       appBar: AppBar(
         title: const Text('Book App with Node'),
@@ -31,8 +33,12 @@ class NodeBookApp extends StatelessWidget {
                 },
               );
             } else if (snapshot.hasError) {
-              print(snapshot.error.toString());
-              return ErrorWidget(snapshot.error.toString());
+              return CustomErrorWidget(
+                errorText: snapshot.error.toString(),
+                onPressed: () {
+                  locator<BookApiService>().getBooks();
+                },
+              );
             }
           }
           return const LoadingWidget();
