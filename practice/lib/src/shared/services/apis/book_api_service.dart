@@ -11,7 +11,6 @@ class BookApiService {
         throw 'An unexpected error occurred';
       }
       return (res.data as List).cast<Map<String, dynamic>>();
-      // return res.data;
     } catch (e) {
       throw e.toString();
     }
