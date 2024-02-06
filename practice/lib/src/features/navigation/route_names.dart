@@ -5,4 +5,5 @@ class RouteNames {
   static const todos = 'todosPage';
   static const anim = 'animated';
   static const urlLauncher = 'urlLauncher';
+  static const images = 'images';
 }

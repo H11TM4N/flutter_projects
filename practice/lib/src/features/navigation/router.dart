@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:practice/src/features/navigation/route_names.dart';
+import 'package:practice/src/features/practice_app/pages/device_images.dart';
 import 'package:practice/src/features/practice_app/pages/dummy_page.dart';
 import 'package:practice/src/features/practice_app/pages/home_page.dart';
 import 'package:practice/src/features/practice_app/pages/settings_page.dart';
@@ -37,6 +38,11 @@ final router = GoRouter(
           name: RouteNames.todos,
           path: 'todos',
           builder: (context, state) => const TodosPage(),
+        ),
+        GoRoute(
+          name: RouteNames.images,
+          path: 'images',
+          builder: (context, state) => const DeviceImages(),
         )
       ],
     ),

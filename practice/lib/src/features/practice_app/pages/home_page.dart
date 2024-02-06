@@ -75,7 +75,16 @@ class HomePage extends HookWidget {
                       Colors.blue.withOpacity(0.8),
                       Colors.blue,
                     ],
-                    childText: 'todos with api')
+                    childText: 'todos with api'),
+                TileContainer(
+                    onTap: () {
+                      context.goNamed(RouteNames.images);
+                    },
+                    colors: const [
+                      Colors.purple,
+                      Colors.purpleAccent,
+                    ],
+                    childText: 'Display device images')
               ],
             ),
           ),
