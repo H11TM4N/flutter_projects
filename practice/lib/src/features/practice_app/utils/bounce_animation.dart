@@ -40,13 +40,13 @@ class _BounceInAnimationState extends State<BounceInAnimation>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: widget.onTap,
       child: Listener(
         onPointerDown: (PointerDownEvent event) {
           _controller.forward();
         },
         onPointerUp: (PointerUpEvent event) {
           _controller.reverse();
-          widget.onTap();
         },
         child: ScaleTransition(
           scale: _scale,
