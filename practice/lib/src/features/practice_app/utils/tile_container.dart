@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:practice/src/features/practice_app/utils/bounce_animation.dart';
 
 class TileContainer extends StatelessWidget {
   final void Function()? onTap;
@@ -20,7 +21,7 @@ class TileContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-      child: GestureDetector(
+      child: BounceInAnimation(
         onTap: onTap,
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),

@@ -1,58 +1,104 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class BounceInAnimation extends StatefulWidget {
+class BounceInAnimation extends HookWidget {
   final Widget child;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   const BounceInAnimation({
     super.key,
     required this.child,
-    required this.onTap,
+    this.onTap,
   });
 
   @override
-  State<BounceInAnimation> createState() => _BounceInAnimationState();
-}
-
-class _BounceInAnimationState extends State<BounceInAnimation>
-    with SingleTickerProviderStateMixin {
-  late Animation<double> _scale;
-  late AnimationController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 200),
-    );
-    _scale = Tween<double>(begin: 1.0, end: 0.9)
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final controller =
+        useAnimationController(duration: const Duration(milliseconds: 100));
+
+    final scale = Tween<double>(begin: 1.0, end: 0.9)
+        .animate(CurvedAnimation(parent: controller, curve: Curves.ease));
+
     return GestureDetector(
-      onTap: widget.onTap,
+      onTap: () {
+        Future.delayed(const Duration(milliseconds: 100), () {
+          onTap!();
+        });
+      },
       child: Listener(
         onPointerDown: (PointerDownEvent event) {
-          _controller.forward();
+          controller.forward();
         },
         onPointerUp: (PointerUpEvent event) {
-          _controller.reverse();
+          controller.reverse();
+        },
+        onPointerCancel: (event) {
+          controller.reverse();
         },
         child: ScaleTransition(
-          scale: _scale,
-          child: widget.child,
+          scale: scale,
+          child: child,
         ),
       ),
     );
   }
 }
+
+
+
+// class BounceInAnimation extends StatefulWidget {
+//   final Widget child;
+//   final VoidCallback onTap;
+
+//   const BounceInAnimation({
+//     super.key,
+//     required this.child,
+//     required this.onTap,
+//   });
+
+//   @override
+//   State<BounceInAnimation> createState() => _BounceInAnimationState();
+// }
+
+// class _BounceInAnimationState extends State<BounceInAnimation>
+//     with SingleTickerProviderStateMixin {
+//   late Animation<double> _scale;
+//   late AnimationController _controller;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     _controller = AnimationController(
+//       vsync: this,
+//       duration: const Duration(milliseconds: 200),
+//     );
+//     _scale = Tween<double>(begin: 1.0, end: 0.9)
+//         .animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
+//   }
+
+//   @override
+//   void dispose() {
+//     _controller.dispose();
+//     super.dispose();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return GestureDetector(
+//       onTap: widget.onTap,
+//       child: Listener(
+//         onPointerDown: (PointerDownEvent event) {
+//           _controller.forward();
+//         },
+//         onPointerUp: (PointerUpEvent event) {
+//           _controller.reverse();
+//         },
+//         child: ScaleTransition(
+//           scale: _scale,
+//           child: widget.child,
+//         ),
+//       ),
+//     );
+//   }
+// }

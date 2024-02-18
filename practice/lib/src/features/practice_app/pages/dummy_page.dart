@@ -140,9 +140,9 @@ class CircleContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(3),
-      decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.orange),
-      child: Center(
+      padding: const EdgeInsets.all(3),
+      decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.orange),
+      child: const Center(
         child: Text(
           '1',
           style: TextStyle(

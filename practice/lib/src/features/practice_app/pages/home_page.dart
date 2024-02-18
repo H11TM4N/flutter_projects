@@ -56,7 +56,7 @@ class HomePage extends HookWidget {
           ),
           body: SlideTransition(
             position: slideAnimation,
-            child: ListView(
+            child: Column(
               children: [
                 TileContainer(
                   onTap: () {
