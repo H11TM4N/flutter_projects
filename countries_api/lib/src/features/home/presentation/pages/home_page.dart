@@ -28,7 +28,10 @@ class HomePage extends HookWidget {
                           // key: ValueKey(_countries[index].numericCode),
                           margin: const EdgeInsets.all(10),
                           color: Colors.amber.shade100,
-                          child: Text(countries.value[index].name));
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(countries.value[index].name),
+                          ));
                     },
                   ),
                 )
@@ -36,10 +39,7 @@ class HomePage extends HookWidget {
                   onPressed: () {
                     ReadJsonFile.readJsonData(path: 'assets/data.json')
                         .then((value) {
-                      final parsedCountries = value
-                          .map((json) => Country.fromJson(json))
-                          .toList(); // Map JSON data to List<Country>
-                      countries.value = parsedCountries;
+                      countries.value = value;
                     });
                   },
                   child: const Center(
