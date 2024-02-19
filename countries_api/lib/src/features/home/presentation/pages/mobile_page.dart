@@ -16,7 +16,6 @@ class MobilePage extends HookWidget {
             TopBar(),
             SearchAndFilter(isMobile: true),
             CountryList(),
-            
           ],
         ),
       ),
