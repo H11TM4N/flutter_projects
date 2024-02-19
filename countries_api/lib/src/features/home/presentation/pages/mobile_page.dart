@@ -10,11 +10,15 @@ class MobilePage extends HookWidget {
     final theme = Theme.of(context).colorScheme;
     return Scaffold(
       backgroundColor: theme.background,
-      body: ListView(
-        children: const [
-          TopBar(),
-          SearchAndFilter(isMobile: true),
-        ],
+      body: const SafeArea(
+        child: Column(
+          children: [
+            TopBar(),
+            SearchAndFilter(isMobile: true),
+            CountryList(),
+            
+          ],
+        ),
       ),
     );
   }
