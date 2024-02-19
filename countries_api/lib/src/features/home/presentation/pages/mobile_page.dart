@@ -1,4 +1,4 @@
-import 'package:countries_api/src/features/home/presentation/components/top_bar.dart';
+import 'package:countries_api/src/features/home/presentation/components/components.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter/material.dart';
 
@@ -12,9 +12,9 @@ class MobilePage extends HookWidget {
     return Scaffold(
       backgroundColor: theme.background,
       body: ListView(
-        children: [
+        children: const [
           TopBar(),
-          Text("Mobile"),
+          SearchAndFilter(isMobileOrTablet: true),
         ],
       ),
     );

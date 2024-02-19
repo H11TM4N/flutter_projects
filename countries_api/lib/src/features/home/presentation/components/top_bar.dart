@@ -11,6 +11,7 @@ class TopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
     return Card(
+      margin: EdgeInsets.zero,
       child: Consumer<ThemeViewModel>(builder: (context, themeState, __) {
         return Container(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
