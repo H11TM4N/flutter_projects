@@ -11,10 +11,7 @@ class TabletPage extends HookWidget {
     return Scaffold(
       backgroundColor: theme.background,
       body: ListView(
-        children: const [
-          TopBar(),
-          SearchAndFilter(isMobileOrTablet: true)
-        ],
+        children: const [TopBar(), SearchAndFilter(isMobile: false)],
       ),
     );
   }

@@ -2,7 +2,6 @@ import 'package:countries_api/src/features/home/presentation/components/componen
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter/material.dart';
 
-
 class DesktopPage extends HookWidget {
   const DesktopPage({super.key});
 
@@ -12,10 +11,7 @@ class DesktopPage extends HookWidget {
     return Scaffold(
       backgroundColor: theme.background,
       body: ListView(
-        children: const [
-          TopBar(),
-          SearchAndFilter(isMobileOrTablet: false)
-        ],
+        children: const [TopBar(), SearchAndFilter(isMobile: false)],
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:countries_api/src/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -14,14 +15,17 @@ class CustomTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
-        constraints: const BoxConstraints(
-          maxWidth: 400,
-        ),
+        contentPadding: EdgeInsets.zero,
         hintText: 'Search for a country...',
-        prefixIcon: const Icon(FontAwesomeIcons.magnifyingGlass),
+        hintStyle: TextStyle(color: theme.secondary, fontSize: 16..sp),
+        prefixIcon: Icon(
+          FontAwesomeIcons.magnifyingGlass,
+          size: 16..sp,
+          color: theme.secondary,
+        ),
         filled: true,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(6),
           borderSide: BorderSide.none,
         ),
         fillColor: theme.primary,

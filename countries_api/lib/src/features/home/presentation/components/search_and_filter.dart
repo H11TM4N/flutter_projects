@@ -4,32 +4,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class SearchAndFilter extends HookWidget {
-  final bool isMobileOrTablet;
+  final bool isMobile;
   const SearchAndFilter({
     super.key,
-    required this.isMobileOrTablet,
+    required this.isMobile,
   });
 
   @override
   Widget build(BuildContext context) {
     final controller = useTextEditingController();
-    if (isMobileOrTablet) {
-      return Column(
-        children: [
-          const YBox(20),
-          SizedBox(
-            width: 300,
-            child: CustomTextField(controller: controller),
-          ),
-          const YBox(30),
-          const FilterContainer(),
-        ],
+    if (isMobile) {
+      return Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15..dx),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 30..dy),
+              child: CustomTextField(controller: controller),
+            ),
+            const FilterContainer(),
+          ],
+        ),
       );
     } else {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const YBox(20),
           SizedBox(
             width: 300,
             child: CustomTextField(controller: controller),

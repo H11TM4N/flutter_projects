@@ -13,7 +13,7 @@ class IpadPage extends HookWidget {
       body: ListView(
         children: const [
           TopBar(),
-          SearchAndFilter(isMobileOrTablet: false),
+          SearchAndFilter(isMobile: false),
         ],
       ),
     );
