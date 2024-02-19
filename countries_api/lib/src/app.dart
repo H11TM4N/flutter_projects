@@ -1,4 +1,3 @@
-import 'package:countries_api/src/app_injection_container.dart';
 import 'package:countries_api/src/features/navigation/router.dart';
 import 'package:countries_api/src/features/theme/theme.dart';
 import 'package:countries_api/src/features/theme/view_models/theme_view_model.dart';
@@ -15,11 +14,14 @@ class MyApp extends StatelessWidget {
       providers: [
         ...themeProviders,
       ],
-      child: MaterialApp.router(
-        title: 'Countries API',
-        theme: sl<ThemeViewModel>().isDarkMode ? darkTheme : lightTheme,
-        routerConfig: router,
-      ),
+      child: Consumer<ThemeViewModel>(builder: (context, themeState, __) {
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          title: 'Countries API',
+          theme: themeState.isDarkMode ? darkTheme : lightTheme,
+          routerConfig: router,
+        );
+      }),
     );
   }
 }

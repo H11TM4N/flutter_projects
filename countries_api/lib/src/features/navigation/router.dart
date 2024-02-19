@@ -1,5 +1,4 @@
-import 'package:countries_api/src/features/home/presentation/pages/home_page.dart';
-import 'package:countries_api/src/features/navigation/route_names.dart';
+import 'package:countries_api/src/features/navigation/route_info.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
@@ -8,7 +7,7 @@ final router = GoRouter(
     GoRoute(
       name: RouteInfo.home.name,
       path: RouteInfo.home.path,
-      builder: (context, state) => const HomePage(),
+      builder: RouteInfo.home.builder,
     ),
   ],
 );
