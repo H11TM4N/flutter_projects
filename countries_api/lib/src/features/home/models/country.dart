@@ -3,41 +3,42 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'country.g.dart';
 
+typedef Json = List<Map<String, dynamic>>;
+
 @JsonSerializable()
 class Country {
-  String name;
-  List<String> topLevelDomain;
-  String alpha2Code;
-  String alpha3Code;
-  List<String> callingCodes;
-  String capital;
-  List<String> altSpellings;
-  String subregion;
-  String region;
-  int population;
-  List<double> latlng;
-  String demonym;
-  double area;
-  List<String> timezones;
-  List<String> borders;
-  String nativeName;
-  String numericCode;
-  Map<String, String> flags;
-  List<Currency> currencies;
-  List<Language> languages;
-  Map<String, String> translations;
-  String flag;
-  List<RegionalBloc> regionalBlocs;
-  String cioc;
-  bool independent;
-
+  final String name;
+  final List<String> topLevelDomain;
+  final String alpha2Code;
+  final String alpha3Code;
+  final List<String> callingCodes;
+  final String? capital;
+  final List<String> altSpellings;
+  final String subregion;
+  final String region;
+  final int population;
+  final List<double> latlng;
+  final String demonym;
+  final double area;
+  final List<String> timezones;
+  final List<String>? borders;
+  final String nativeName;
+  final String numericCode;
+  final Map<String, String> flags;
+  final List<Currency>? currencies;
+  final List<Language> languages;
+  final Map<String, String> translations;
+  final String flag;
+  final List<RegionalBloc> regionalBlocs;
+  final String cioc;
+  final bool independent;
   Country({
     required this.name,
     required this.topLevelDomain,
     required this.alpha2Code,
     required this.alpha3Code,
     required this.callingCodes,
-    required this.capital,
+    this.capital = 'No capital',
     required this.altSpellings,
     required this.subregion,
     required this.region,
@@ -46,11 +47,11 @@ class Country {
     required this.demonym,
     required this.area,
     required this.timezones,
-    required this.borders,
+    this.borders = const ['None'],
     required this.nativeName,
     required this.numericCode,
     required this.flags,
-    required this.currencies,
+    this.currencies = const [],
     required this.languages,
     required this.translations,
     required this.flag,
@@ -115,7 +116,8 @@ class Country {
     );
   }
 
-  factory Country.fromJson(Map<String, dynamic> json) => _$CountryFromJson(json);
+  factory Country.fromJson(Map<String, dynamic> json) =>
+      _$CountryFromJson(json);
 
   Map<String, dynamic> toJson() => _$CountryToJson(this);
 }

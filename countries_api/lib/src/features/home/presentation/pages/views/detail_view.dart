@@ -3,7 +3,6 @@ import 'package:countries_api/src/features/home/presentation/widgets/image_conta
 import 'package:countries_api/src/features/home/presentation/widgets/text_wrapper.dart';
 import 'package:countries_api/src/shared/shared.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class CountryDetail extends StatelessWidget {
   final String imageUrl, country, region, subregion, capital, nativeName;

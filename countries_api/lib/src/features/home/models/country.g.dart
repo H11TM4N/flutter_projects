@@ -16,7 +16,7 @@ Country _$CountryFromJson(Map<String, dynamic> json) => Country(
       callingCodes: (json['callingCodes'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      capital: json['capital'] as String,
+      capital: json['capital'] as String? ?? 'No capital',
       altSpellings: (json['altSpellings'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -30,14 +30,17 @@ Country _$CountryFromJson(Map<String, dynamic> json) => Country(
       area: (json['area'] as num).toDouble(),
       timezones:
           (json['timezones'] as List<dynamic>).map((e) => e as String).toList(),
-      borders:
-          (json['borders'] as List<dynamic>).map((e) => e as String).toList(),
+      borders: (json['borders'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const ['None'],
       nativeName: json['nativeName'] as String,
       numericCode: json['numericCode'] as String,
       flags: Map<String, String>.from(json['flags'] as Map),
-      currencies: (json['currencies'] as List<dynamic>)
-          .map((e) => Currency.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      currencies: (json['currencies'] as List<dynamic>?)
+              ?.map((e) => Currency.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
       languages: (json['languages'] as List<dynamic>)
           .map((e) => Language.fromJson(e as Map<String, dynamic>))
           .toList(),
