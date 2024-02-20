@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:countries_api/src/features/home/presentation/widgets/image_container.dart';
 import 'package:countries_api/src/shared/shared.dart';
 import 'package:flutter/material.dart';
 
@@ -28,22 +28,7 @@ class CountryContainer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 200..dy,
-              child: Center(
-                child: CachedNetworkImage(
-                  fit: BoxFit.fitWidth,
-                  imageUrl: flagImage,
-                  progressIndicatorBuilder: (context, url, download) {
-                    if (download.progress != null) {
-                      final percent = download.progress! * 100;
-                      return Text('$percent done loading');
-                    }
-                    return Text('loaded $url');
-                  },
-                ),
-              ),
-            ),
+            ImageContainer(imageUrl: flagImage),
             YBox(10..dy),
             Padding(
               padding: const EdgeInsets.all(10.0),

@@ -1,8 +1,10 @@
 import 'package:countries_api/src/features/home/presentation/components/components.dart';
+import 'package:countries_api/src/features/home/presentation/pages/views/detail_view.dart';
 import 'package:countries_api/src/features/home/services/fetch_json_data.dart';
 import 'package:countries_api/src/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:get/get.dart';
 
 class CountryList extends HookWidget {
   final CurrentScreen currentScreen;
@@ -38,16 +40,35 @@ class CountryList extends HookWidget {
         ),
         children: List.generate(
           countries.value.length,
-          (index) => BounceInAnimation(
-            onTap: () {},
-            child: CountryContainer(
-              flagImage: countries.value[index]['flags']['png'],
-              country: countries.value[index]['name'],
-              population: countries.value[index]['population'],
-              region: countries.value[index]['region'],
-              capital: countries.value[index]['capital'] ?? 'No capital',
-            ),
-          ),
+          (index) {
+            final country = countries.value[index];
+            return BounceInAnimation(
+              onTap: () {
+                Get.to(
+                  () => CountryDetail(
+                    imageUrl: country['flags']['png'],
+                    country: country['name'],
+                    nativeName: country['nativeName'],
+                    region: country['region'],
+                    subregion: country['subregion'],
+                    capital: country['capital'] ?? 'No capital',
+                    population: country['population'],
+                    topLevelDomain: country['topLevelDomain'][0],
+                    currencies: country['currencies'] ?? [''],
+                    languages: country['languages'],
+                    borderCountries: country['borders'] ?? [''],
+                  ),
+                );
+              },
+              child: CountryContainer(
+                flagImage: country['flags']['png'],
+                country: country['name'],
+                population: country['population'],
+                region: country['region'],
+                capital: country['capital'] ?? 'No capital',
+              ),
+            );
+          },
         ),
       ),
     );
