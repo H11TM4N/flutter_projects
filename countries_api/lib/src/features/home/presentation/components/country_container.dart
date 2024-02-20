@@ -18,61 +18,60 @@ class CountryContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 15..dx)
-          .copyWith(bottom: 18..dy, top: 20..dy),
-      decoration: BoxDecoration(
-        color: theme.primary,
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: Column(
-        children: [
-          SizedBox(
-            child: CachedNetworkImage(
-              imageUrl: flagImage,
-              progressIndicatorBuilder: (context, url, download) {
-                if (download.progress != null) {
-                  final percent = download.progress! * 100;
-                  return Text('$percent done loading');
-                }
-                return Text('loaded $url');
-              },
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: theme.primary,
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 200..dy,
+              child: Center(
+                child: CachedNetworkImage(
+                  fit: BoxFit.fitWidth,
+                  imageUrl: flagImage,
+                  progressIndicatorBuilder: (context, url, download) {
+                    if (download.progress != null) {
+                      final percent = download.progress! * 100;
+                      return Text('$percent done loading');
+                    }
+                    return Text('loaded $url');
+                  },
+                ),
+              ),
             ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 20..dy, horizontal: 15..dx),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            YBox(10..dy),
+            Text(
+              country,
+              style: TextStyle(
+                fontWeight: FontWeight.w800,
+                fontSize: 22..sp,
+              ),
+            ),
+            Row(
               children: [
-                Text(
-                  country,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 22..sp,
-                  ),
-                ),
-                Row(
-                  children: [
-                    head3Text('population: '),
-                    bodyText(population.toString()),
-                  ],
-                ),
-                Row(
-                  children: [
-                    head3Text('region: '),
-                    bodyText(region),
-                  ],
-                ),
-                Row(
-                  children: [
-                    head3Text('capital: '),
-                    bodyText(capital),
-                  ],
-                ),
+                head3Text('population: '),
+                bodyText(population.toString()),
               ],
             ),
-          ),
-        ],
+            Row(
+              children: [
+                head3Text('region: '),
+                bodyText(region),
+              ],
+            ),
+            Row(
+              children: [
+                head3Text('capital: '),
+                bodyText(capital),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

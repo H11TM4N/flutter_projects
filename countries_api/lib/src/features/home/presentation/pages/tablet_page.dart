@@ -11,12 +11,14 @@ class TabletPage extends HookWidget {
     final theme = Theme.of(context).colorScheme;
     return Scaffold(
       backgroundColor: theme.background,
-      body: ListView(
-        children: const [
-          TopBar(),
-          SearchAndFilter(isMobile: false),
-          CountryList(currentScreen: CurrentScreen.tablet),
-        ],
+      body: const SingleChildScrollView(
+        child: Column(
+          children: [
+            TopBar(),
+            SearchAndFilter(isMobile: false),
+            CountryList(currentScreen: CurrentScreen.tablet),
+          ],
+        ),
       ),
     );
   }

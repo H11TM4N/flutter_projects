@@ -11,12 +11,14 @@ class MobilePage extends HookWidget {
     return Scaffold(
       backgroundColor: theme.background,
       body: const SafeArea(
-        child: Column(
-          children: [
-            TopBar(),
-            SearchAndFilter(isMobile: true),
-            CountryList(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              TopBar(),
+              SearchAndFilter(isMobile: true),
+              CountryList(),
+            ],
+          ),
         ),
       ),
     );

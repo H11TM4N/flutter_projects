@@ -24,11 +24,21 @@ class CountryList extends HookWidget {
       return null;
     }, []);
 
-    if (currentScreen == CurrentScreen.mobile) {
-      return Expanded(
-        child: ListView.builder(
-          itemCount: countries.value.length,
-          itemBuilder: (context, index) => CountryContainer(
+    return SizedBox(
+      height: 600,
+      child: GridView(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: currentScreen == CurrentScreen.mobile
+              ? 1
+              : currentScreen == CurrentScreen.tablet
+                  ? 2
+                  : currentScreen == CurrentScreen.iPad
+                      ? 3
+                      : 4,
+        ),
+        children: List.generate(
+          countries.value.length,
+          (index) => CountryContainer(
             flagImage: countries.value[index]['flags']['png'],
             country: countries.value[index]['name'],
             population: countries.value[index]['population'],
@@ -36,22 +46,7 @@ class CountryList extends HookWidget {
             capital: countries.value[index]['capital'] ?? 'No capital',
           ),
         ),
-      );
-    } else {
-      return Expanded(
-        child: GridView.builder(
-          itemCount: countries.value.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2),
-          itemBuilder: (context, index) => CountryContainer(
-            flagImage: countries.value[index]['flags']['png'],
-            country: countries.value[index]['name'],
-            population: countries.value[index]['population'],
-            region: countries.value[index]['region'],
-            capital: countries.value[index]['capital'] ?? 'No capital',
-          ),
-        ),
-      );
-    }
+      ),
+    );
   }
 }
