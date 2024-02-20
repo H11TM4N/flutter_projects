@@ -1,6 +1,6 @@
 import 'package:countries_api/src/features/home/presentation/components/components.dart';
 import 'package:countries_api/src/features/home/services/fetch_json_data.dart';
-import 'package:countries_api/src/shared/models/enums.dart';
+import 'package:countries_api/src/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -38,12 +38,15 @@ class CountryList extends HookWidget {
         ),
         children: List.generate(
           countries.value.length,
-          (index) => CountryContainer(
-            flagImage: countries.value[index]['flags']['png'],
-            country: countries.value[index]['name'],
-            population: countries.value[index]['population'],
-            region: countries.value[index]['region'],
-            capital: countries.value[index]['capital'] ?? 'No capital',
+          (index) => BounceInAnimation(
+            onTap: () {},
+            child: CountryContainer(
+              flagImage: countries.value[index]['flags']['png'],
+              country: countries.value[index]['name'],
+              population: countries.value[index]['population'],
+              region: countries.value[index]['region'],
+              capital: countries.value[index]['capital'] ?? 'No capital',
+            ),
           ),
         ),
       ),
